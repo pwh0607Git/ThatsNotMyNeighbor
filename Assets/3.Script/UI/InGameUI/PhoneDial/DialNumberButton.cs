@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
-public class DialNumberButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler, IBeginDragHandler, IEndDragHandler
+public class DialNumberButton : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
 {
     [SerializeField] private int num;
     [SerializeField] TextMeshProUGUI targetTMP;
@@ -31,16 +31,5 @@ public class DialNumberButton : MonoBehaviour, IPointerDownHandler, IPointerUpHa
     public void OnPointerUp(PointerEventData eventData)
     {
         targetTMP.color = normalColor;
-        OnClickButton?.Invoke(0);
-    }
-
-    public void OnBeginDrag(PointerEventData eventData)
-    {
-        OnDragStart?.Invoke(num);
-    }
-
-    public void OnEndDrag(PointerEventData eventData)
-    {
-        OnDragEnd?.Invoke();
     }
 }
