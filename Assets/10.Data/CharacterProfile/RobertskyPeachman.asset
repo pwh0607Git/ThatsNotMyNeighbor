@@ -14,6 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstName: Robertsky
   secondName: Peachman
-  id: 114652289730
-  profileImage: {fileID: 21300000, guid: 1455f086f99d4d940bedc40ee329b4f9, type: 3}
+  id: 114652289
+  profileImage: {fileID: 21300000, guid: 11cb080c13260ae4d8a1d8d2dd322bb0, type: 3}
+  characteristics:
+  - "\uC8FC\uD669\uC0C9 \uACF1\uC2AC\uBA38\uB9AC"
+  - "\uAE34 \uBAA9"
+  - "\uD070 \uCF54"
+  - "\uD131\uC218\uC5FC"
   job: "\uC81C\uD654\uACF5"
+  expiration: 12/1973
+  Model: {fileID: 0}
+  mates: []

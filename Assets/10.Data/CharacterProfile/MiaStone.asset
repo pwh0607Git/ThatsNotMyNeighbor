@@ -15,5 +15,9 @@ MonoBehaviour:
   firstName: Mia
   secondName: Stone
   id: 789564525115
-  profileImage: {fileID: 21300000, guid: 79ee4b2e99aa6974d889c97b81cb6ece, type: 3}
+  profileImage: {fileID: 21300000, guid: 9953b38f730b93c4c87a19bbe6b27d0c, type: 3}
+  characteristics: []
   job: "\uC120\uC0DD\uB2D8"
+  expiration: 
+  Model: {fileID: 0}
+  mates: []

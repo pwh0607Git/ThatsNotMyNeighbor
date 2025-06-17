@@ -14,6 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstName: Elenois
   secondName: Sverchzt
-  id: 
-  profileImage: {fileID: 0}
-  job: 
+  id: 845323014
+  profileImage: {fileID: 21300000, guid: f18476908973891449009eb2ee9cf2d8, type: 3}
+  characteristics:
+  - "\uC67C\uCABD \uBEA8\uC5D0 \uC810"
+  - "\uC138\uBAA8 \uADC0\uAC78\uC774 \uCC29\uC6A9"
+  - "\uB178\uB780\uC0C9 \uC6D0\uD53C\uC2A4 \uCC29\uC6A9"
+  job: "\uBAA8\uB378"
+  expiration: 03/1980
+  Model: {fileID: 0}
+  mates: []

@@ -14,6 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstName: Lois
   secondName: Stilnsky
-  id: 894569723651
-  profileImage: {fileID: 21300000, guid: a2584c575d8a4af4780432b5765f75e8, type: 3}
+  id: 894569723
+  profileImage: {fileID: 21300000, guid: acca479caa6c4ec409e40128e910880c, type: 3}
+  characteristics:
+  - "\uD070 \uC785\uC220"
+  - "\uC67C\uCABD \uBEA8\uC5D0 \uC810"
+  - "\uB465\uADFC \uC5BC\uAD74"
+  - "\uC9E7\uC740 \uBA38\uB9AC"
   job: "\uC8FC\uBD80"
+  expiration: 10/1969
+  Model: {fileID: 0}
+  mates: []
