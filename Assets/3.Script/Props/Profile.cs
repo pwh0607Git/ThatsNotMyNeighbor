@@ -8,7 +8,7 @@ public class Profile : ScriptableObject
 {
     [Header("Information")]
     public string firstName;                // 성
-    public string secondName;               // 이름
+    public string lastName;               // 이름
     public string id;                       // 주민 번호
 
     [Header("Sprite")]

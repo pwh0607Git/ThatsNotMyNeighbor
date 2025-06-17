@@ -1,5 +1,3 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -52,5 +50,10 @@ public class FilesTabController : MonoBehaviour
         currentFile.SetActive(false);
         currentFile = fileDic[currentIndex];
         currentFile.SetActive(true);
+    }
+
+    public void OnClickExitButton()
+    {
+        this.gameObject.SetActive(false);
     }
 }

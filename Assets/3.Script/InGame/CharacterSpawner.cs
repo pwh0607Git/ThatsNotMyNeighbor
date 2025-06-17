@@ -1,13 +1,21 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-//특이 사항
+[Serializable]
 public class Resident
 {
-    public CharacterType type;              // 진짜 주민인지 도플 갱어 인지.
     public Profile profile;
-    public List<SignificantType> significants;
+    public string apart_Floor;
+    public string apart_Number;
+
+    public Resident(string floor, string number, Profile profile)
+    {
+        this.profile = profile;
+        this.apart_Floor = floor;
+        this.apart_Number = number;
+    }
 }
 
 public class CharacterSpawner : BehaviourSingleton<CharacterSpawner>
@@ -30,9 +38,13 @@ public class CharacterSpawner : BehaviourSingleton<CharacterSpawner>
 
     public List<Profile> characters;          // Inspector
 
+    [Header("Residents")]
+    public List<Resident> residents;
+
     void Start()
     {
         todayListResidents = new();
+        residents = new();
 
         InitLevel();
 
@@ -44,7 +56,7 @@ public class CharacterSpawner : BehaviourSingleton<CharacterSpawner>
 
     private void InitLevel()
     {
-        todayListCount = Random.Range(4, 5);
+        todayListCount = UnityEngine.Random.Range(4, 5);
     }
 
     private void InitAddress()
@@ -67,12 +79,27 @@ public class CharacterSpawner : BehaviourSingleton<CharacterSpawner>
 
         foreach (var mate in familyDatas.mateList)
         {
-            if (index >= addressKeys.Count) break; // 주소 부족하면 중단
+            if (index >= addressKeys.Count) break;
 
-            string addr = addressKeys[index];
-            addressDic[addr] = new List<Profile>(mate.mates); // 주소에 가족 할당
+            string address = addressKeys[index];
+            addressDic[address] = new List<Profile>(mate.mates);
+
+            string[] split = address.Split('-');
+            string floor = split[0];
+            string number = split[1];
+
+            foreach (var p in mate.mates)
+            {
+                CreateResident(floor, number, p);
+            }
+
             index++;
         }
+    }
+
+    void CreateResident(string floor, string num, Profile profile)
+    {
+        residents.Add(new(floor, num, profile));
     }
 
     public void SpawnCharacters()
@@ -91,7 +118,7 @@ public class CharacterSpawner : BehaviourSingleton<CharacterSpawner>
             // 랜덤 데이터 추출
             do
             {
-                int index = Random.Range(0, characters.Count);
+                int index = UnityEngine.Random.Range(0, characters.Count);
                 profile = characters[index];
                 Debug.Log(profile.name);
             } while (todayListResidents.Find(v => v == profile));
@@ -105,7 +132,7 @@ public class CharacterSpawner : BehaviourSingleton<CharacterSpawner>
 
             address = SearchAddress(profile);
 
-            component.InitComponent(profile.profileImage, profile.firstName, profile.secondName, address);
+            component.InitComponent(profile.profileImage, profile.firstName, profile.lastName, address);
         }
     }
 
@@ -120,31 +147,5 @@ public class CharacterSpawner : BehaviourSingleton<CharacterSpawner>
             }
         }
         return "";
-    }
-}
-
-
-public class ResidentFactory
-{
-    public void CreateResident(Profile profile, CharacterType type)
-    {
-        //빈 객체 생성
-        Resident resident = new Resident
-        {
-            profile = profile,
-            type = type,
-            significants = new()
-        };
-
-        //생성
-        if (type.Equals(CharacterType.DOPPELGANGER))
-        {
-            //위조항목 추가하기
-            
-        }
-        else
-        {
-
-        }
     }
 }
