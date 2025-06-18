@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RomanStilnsky
   m_EditorClassIdentifier: 
   firstName: Roman
-  secondName: Stilnsky
+  lastName: Stilnsky
   id: 483924059
   profileImage: {fileID: 21300000, guid: 310dc14afb04eb742bac7e82b5715899, type: 3}
   characteristics:

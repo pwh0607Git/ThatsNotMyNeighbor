@@ -529,7 +529,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 3
+          m_IntArgument: 4
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -996,7 +996,6 @@ GameObject:
   m_Component:
   - component: {fileID: 51438469}
   - component: {fileID: 51438470}
-  - component: {fileID: 51438471}
   m_Layer: 0
   m_Name: InGameManager
   m_TagString: Untagged
@@ -1031,24 +1030,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac000b5685e8daf4983e3b4e1702fad5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &51438471
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 51438468}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2c61f02e8115994e9d183a87647f829, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  level: 1
+  inGameUIController: {fileID: 672127377}
+  level: 0
   maxFloor: 3
   maxHouse: 4
-  todayEntryParent: {fileID: 1174285894}
-  todayListComponent_prefab: {fileID: -8697937504949123172, guid: 253874fd0a1606e47b1ea5f36dfaea57, type: 3}
-  familyDatas: {fileID: 11400000, guid: eb0fedeede21da447a01b8ff82c2f6f4, type: 2}
   characters:
   - {fileID: 11400000, guid: c95276117a8f75a4e960f52256d9b771, type: 2}
   - {fileID: 11400000, guid: c2ea05cdc058f5b4fb72f046b1780a03, type: 2}
@@ -1059,6 +1044,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 986eaa278472c174993c3c4b305f4d29, type: 2}
   - {fileID: 11400000, guid: 3cf4fbaaa3e1d0448b793bcf890aec94, type: 2}
   - {fileID: 11400000, guid: 2da026f2007752744bbb3ab27f3d9a17, type: 2}
+  familyDatas: {fileID: 11400000, guid: eb0fedeede21da447a01b8ff82c2f6f4, type: 2}
 --- !u!1 &52500368
 GameObject:
   m_ObjectHideFlags: 0
@@ -2151,7 +2137,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -2813,7 +2799,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -3497,7 +3483,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -4639,7 +4625,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 1
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -12224,6 +12210,8 @@ GameObject:
   m_Component:
   - component: {fileID: 672127376}
   - component: {fileID: 672127377}
+  - component: {fileID: 672127378}
+  - component: {fileID: 672127379}
   m_Layer: 0
   m_Name: InGameUIManager
   m_TagString: Untagged
@@ -12273,6 +12261,36 @@ MonoBehaviour:
     popUp: {fileID: 2090337795}
   siren: {fileID: 1946542849}
   shutdownDoor: {fileID: 52500368}
+--- !u!114 &672127378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 672127375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9cda2bb583ddbf409b1c896b97b0dd1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popUp: {fileID: 1195675346}
+  panelPrefab: {fileID: 1077913934021299378, guid: 399e1fffc92095b4ea6b9d17efb4f107, type: 3}
+  filesTab: {fileID: 1195675348}
+--- !u!114 &672127379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 672127375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 51fe764ec5cabb94aa3f7c2e78f9f675, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popUp: {fileID: 933253386}
+  todayEntryParent: {fileID: 1174285894}
+  todayListComponent_prefab: {fileID: -8697937504949123172, guid: 253874fd0a1606e47b1ea5f36dfaea57, type: 3}
 --- !u!1 &673350658
 GameObject:
   m_ObjectHideFlags: 0
@@ -15616,10 +15634,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 672127377}
-        m_TargetAssemblyTypeName: InGameUIController, Assembly-CSharp
-        m_MethodName: OnClickButton
-        m_Mode: 5
+      - m_Target: {fileID: 672127378}
+        m_TargetAssemblyTypeName: ResidentFileController, Assembly-CSharp
+        m_MethodName: OnClickOpenButton
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -16654,7 +16672,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 2
+          m_IntArgument: 3
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -17186,7 +17204,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 984073427}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 672127379}
+        m_TargetAssemblyTypeName: TodayEntryListController, Assembly-CSharp
+        m_MethodName: OnClickExitButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &984073427
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21169,7 +21199,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1195675347
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21205,6 +21235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0af85a6bbe14d0946ad1acaccf794e91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pan: {fileID: 1077913934021299378, guid: 399e1fffc92095b4ea6b9d17efb4f107, type: 3}
   i1: 4
   i2: 3
   files:
@@ -26888,10 +26919,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 672127377}
-        m_TargetAssemblyTypeName: InGameUIController, Assembly-CSharp
-        m_MethodName: OnClickButton
-        m_Mode: 5
+      - m_Target: {fileID: 672127379}
+        m_TargetAssemblyTypeName: TodayEntryListController, Assembly-CSharp
+        m_MethodName: OnClickOpenButton
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -30569,7 +30600,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -31484,8 +31515,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1195675348}
-        m_TargetAssemblyTypeName: FilesTabController, Assembly-CSharp
+      - m_Target: {fileID: 672127378}
+        m_TargetAssemblyTypeName: ResidentFileController, Assembly-CSharp
         m_MethodName: OnClickExitButton
         m_Mode: 1
         m_Arguments:
@@ -34596,7 +34627,7 @@ GameObject:
   - component: {fileID: 1946542853}
   - component: {fileID: 1946542852}
   m_Layer: 5
-  m_Name: Btn_DDDSiren
+  m_Name: DDDSiren
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

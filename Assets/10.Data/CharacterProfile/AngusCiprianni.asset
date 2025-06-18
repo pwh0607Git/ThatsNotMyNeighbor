@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: AngusCiprianni
   m_EditorClassIdentifier: 
   firstName: Angus
-  secondName: Ciprianni
+  lastName: Ciprianni
   id: 565003698
   profileImage: {fileID: 21300000, guid: 3a708a0079f8e054296081bb25326aa0, type: 3}
   characteristics:

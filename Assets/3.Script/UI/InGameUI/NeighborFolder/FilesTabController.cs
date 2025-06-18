@@ -3,8 +3,10 @@ using UnityEngine;
 
 public class FilesTabController : MonoBehaviour
 {
-    Dictionary<(int, int), GameObject> fileDic = new();
+    Dictionary<string, GameObject> fileDic = new();
 
+    [SerializeField] ResidentInfoPanel pan;
+    
     [SerializeField] int i1, i2;
 
     public (int, int) currentIndex;
@@ -17,22 +19,42 @@ public class FilesTabController : MonoBehaviour
         InitFiles();
     }
 
+    public void InitFileDatas()
+    {
+        Debug.Log($"Init File datas...");
+
+        Dictionary<string, Apartment> dic = new(InGameManager.I.addressDic);
+
+        foreach (var data in dic)
+        {
+            List<Profile> profiles = new(data.Value.residents);
+            Transform layout = fileDic[data.Key].transform.Find("_Layout");
+
+            foreach (Profile p in profiles) {
+                ResidentInfoPanel info = Instantiate(pan, layout);
+                info.InitInformation(p);
+            }
+        }
+    }
+
     void InitFiles()
     {
         int i = 0;
-        for (int x = 0; x < i1; x++)
+        for (int x = 1; x <= i1; x++)
         {
-            for (int y = 0; y < i2; y++)
+            for (int y = 1; y <= i2; y++)
             {
-                fileDic[(x, y)] = files[i];
-                fileDic[(x, y)].SetActive(false);
+                string address = $"F{x:D2}-{y:D2}";
+                fileDic[address] = files[i];
+                fileDic[address].SetActive(false);
                 i++;
             }
         }
 
         //초기에는 F01-01로 세팅.
-        currentIndex = (0, 0);
-        currentFile = fileDic[currentIndex];
+        currentIndex = (1, 1);
+        string key = $"F{currentIndex.Item1:D2}-{currentIndex.Item2:D2}";
+        currentFile = fileDic[key];
         currentFile.SetActive(true);
     }
 
@@ -40,7 +62,10 @@ public class FilesTabController : MonoBehaviour
     {
         currentIndex.Item1 = index;
         currentFile.SetActive(false);
-        currentFile = fileDic[currentIndex];
+
+        string key = $"F{currentIndex.Item1:D2}-{currentIndex.Item2:D2}";
+        currentFile = fileDic[key];
+
         currentFile.SetActive(true);
     }
 
@@ -48,12 +73,10 @@ public class FilesTabController : MonoBehaviour
     {
         currentIndex.Item2 = index;
         currentFile.SetActive(false);
-        currentFile = fileDic[currentIndex];
-        currentFile.SetActive(true);
-    }
 
-    public void OnClickExitButton()
-    {
-        this.gameObject.SetActive(false);
+        string key = $"F{currentIndex.Item1:D2}-{currentIndex.Item2:D2}";
+        currentFile = fileDic[key];
+
+        currentFile.SetActive(true);
     }
 }

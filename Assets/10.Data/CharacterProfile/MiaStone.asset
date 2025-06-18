@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: MiaStone
   m_EditorClassIdentifier: 
   firstName: Mia
-  secondName: Stone
+  lastName: Stone
   id: 789564525115
   profileImage: {fileID: 21300000, guid: 9953b38f730b93c4c87a19bbe6b27d0c, type: 3}
   characteristics: []

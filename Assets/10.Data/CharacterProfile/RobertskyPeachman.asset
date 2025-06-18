@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: RobertskyPeachman
   m_EditorClassIdentifier: 
   firstName: Robertsky
-  secondName: Peachman
+  lastName: Peachman
   id: 114652289
   profileImage: {fileID: 21300000, guid: 11cb080c13260ae4d8a1d8d2dd322bb0, type: 3}
   characteristics:

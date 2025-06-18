@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SelenneSverchzt
   m_EditorClassIdentifier: 
   firstName: Selenne
-  secondName: Sverchzt
+  lastName: Sverchzt
   id: 785613269
   profileImage: {fileID: 21300000, guid: 01da10960fccbda46892df1f0773a840, type: 3}
   characteristics:

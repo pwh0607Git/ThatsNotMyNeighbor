@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Dr.W.Afton
   m_EditorClassIdentifier: 
   firstName: Dr. W.
-  secondName: Afton
+  lastName: Afton
   id: 250489656214
   profileImage: {fileID: 21300000, guid: 515238d699547464b8a66885dd094d52, type: 3}
   characteristics: []
