@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.TestTools;
 
 public enum CharacterType { RESIDENT, DOPPELGANGER }
 
@@ -20,8 +22,18 @@ public class Profile : ScriptableObject
 
     [Header("Props")]
     public string expiration;               // 민증 만기일
-    public GameObject Model;
+    public GameObject model;
+    public List<Dialog> dialogs;
 
-    [Header("Family..")]                    // 동거인
-    public Profile[] mates;
+    [Header("Position")]
+    public Vector2 startPoint = new Vector2(0, -1000f);
+    public Vector2 targetPoint = new Vector2(0f, 0f);
+    public Vector2 endPoint = new Vector2(0, 1000f);
+}
+
+[Serializable]
+public class Dialog
+{
+    public string code;                     //대사 출력 고유 코드
+    public List<string> msgs;
 }

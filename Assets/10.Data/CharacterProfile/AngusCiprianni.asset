@@ -22,5 +22,8 @@ MonoBehaviour:
   - "\uC791\uC740 \uB208"
   job: "\uC0AC\uC5C5\uAC00"
   expiration: 08/1968
-  Model: {fileID: 0}
-  mates: []
+  model: {fileID: 0}
+  dialogs: []
+  startPoint: {x: -1000, y: 0}
+  targetPoint: {x: 0, y: 0}
+  endPoint: {x: 1000, y: 0}

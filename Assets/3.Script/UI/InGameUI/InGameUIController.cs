@@ -18,6 +18,7 @@ public class InGameUIController : BehaviourSingleton<InGameUIController>
 
     [Header("Popup")]
     [SerializeField] List<PopUpPair> pairs;
+    [SerializeField] TextBoxController textBox;
 
     [Header("Siren")]
     [SerializeField] GameObject siren;
@@ -34,6 +35,16 @@ public class InGameUIController : BehaviourSingleton<InGameUIController>
     {
         base.Awake();
         InitControllers();
+    }
+
+    void OnEnable()
+    {
+        textBox.OnCompletePrintText += OnCompletePrintText;
+    }
+
+    void OnDisable()
+    {
+        textBox.OnCompletePrintText -= OnCompletePrintText;
     }
 
     void InitControllers()
@@ -57,9 +68,9 @@ public class InGameUIController : BehaviourSingleton<InGameUIController>
         Debug.Log("Danger Button Click!!");
     }
 
-    public void MoveShutDownDoor(float y)
+    public void MoveShutDownDoor(float targetY)
     {
-        Vector2 targetPoint = new Vector2(0, y);
+        Vector2 targetPoint = new Vector2(0, targetY);
         shutdownDoor.GetComponent<RectTransform>().DOAnchorPos(targetPoint, 0.8f);
     }
 
@@ -67,14 +78,29 @@ public class InGameUIController : BehaviourSingleton<InGameUIController>
     {
         OnCompleteInitEvent?.Invoke();
     }
-        
+
     public void RegisterInitEvent(UnityAction action)
     {
         OnCompleteInitEvent += action;
     }
 
+    public void ShowTextBox(Dialog dialog)
+    {
+        textBox.gameObject.SetActive(true);
+        textBox.SetTextQueue(dialog);
+    }
+
     public void UnregisterInitEvent(UnityAction action)
     {
         OnCompleteInitEvent -= action;
+    }
+
+    void OnCompletePrintText(string code)
+    {
+        if (code.Equals("Tutorial"))
+        {
+            // 튜토리얼 종료 로직 수행하기
+            InGameManager.I.EndTutorial();
+        }
     }
 }

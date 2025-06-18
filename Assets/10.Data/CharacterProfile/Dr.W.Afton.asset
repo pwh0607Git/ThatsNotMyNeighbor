@@ -19,5 +19,8 @@ MonoBehaviour:
   characteristics: []
   job: "\uBB3C\uB9AC\uD559\uC790"
   expiration: 
-  Model: {fileID: 0}
-  mates: []
+  model: {fileID: 0}
+  dialogs: []
+  startPoint: {x: -1000, y: 0}
+  targetPoint: {x: 0, y: 0}
+  endPoint: {x: 1000, y: 0}

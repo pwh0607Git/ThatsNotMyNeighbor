@@ -1,8 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
 public class TextBoxController : MonoBehaviour, IPointerDownHandler
@@ -20,19 +20,22 @@ public class TextBoxController : MonoBehaviour, IPointerDownHandler
     private string currentShowText;
     private Queue<string> textQueue;
 
-    void Start()
-    {
-        SetTextQueue(testTexts);
-        ShowText();
-    }
+    public UnityAction<string> OnCompletePrintText;
 
-    public void SetTextQueue(List<string> msgs)
+    private string currentDialogCode = "";
+
+    public void SetTextQueue(Dialog dialog)
     {
+        currentDialogCode = dialog.code;
+
         textQueue = new();
-        foreach (string m in msgs)
+
+        foreach (string m in dialog.msgs)
         {
             textQueue.Enqueue(m);
         }
+
+        ShowText();
     }
 
     public void ShowText()
@@ -40,6 +43,10 @@ public class TextBoxController : MonoBehaviour, IPointerDownHandler
         if (textQueue.Count <= 0)
         {
             Debug.Log("출력할 대사가 없습니다.");
+    
+            OnCompletePrintText?.Invoke(currentDialogCode);
+            currentDialogCode = "";
+
             CloseTextBox();
             return;
         }

@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using UnityEngine;
-using UnityEngine.Events;
 
 [Serializable]
 public class Resident
@@ -54,15 +54,22 @@ public class InGameManager : BehaviourSingleton<InGameManager>
 
     [Header("CharacterDatas")]
     public List<Profile> characters;          // Inspector
+    public List<Profile> npcs;
+
     [SerializeField] FamilyData familyDatas;
 
     public Dictionary<string, Apartment> addressDic { get; private set; }
+
+    [Header("Dialog code")]
+    [SerializeField] List<string> dialogCodes;
 
     void Start()
     {
         addressDic = new();
 
         InitAddress();
+
+        StartTutorial();
     }
 
     void InitAddress()
@@ -95,5 +102,38 @@ public class InGameManager : BehaviourSingleton<InGameManager>
         }
 
         InGameUIController.I.InitUI();
+    }
+
+
+    [SerializeField] PersonController npc_DDD;
+    [SerializeField] Transform characterLayer;
+
+    public void StartTutorial()
+    {
+        Sequence startSeq = DOTween.Sequence();
+
+        Profile profile = npcs.Find(p => p.id.Equals("000000000"));               // DDD 직원 id
+
+        npc_DDD = Instantiate(profile.model, characterLayer).GetComponent<PersonController>();
+        npc_DDD.SetProfile(profile);
+
+        startSeq.AppendInterval(1f)
+            .AppendCallback(() => InGameUIController.I.MoveShutDownDoor(800f))
+            .AppendInterval(1f)
+            .AppendCallback(() =>
+            {
+                // 대사 출력
+                npc_DDD.GetComponent<PersonController>().Talk("Tutorial");
+            });
+    }
+
+    public void EndTutorial()
+    {
+        Sequence endSeq = DOTween.Sequence();
+
+        endSeq.AppendInterval(0.5f)
+            .AppendCallback(() => npc_DDD.Exit())
+            .AppendInterval(1f)
+            .OnComplete(() => Debug.Log("캐릭터 스폰 로직 수행!!"));
     }
 }
