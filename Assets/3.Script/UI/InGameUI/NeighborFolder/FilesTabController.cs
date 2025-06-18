@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using TMPro;
 using UnityEngine;
 
 public class FilesTabController : MonoBehaviour
@@ -14,6 +14,7 @@ public class FilesTabController : MonoBehaviour
 
     [SerializeField] GameObject[] files;
     [SerializeField] GameObject currentFile;
+    [SerializeField] TextMeshProUGUI telephoneNumber;
 
     void OnEnable()
     {
@@ -57,8 +58,9 @@ public class FilesTabController : MonoBehaviour
 
         string key = $"F{currentIndex.Item1:D2}-{currentIndex.Item2:D2}";
         currentFile = fileDic[key];
-
         currentFile.SetActive(true);
+
+        telephoneNumber.text = InGameManager.I.addressDic[key].telephoneNum;
     }
 
     // 층 번호
@@ -69,8 +71,9 @@ public class FilesTabController : MonoBehaviour
 
         string key = $"F{currentIndex.Item1:D2}-{currentIndex.Item2:D2}";
         currentFile = fileDic[key];
-
         currentFile.SetActive(true);
+
+        telephoneNumber.text = InGameManager.I.addressDic[key].telephoneNum;
     }
 
     public void InitInformations()

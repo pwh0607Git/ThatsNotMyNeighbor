@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class TodayEntryListController : MonoBehaviour
 {
@@ -8,11 +9,6 @@ public class TodayEntryListController : MonoBehaviour
     [SerializeField] TodayEntryComponent todayListComponent_prefab;
 
     private List<Profile> todayListResidents;
-
-    void Start()
-    {
-        todayListResidents = new();
-    }
 
     void OnEnable()
     {
@@ -28,6 +24,7 @@ public class TodayEntryListController : MonoBehaviour
     public void InitTodayEntryList()
     {
         List<Profile> characters = InGameManager.I.characters;
+        todayListResidents = new();
 
         for (int i = 0; i < 4; i++)
         {
@@ -40,7 +37,7 @@ public class TodayEntryListController : MonoBehaviour
             {
                 int index = Random.Range(0, characters.Count);
                 profile = characters[index];
-            } while (todayListResidents.Find(v => v == profile));
+            } while (todayListResidents.Find(v => v.Equals(profile)));
 
             if (profile == null) continue;
 

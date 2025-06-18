@@ -84,16 +84,17 @@ public class InGameUIController : BehaviourSingleton<InGameUIController>
         OnCompleteInitEvent += action;
     }
 
+    public void UnregisterInitEvent(UnityAction action)
+    {
+        OnCompleteInitEvent -= action;
+    }
+    
     public void ShowTextBox(Dialog dialog)
     {
         textBox.gameObject.SetActive(true);
         textBox.SetTextQueue(dialog);
     }
 
-    public void UnregisterInitEvent(UnityAction action)
-    {
-        OnCompleteInitEvent -= action;
-    }
 
     void OnCompletePrintText(string code)
     {

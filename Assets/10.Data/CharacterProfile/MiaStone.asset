@@ -14,13 +14,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstName: Mia
   lastName: Stone
-  id: 789564525115
+  id: 789564525
   profileImage: {fileID: 21300000, guid: 9953b38f730b93c4c87a19bbe6b27d0c, type: 3}
-  characteristics: []
+  characteristics:
+  - "\uAE34 \uBA38\uB9AC"
+  - "\uC8FC\uADFC\uAE68"
+  - "\uC587\uC740 \uB208"
   job: "\uC120\uC0DD\uB2D8"
-  expiration: 
+  expiration: 08/1978
   model: {fileID: 0}
-  dialogs: []
+  dialogs:
+  - code: Greeting
+    msgs:
+    - "\uC548\uB155\uD558\uC138\uC694."
+  - code: Mistake
+    msgs:
+    - "\uC544 \uAE5C\uBE61 \uD588\uB124\uC694."
+    - "\uC5EC\uAE30 \uC788\uC5B4\uC694."
+  - code: Mistake
+    msgs:
+    - "\uC544 \uAE5C\uBE61 \uD588\uB124\uC694. \uC5EC\uAE30\uC694."
   startPoint: {x: -1000, y: 0}
   targetPoint: {x: 0, y: 0}
   endPoint: {x: 1000, y: 0}

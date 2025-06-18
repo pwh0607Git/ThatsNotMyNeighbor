@@ -1046,9 +1046,29 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 2da026f2007752744bbb3ab27f3d9a17, type: 2}
   npcs:
   - {fileID: 11400000, guid: 2606a07af51ef3c4dbb1a37bba2375af, type: 2}
+  telephoneNumbers:
+  - 1215
+  - 1368
+  - 1455
+  - 1599
+  - 2548
+  - 2698
+  - 3321
+  - 4242
+  - 4598
+  - 5678
+  - 5153
+  - 6753
+  - 6611
+  - 7777
+  - 7159
+  - 8189
+  - 8181
+  - 9115
+  - 9853
+  - 9538
   familyDatas: {fileID: 11400000, guid: eb0fedeede21da447a01b8ff82c2f6f4, type: 2}
   dialogCodes: []
-  npc_DDD: {fileID: 0}
   characterLayer: {fileID: 1816565019}
 --- !u!114 &51438471
 MonoBehaviour:
@@ -21439,7 +21459,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1195675347
 RectTransform:
   m_ObjectHideFlags: 0
@@ -21492,6 +21512,7 @@ MonoBehaviour:
   - {fileID: 1162963210}
   - {fileID: 920694888}
   currentFile: {fileID: 0}
+  telephoneNumber: {fileID: 1082222419}
 --- !u!1 &1205715290
 GameObject:
   m_ObjectHideFlags: 0
