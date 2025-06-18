@@ -1,8 +1,8 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 [Serializable]
 public class Resident
@@ -47,19 +47,16 @@ public class InGameManager : BehaviourSingleton<InGameManager>
 {
     protected override bool IsDontDestroy() => false;
 
-    [Header("InGame UI Controller")]
-    [SerializeField] InGameUIController inGameUIController;
-
     [Header("Level Data")]
     [SerializeField] int level;
     [SerializeField] int maxFloor;              // F01, F02...
     [SerializeField] int maxHouse;              // 01, 02...
 
-    [Header("CharacterDatas")]   
+    [Header("CharacterDatas")]
     public List<Profile> characters;          // Inspector
     [SerializeField] FamilyData familyDatas;
 
-    public Dictionary<string, Apartment> addressDic{ get; private set; }
+    public Dictionary<string, Apartment> addressDic { get; private set; }
 
     void Start()
     {
@@ -97,7 +94,6 @@ public class InGameManager : BehaviourSingleton<InGameManager>
             index++;
         }
 
-        //거주자 주소 할당 후에 데이터를 Controller들에게 전달한다.
-        inGameUIController.InitUI(addressDic, characters);
+        InGameUIController.I.InitUI();
     }
 }

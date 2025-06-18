@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Events;
 
 
 [Serializable]
@@ -26,8 +27,12 @@ public class InGameUIController : BehaviourSingleton<InGameUIController>
     ResidentFileController residentFileController;
     TodayEntryListController todayEntryListController;
 
-    void Start()
+    [Header("Init Event")]
+    private UnityAction OnCompleteInitEvent;
+
+    protected override void Awake()
     {
+        base.Awake();
         InitControllers();
     }
 
@@ -57,19 +62,19 @@ public class InGameUIController : BehaviourSingleton<InGameUIController>
         Vector2 targetPoint = new Vector2(0, y);
         shutdownDoor.GetComponent<RectTransform>().DOAnchorPos(targetPoint, 0.8f);
     }
-    
-    public void InitUI(Dictionary<string, Apartment> addressDic, List<Profile> characters)
+
+    public void InitUI()
     {
-        Debug.Log(addressDic.Count);
-        StartCoroutine(Init_Co(addressDic, characters));
+        OnCompleteInitEvent?.Invoke();
+    }
+        
+    public void RegisterInitEvent(UnityAction action)
+    {
+        OnCompleteInitEvent += action;
     }
 
-    IEnumerator Init_Co(Dictionary<string, Apartment> addressDic, List<Profile> characters)
+    public void UnregisterInitEvent(UnityAction action)
     {
-        yield return new WaitUntil(() => residentFileController != null && todayEntryListController != null);
-
-        Debug.Log("InitResdientfiles...");
-        residentFileController.InitFileDatas();
-        todayEntryListController.InitTodayEntryList(characters);
+        OnCompleteInitEvent -= action;
     }
 }

@@ -14,10 +14,20 @@ public class TodayEntryListController : MonoBehaviour
         todayListResidents = new();
     }
 
-    // 데이터를 받아서 
-    public void InitTodayEntryList(List<Profile> characters)
+    void OnEnable()
     {
-        Debug.Log($"dic : {InGameManager.I.addressDic.Count}, Characters : {characters.Count}");
+        InGameUIController.I.RegisterInitEvent(InitTodayEntryList);
+    }
+
+    void OnDisable()
+    {
+        InGameUIController.I.UnregisterInitEvent(InitTodayEntryList);
+    }
+
+    // 데이터를 받아서 
+    public void InitTodayEntryList()
+    {
+        List<Profile> characters = InGameManager.I.characters;
 
         for (int i = 0; i < 4; i++)
         {

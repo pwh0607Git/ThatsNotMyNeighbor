@@ -1,23 +1,30 @@
 using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class ResidentFileController : MonoBehaviour
 {
     [SerializeField] GameObject popUp;
-    [SerializeField] ResidentInfoPanel panelPrefab;
+    [SerializeField] ResidentInfoPanel pan;
 
     [SerializeField] FilesTabController filesTab;
 
     public void InitFileDatas()
     {
-        filesTab.InitFileDatas();
+        StartCoroutine(testco());
     }
 
+    IEnumerator testco()
+    {
+        yield return new WaitForSeconds(0.5f);
+        
+    }
+    
     public void OnClickOpenButton()
     {
         popUp.SetActive(true);
     }
-    
+
     public void OnClickExitButton()
     {
         popUp.SetActive(false);

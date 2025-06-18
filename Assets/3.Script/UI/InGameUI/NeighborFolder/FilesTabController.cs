@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class FilesTabController : MonoBehaviour
@@ -6,7 +7,7 @@ public class FilesTabController : MonoBehaviour
     Dictionary<string, GameObject> fileDic = new();
 
     [SerializeField] ResidentInfoPanel pan;
-    
+
     [SerializeField] int i1, i2;
 
     public (int, int) currentIndex;
@@ -14,37 +15,25 @@ public class FilesTabController : MonoBehaviour
     [SerializeField] GameObject[] files;
     [SerializeField] GameObject currentFile;
 
-    void Start()
+    void OnEnable()
     {
-        InitFiles();
+        InGameUIController.I.RegisterInitEvent(InitFiles);
     }
 
-    public void InitFileDatas()
+    void OnDisable()
     {
-        Debug.Log($"Init File datas...");
-
-        Dictionary<string, Apartment> dic = new(InGameManager.I.addressDic);
-
-        foreach (var data in dic)
-        {
-            List<Profile> profiles = new(data.Value.residents);
-            Transform layout = fileDic[data.Key].transform.Find("_Layout");
-
-            foreach (Profile p in profiles) {
-                ResidentInfoPanel info = Instantiate(pan, layout);
-                info.InitInformation(p);
-            }
-        }
+        InGameUIController.I.UnregisterInitEvent(InitFiles);
     }
 
     void InitFiles()
     {
+        Debug.Log("FileTablController : initFiles");
         int i = 0;
         for (int x = 1; x <= i1; x++)
         {
             for (int y = 1; y <= i2; y++)
             {
-                string address = $"F{x:D2}-{y:D2}";
+                string address = $"F{y:D2}-{x:D2}";
                 fileDic[address] = files[i];
                 fileDic[address].SetActive(false);
                 i++;
@@ -56,9 +45,24 @@ public class FilesTabController : MonoBehaviour
         string key = $"F{currentIndex.Item1:D2}-{currentIndex.Item2:D2}";
         currentFile = fileDic[key];
         currentFile.SetActive(true);
+
+        InitInformations();
     }
 
+    // 호 수
     public void OnClickFileButtonI1(int index)
+    {
+        currentIndex.Item2 = index;
+        currentFile.SetActive(false);
+
+        string key = $"F{currentIndex.Item1:D2}-{currentIndex.Item2:D2}";
+        currentFile = fileDic[key];
+
+        currentFile.SetActive(true);
+    }
+
+    // 층 번호
+    public void OnClickFileButtonI2(int index)
     {
         currentIndex.Item1 = index;
         currentFile.SetActive(false);
@@ -69,14 +73,32 @@ public class FilesTabController : MonoBehaviour
         currentFile.SetActive(true);
     }
 
-    public void OnClickFileButtonI2(int index)
+    public void InitInformations()
     {
-        currentIndex.Item2 = index;
-        currentFile.SetActive(false);
+        Dictionary<string, Apartment> dic = new(InGameManager.I.addressDic);
+        Debug.Log($"Init File datas... : Dic Count : {dic.Count}");
 
-        string key = $"F{currentIndex.Item1:D2}-{currentIndex.Item2:D2}";
-        currentFile = fileDic[key];
+        foreach (var data in dic)
+        {
+            if (data.Value.residents == null || data.Value.residents.Count <= 0) continue;
+            
+            List<Profile> profiles = data.Value.residents;
+            Transform layout = fileDic[data.Key].transform.Find("_Layout");
 
-        currentFile.SetActive(true);
+            foreach (Profile p in profiles)
+            {
+                ResidentInfoPanel info = Instantiate(pan, layout);
+                info.InitInformation(p);
+            }
+        }
+
+        //파일들을 초기화 한 다음 모두 비활성화 => 초기화를 위해.
+        foreach (var file in files)
+        {
+            if (file.Equals(currentFile)) continue;
+            file.SetActive(false);            
+        }
+
+        this.gameObject.SetActive(false);
     }
 }
