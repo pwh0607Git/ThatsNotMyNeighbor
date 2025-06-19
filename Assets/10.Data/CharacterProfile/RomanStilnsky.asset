@@ -23,7 +23,7 @@ MonoBehaviour:
   - "\uC77C\uC790 \uB208\uC379"
   job: "\uD68C\uACC4\uC0AC"
   expiration: 05/1968
-  model: {fileID: 0}
+  model: {fileID: 4918190570779647745, guid: ce16ec832629ed349a19f86a664f7b2d, type: 3}
   dialogs: []
   startPoint: {x: -1000, y: 0}
   targetPoint: {x: 0, y: 0}

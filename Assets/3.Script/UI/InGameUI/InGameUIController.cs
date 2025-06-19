@@ -16,6 +16,10 @@ public class InGameUIController : BehaviourSingleton<InGameUIController>
 {
     protected override bool IsDontDestroy() => false;
 
+    [Header("Controller")]
+    ResidentFolderController residentFileController;
+    TodayEntryListController todayEntryListController;
+
     [Header("Popup")]
     [SerializeField] List<PopUpPair> pairs;
     [SerializeField] TextBoxController textBox;
@@ -24,17 +28,12 @@ public class InGameUIController : BehaviourSingleton<InGameUIController>
     [SerializeField] GameObject siren;
     [SerializeField] GameObject shutdownDoor;
 
-    [Header("Controller")]
-    ResidentFileController residentFileController;
-    TodayEntryListController todayEntryListController;
-
     [Header("Init Event")]
     private UnityAction OnCompleteInitEvent;
 
     protected override void Awake()
     {
         base.Awake();
-        InitControllers();
     }
 
     void OnEnable()
@@ -47,10 +46,10 @@ public class InGameUIController : BehaviourSingleton<InGameUIController>
         textBox.OnCompletePrintText -= OnCompletePrintText;
     }
 
-    void InitControllers()
+    public void InitControllers(ResidentFolderController residentFileController, TodayEntryListController todayEntryListController)
     {
-        residentFileController = GetComponentInChildren<ResidentFileController>();
-        todayEntryListController = GetComponentInChildren<TodayEntryListController>();
+        this.residentFileController = residentFileController;
+        this.todayEntryListController = todayEntryListController;
     }
 
     public void OnClickButton(string key)

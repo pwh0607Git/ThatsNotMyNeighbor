@@ -2,11 +2,11 @@ using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
-public class PersonController : MonoBehaviour
+public class ResidentController : MonoBehaviour
 {
     public Profile profile { get; private set; }
 
-    [SerializeField] RectTransform rectTransform;
+    RectTransform rectTransform;
 
     private Animator animator;
 
@@ -17,8 +17,7 @@ public class PersonController : MonoBehaviour
 
     void OnEnable()
     {
-        if (rectTransform == null)
-            rectTransform = GetComponent<RectTransform>();
+        if (rectTransform == null) rectTransform = GetComponent<RectTransform>();
 
         // rectTransform.anchoredPosition = startPoint;
         TryGetComponent(out animator);
@@ -27,6 +26,7 @@ public class PersonController : MonoBehaviour
     #region Move
     public void Enter()
     {
+        rectTransform.GetComponent<RectTransform>().position = profile.startPoint;
         rectTransform.DOAnchorPos(profile.targetPoint, 3f);
     }
 

@@ -5,19 +5,6 @@ using DG.Tweening;
 using UnityEngine;
 
 [Serializable]
-public class Resident
-{
-    public Profile profile;
-    bool atHome;
-
-    public Resident(Profile profile, bool atHome)
-    {
-        this.profile = profile;
-        this.atHome = atHome;
-    }
-}
-
-[Serializable]
 public class Apartment
 {
     public List<Profile> residents;
@@ -61,7 +48,8 @@ public class InGameManager : BehaviourSingleton<InGameManager>
     [SerializeField] int maxHouse;              // 01, 02...
 
     [Header("CharacterDatas")]
-    public List<Profile> characters;          // Inspector
+    [SerializeField] List<Profile> characters;          // Inspector
+    public List<Profile> Characters => characters;
     public List<Profile> npcs;
     public List<string> telephoneNumbers;
     [SerializeField] FamilyData familyDatas;
@@ -70,14 +58,29 @@ public class InGameManager : BehaviourSingleton<InGameManager>
 
     [Header("Dialog code")]
     [SerializeField] List<string> dialogCodes;
+    [SerializeField] CharacterSpawner spawner;
 
     void Start()
     {
         addressDic = new();
+
+        TryGetComponent(out spawner);
         TryGetComponent(out characterSpawner);
+
+        InitControllers();
+
         InitAddress();
 
+        InitSpawner();
+
         StartTutorial();
+    }
+
+    void InitSpawner()
+    {
+        if (todayEntryListController == null) return;
+        
+        spawner.SetCharacters(todayEntryListController.TodayEntryList, 7);
     }
 
     void InitAddress()
@@ -113,7 +116,8 @@ public class InGameManager : BehaviourSingleton<InGameManager>
         InGameUIController.I.InitUI();
     }
 
-    private PersonController npc_DDD;
+    #region tutorial
+    private ResidentController npc_DDD;
     [SerializeField] Transform characterLayer;
 
     public void StartTutorial()
@@ -122,7 +126,7 @@ public class InGameManager : BehaviourSingleton<InGameManager>
 
         Profile profile = npcs.Find(p => p.id.Equals("000000000"));               // DDD 직원 id
 
-        npc_DDD = Instantiate(profile.model, characterLayer).GetComponent<PersonController>();
+        npc_DDD = Instantiate(profile.model, characterLayer).GetComponent<ResidentController>();
         npc_DDD.SetProfile(profile);
 
         startSeq.AppendInterval(1f)
@@ -131,7 +135,7 @@ public class InGameManager : BehaviourSingleton<InGameManager>
             .AppendCallback(() =>
             {
                 // 대사 출력
-                npc_DDD.GetComponent<PersonController>().Talk("Tutorial");
+                npc_DDD.GetComponent<ResidentController>().Talk("Tutorial");
             });
     }
 
@@ -144,8 +148,22 @@ public class InGameManager : BehaviourSingleton<InGameManager>
             .AppendInterval(1f)
             .OnComplete(() => Debug.Log("캐릭터 스폰 로직 수행!!"));
     }
+    #endregion
 
-    #region MVP Datas
+
+    [Header("Controller")]
+    ResidentFolderController residentFileController;
+    TodayEntryListController todayEntryListController;
+
+    void InitControllers()
+    {
+        TryGetComponent(out todayEntryListController);
+        TryGetComponent(out residentFileController);
+
+        InGameUIController.I.InitControllers(residentFileController, todayEntryListController);
+    }
     
+    #region MVP Datas
+
     #endregion
 }
