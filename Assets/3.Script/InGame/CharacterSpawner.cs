@@ -28,7 +28,7 @@ public class CharacterSpawner : MonoBehaviour
     {
         characterList = new();
         residentQueue = new();
-        
+
         //일일 출입 리스트 캐릭터는 필수로 출력
         CreateTodayEntryListCharacters(todayEntryList);
 
@@ -45,6 +45,7 @@ public class CharacterSpawner : MonoBehaviour
             ResidentController character = Instantiate(profile.model, characterLayer).GetComponent<ResidentController>();
             character.SetProfile(profile);
 
+            character.gameObject.SetActive(false);
             characterList.Add(character);
         }
     }
@@ -60,9 +61,9 @@ public class CharacterSpawner : MonoBehaviour
             Profile profile = characters[index];
 
             ResidentController character = Instantiate(profile.model, characterLayer).GetComponent<ResidentController>();
-            character.SetProfile(profile);
-
             characterList.Add(character);
+            character.gameObject.SetActive(false);
+            character.SetProfile(profile);
         }
     }
 
@@ -81,7 +82,7 @@ public class CharacterSpawner : MonoBehaviour
         ResidentController resident = residentQueue.Dequeue();
 
         Debug.Log($"Spawn Character : [{resident.profile.firstName}]");
-        resident.Enter();
+        resident.gameObject.SetActive(true);
     }
 
     public void DespawnCharacter(ResidentController resident)

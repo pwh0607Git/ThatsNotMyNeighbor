@@ -87,7 +87,7 @@ public class InGameUIController : BehaviourSingleton<InGameUIController>
     {
         OnCompleteInitEvent -= action;
     }
-    
+
     public void ShowTextBox(Dialog dialog)
     {
         textBox.gameObject.SetActive(true);
@@ -102,5 +102,10 @@ public class InGameUIController : BehaviourSingleton<InGameUIController>
             // 튜토리얼 종료 로직 수행하기
             InGameManager.I.EndTutorial();
         }
+    }
+
+    public void UpdateProps()
+    {
+        
     }
 }

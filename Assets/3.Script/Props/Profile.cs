@@ -23,6 +23,7 @@ public class Profile : ScriptableObject
     public string expiration;               // 민증 만기일
     public GameObject model;
     public List<Dialog> dialogs;
+    public List<string> entryRequestReasons;
 
     [Header("Position")]
     public Vector2 startPoint = new Vector2(0, -1000f);

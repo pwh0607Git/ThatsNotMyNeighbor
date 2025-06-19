@@ -79,7 +79,7 @@ public class InGameManager : BehaviourSingleton<InGameManager>
     void InitSpawner()
     {
         if (todayEntryListController == null) return;
-        
+
         spawner.SetCharacters(todayEntryListController.TodayEntryList, 7);
     }
 
@@ -116,6 +116,20 @@ public class InGameManager : BehaviourSingleton<InGameManager>
         InGameUIController.I.InitUI();
     }
 
+    public string SearchAddress(Profile profile)
+    {
+        //해당 주민에 대한 주소 찾기
+        foreach (var add in addressDic)
+        {
+            bool check = add.Value.residents.Find(r => r.Equals(profile));
+            if (check)
+            {
+                return add.Key;
+            }
+        }
+        return "";
+    }
+
     #region tutorial
     private ResidentController npc_DDD;
     [SerializeField] Transform characterLayer;
@@ -145,8 +159,12 @@ public class InGameManager : BehaviourSingleton<InGameManager>
 
         endSeq.AppendInterval(0.5f)
             .AppendCallback(() => npc_DDD.Exit())
-            .AppendInterval(1f)
-            .OnComplete(() => Debug.Log("캐릭터 스폰 로직 수행!!"));
+            .AppendInterval(4f)
+            .OnComplete(() =>
+            {
+                Debug.Log("캐릭터 스폰 로직 수행!!");
+                characterSpawner.SpawnCharacter();   
+            });
     }
     #endregion
 

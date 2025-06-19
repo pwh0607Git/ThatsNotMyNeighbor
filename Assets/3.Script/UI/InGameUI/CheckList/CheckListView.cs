@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CheckList : MonoBehaviour
+public class CheckListView : MonoBehaviour
 {
     Dictionary<string, bool> currentChecking;
 

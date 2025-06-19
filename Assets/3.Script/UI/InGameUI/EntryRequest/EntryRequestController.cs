@@ -1,0 +1,36 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.UI;
+
+public class EntryRequestController : MonoBehaviour
+{
+
+    [SerializeField] Button entryRequestButton;
+
+    [SerializeField] EntryRequestView view;
+
+    EntryRequestPresenter presenter;
+
+    void Start()
+    {
+        entryRequestButton.gameObject.SetActive(false);               // 처음에는 꺼두기
+        view.gameObject.SetActive(false);
+
+        presenter = new(view);
+    }
+
+    public void SetData(Profile profile)
+    {
+        string address = InGameManager.I.SearchAddress(profile);   
+        presenter.SetEntryRequestModel(profile, address);
+    }
+
+    public void SetActiveButton(bool on)
+    {
+        entryRequestButton.gameObject.SetActive(on);
+    }
+
+    public void OnClickOpenButton() => presenter.OnClickOpenButton();
+    public void OnClickExitButton() => presenter.OnClickCloseButton();
+}

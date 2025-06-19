@@ -24,7 +24,10 @@ MonoBehaviour:
   job: "\uC8FC\uBD80"
   expiration: 10/1969
   model: {fileID: 5839568701736232106, guid: 08ee25d48c40baa46bdf1fa0cf6d8f62, type: 3}
-  dialogs: []
+  dialogs:
+  - code: Greeting
+    msgs:
+    - "\uC548\uB155\uD558\uC138\uC694."
   startPoint: {x: -1000, y: 0}
   targetPoint: {x: 0, y: 0}
   endPoint: {x: 1000, y: 0}

@@ -10,28 +10,52 @@ public class ResidentController : MonoBehaviour
 
     private Animator animator;
 
+    void Start()
+    {
+        TryGetComponent(out rectTransform);
+        TryGetComponent(out animator);
+    }
+
     public void SetProfile(Profile profile)
     {
         this.profile = profile;
+        
+        if (rectTransform == null)
+            TryGetComponent(out rectTransform);
+
+        rectTransform.anchoredPosition = profile.startPoint;
     }
 
     void OnEnable()
     {
-        if (rectTransform == null) rectTransform = GetComponent<RectTransform>();
+        if (profile == null) return;
 
-        // rectTransform.anchoredPosition = startPoint;
-        TryGetComponent(out animator);
+        Enter();
+    }
+
+    void OnDisable()
+    {
+
     }
 
     #region Move
+    [SerializeField] Ease moveEase;
     public void Enter()
     {
-        rectTransform.GetComponent<RectTransform>().position = profile.startPoint;
-        rectTransform.DOAnchorPos(profile.targetPoint, 3f);
+        Sequence enterSeq = DOTween.Sequence();
+
+        enterSeq.Append(rectTransform.DOAnchorPos(profile.targetPoint, 4f)).SetEase(moveEase)
+                .AppendCallback(() => InteractionManager.I.SetCurrentResident(this))
+                .AppendInterval(0.7f)
+                .AppendCallback(() =>
+                {
+                    Talk("Greeting");
+                });
     }
 
     public void Exit()
     {
+        // InteractionManager.I.ExitResident();    
         rectTransform.DOAnchorPos(profile.endPoint, 3f).OnComplete(() => this.gameObject.SetActive(false));
     }
 
