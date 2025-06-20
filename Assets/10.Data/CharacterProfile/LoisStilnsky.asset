@@ -28,6 +28,17 @@ MonoBehaviour:
   - code: Greeting
     msgs:
     - "\uC548\uB155\uD558\uC138\uC694."
+  - code: Call_With_None
+    msgs:
+    - "\uC5EC\uBCF4\uC138\uC694. Lois Stilnsky\uC785\uB2C8\uB2E4."
+    - "\uB0A8\uD3B8\uC740 \uC9C0\uAE08 \uC9D1\uC5D0 \uC5C6\uC5B4\uC694."
+    - "\uBB34\uC2A8\uC77C \uC788\uB098\uC694?"
+  - code: Call_With_Mate
+    msgs:
+    - "\uC5EC\uBCF4\uC138\uC694. Lois Stilnsky\uC785\uB2C8\uB2E4."
+    - "\uC800\uC640 \uB0A8\uD3B8\uC740 \uC9C0\uAE08 \uC9D1\uC5D0 \uC788\uC5B4\uC694"
+    - "\uC624\uB298 \uBC16\uC5D0 \uB098\uAC08 \uC77C\uC774 \uC5C6\uC744 \uAC70 \uAC19\uC544\uC694."
+  entryRequestReasons: []
   startPoint: {x: -1000, y: 0}
   targetPoint: {x: 0, y: 0}
   endPoint: {x: 1000, y: 0}

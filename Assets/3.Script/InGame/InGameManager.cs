@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Lumin;
 
 [Serializable]
 public class Apartment
@@ -45,9 +46,9 @@ public class Apartment
         }
     }
 
-    public void UpdateCheckAtHome(Profile profile)
+    public void UpdateCheckAtHome(Profile profile, bool atHome)
     {
-        checkAtHome[profile] = false;
+        checkAtHome[profile] = atHome;
     }
 }
 
@@ -96,9 +97,9 @@ public class InGameManager : BehaviourSingleton<InGameManager>
     void InitSpawner()
     {
         if (todayEntryListController == null) return;
+        spawner.OnCompleteSpawn += InitAtHome;
 
         spawner.SetCharacters(todayEntryListController.TodayEntryList, 7);
-        spawner.OnCompleteSpawn += InitAtHome;
 
         InteractionManager.I.OnExitResident += ResidentExitHandler;
     }
@@ -106,7 +107,7 @@ public class InGameManager : BehaviourSingleton<InGameManager>
     void ResidentExitHandler(Profile profile)
     {
         string ad = SearchAddress(profile);
-        addressDic[ad].UpdateCheckAtHome(profile);
+        addressDic[ad].UpdateCheckAtHome(profile, true);
 
         //후처리로 캐릭터 스폰하기
         DOVirtual.DelayedCall(5f, () => spawner.SpawnCharacter());
@@ -114,6 +115,7 @@ public class InGameManager : BehaviourSingleton<InGameManager>
 
     void InitAtHome(List<ResidentController> list)
     {
+        Debug.Log("[InGameManager] InitAtHome...");
         List<ResidentController> residents = new();
 
         foreach (var r in list)
@@ -129,7 +131,9 @@ public class InGameManager : BehaviourSingleton<InGameManager>
         foreach (var r in residents)
         {
             string ad = SearchAddress(r.profile);
-            addressDic[ad].UpdateCheckAtHome(r.profile);
+            addressDic[ad].UpdateCheckAtHome(r.profile, false);
+
+            Debug.Log($"{r.profile}은 현재 외출중...");
         }        
     }
 
@@ -165,6 +169,16 @@ public class InGameManager : BehaviourSingleton<InGameManager>
         }
 
         InGameUIController.I.InitUI();
+    }
+
+    public Apartment SearchApartment(string phoneNumber)
+    {
+        foreach (var apt in addressDic)
+        {
+            if (apt.Value.telephoneNum.Equals(phoneNumber)) return apt.Value;
+        }
+
+        return null;
     }
 
     public string SearchAddress(Profile profile)

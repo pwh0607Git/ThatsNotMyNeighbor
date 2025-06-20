@@ -24,6 +24,16 @@ MonoBehaviour:
   - code: Greeting
     msgs:
     - "\uC548\uB155\uD558\uC138\uC694."
+  - code: Call_With_None
+    msgs:
+    - "\uC5EC\uBCF4\uC138\uC694.  Afton \uBC15\uC0AC\uC785\uB2C8\uB2E4."
+    - "\uC9C0\uAE08 Mia\uB294 \uC9D1\uC5D0 \uC5C6\uC2B5\uB2C8\uB2E4."
+    - "\uC9C0\uAE08 \uC640\uC788\uB098\uC694?"
+  - code: Call_With_Mate
+    msgs:
+    - "\uC5EC\uBCF4\uC138\uC694.  Afton \uBC15\uC0AC\uC785\uB2C8\uB2E4."
+    - "\uC9C0\uAE08 Mia\uC640 \uC800\uB294 \uC9D1\uC5D0 \uC788\uC2B5\uB2C8\uB2E4."
+    - "\uC624\uB298\uC740 \uC9D1\uC5D0 \uC788\uC744 \uC608\uC815\uC785\uB2C8\uB2E4."
   entryRequestReasons: []
   startPoint: {x: -1000, y: 0}
   targetPoint: {x: 0, y: 0}
