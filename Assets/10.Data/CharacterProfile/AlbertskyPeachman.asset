@@ -23,11 +23,12 @@ MonoBehaviour:
   - "\uC9D9\uC740 \uB208\uC379"
   job: "\uC81C\uD654\uACF5"
   expiration: 10/1974
-  model: {fileID: 1649156364659624134, guid: 4209f72d5e7aee24eac89ac44b35721b, type: 3}
+  model: {fileID: 5396286691285834843, guid: 5d7c6485b3c10a049a43474ad962c994, type: 3}
   dialogs:
   - code: Greeting
     msgs:
     - "\uC548\uB155\uD558\uC138\uC694. \uC218\uACE0\uB9CE\uC73C\uC2ED\uB2C8\uB2E4."
+  entryRequestReasons: []
   startPoint: {x: -1000, y: 0}
   targetPoint: {x: 0, y: 0}
   endPoint: {x: 1000, y: 0}

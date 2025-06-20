@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum CharacterType { RESIDENT, DOPPELGANGER }
 
 [CreateAssetMenu(fileName = "CharacterProfile", menuName = "Character/Profile")]
 public class Profile : ScriptableObject

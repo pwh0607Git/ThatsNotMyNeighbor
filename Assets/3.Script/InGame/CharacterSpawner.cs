@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 [Serializable]
 public class Resident
@@ -24,6 +25,8 @@ public class CharacterSpawner : MonoBehaviour
     // count수만큼 캐릭터 프리팹을 생성한다.
     List<ResidentController> characterList;
 
+    public UnityAction<List<ResidentController>> OnCompleteSpawn;
+
     public void SetCharacters(List<Profile> todayEntryList, int count)
     {
         characterList = new();
@@ -35,6 +38,8 @@ public class CharacterSpawner : MonoBehaviour
         //Today 리스트에 있는 캐릭터는 필수로 생성하기.
         CreateOtherCharacters(count - todayEntryList.Count);
 
+        OnCompleteSpawn?.Invoke(characterList);
+
         SetQueue();
     }
 
@@ -43,10 +48,11 @@ public class CharacterSpawner : MonoBehaviour
         foreach (var profile in characters)
         {
             ResidentController character = Instantiate(profile.model, characterLayer).GetComponent<ResidentController>();
-            character.SetProfile(profile);
+
+            characterList.Add(character);
+            character.SetProperty(profile, CharacterType.Resident);
 
             character.gameObject.SetActive(false);
-            characterList.Add(character);
         }
     }
 
@@ -59,11 +65,21 @@ public class CharacterSpawner : MonoBehaviour
             int index = UnityEngine.Random.Range(0, characters.Count);
 
             Profile profile = characters[index];
-
             ResidentController character = Instantiate(profile.model, characterLayer).GetComponent<ResidentController>();
+
             characterList.Add(character);
+            float rnd = UnityEngine.Random.value;
+            
+            if (rnd < 0.2f)
+            {
+                character.SetProperty(profile, CharacterType.Resident);
+            }
+            else
+            {
+                character.SetProperty(profile, CharacterType.Doppel);
+            }
+
             character.gameObject.SetActive(false);
-            character.SetProfile(profile);
         }
     }
 

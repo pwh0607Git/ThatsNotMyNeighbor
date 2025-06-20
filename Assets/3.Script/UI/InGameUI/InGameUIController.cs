@@ -24,9 +24,6 @@ public class InGameUIController : BehaviourSingleton<InGameUIController>
     [SerializeField] List<PopUpPair> pairs;
     [SerializeField] TextBoxController textBox;
 
-    [Header("Siren")]
-    [SerializeField] GameObject siren;
-    [SerializeField] GameObject shutdownDoor;
 
     [Header("Init Event")]
     private UnityAction OnCompleteInitEvent;
@@ -58,21 +55,6 @@ public class InGameUIController : BehaviourSingleton<InGameUIController>
         p.popUp.SetActive(true);
     }
 
-    public void OnClickDangerButton()
-    {
-        siren.transform.GetChild(0).gameObject.SetActive(true);
-
-        //shutdowndoor 닫기
-        MoveShutDownDoor(0f);
-        Debug.Log("Danger Button Click!!");
-    }
-
-    public void MoveShutDownDoor(float targetY)
-    {
-        Vector2 targetPoint = new Vector2(0, targetY);
-        shutdownDoor.GetComponent<RectTransform>().DOAnchorPos(targetPoint, 0.8f);
-    }
-
     public void InitUI()
     {
         OnCompleteInitEvent?.Invoke();
@@ -97,15 +79,24 @@ public class InGameUIController : BehaviourSingleton<InGameUIController>
 
     void OnCompletePrintText(string code)
     {
-        if (code.Equals("Tutorial"))
+        if (code.Equals("Tutorial") || code.Equals("Call"))
         {
             // 튜토리얼 종료 로직 수행하기
-            InGameManager.I.EndTutorial();
+            InGameManager.I.EndDDDBehaviour();
         }
     }
 
     public void UpdateProps()
     {
-        
+
+    }
+    
+    
+    [SerializeField] GameObject shutdownDoor;
+    
+    public void MoveShutDownDoor(float targetY)
+    {
+        Vector2 targetPoint = new Vector2(0, targetY);
+        shutdownDoor.GetComponent<RectTransform>().DOAnchorPos(targetPoint, 0.8f);
     }
 }

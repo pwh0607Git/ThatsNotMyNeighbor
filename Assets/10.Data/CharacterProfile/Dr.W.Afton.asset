@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstName: Dr. W.
   lastName: Afton
-  id: 250489656214
+  id: 250489656
   profileImage: {fileID: 21300000, guid: 515238d699547464b8a66885dd094d52, type: 3}
   characteristics: []
   job: "\uBB3C\uB9AC\uD559\uC790"
@@ -24,6 +24,7 @@ MonoBehaviour:
   - code: Greeting
     msgs:
     - "\uC548\uB155\uD558\uC138\uC694."
+  entryRequestReasons: []
   startPoint: {x: -1000, y: 0}
   targetPoint: {x: 0, y: 0}
   endPoint: {x: 1000, y: 0}

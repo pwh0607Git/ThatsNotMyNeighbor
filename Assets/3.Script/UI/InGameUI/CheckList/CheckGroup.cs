@@ -24,11 +24,11 @@ public class CheckGroup : MonoBehaviour
     {
         if (toggle_True.isOn)
         {
-            OnUpdateToggle(groupId, true);
+            OnUpdateToggle?.Invoke(groupId, true);
         }
         else
         {
-            OnUpdateToggle(groupId, false);
+            OnUpdateToggle?.Invoke(groupId, false);
         }
     }
 

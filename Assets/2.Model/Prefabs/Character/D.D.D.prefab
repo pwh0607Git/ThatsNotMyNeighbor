@@ -464,7 +464,7 @@ GameObject:
   m_Component:
   - component: {fileID: 524972523864311407}
   - component: {fileID: 261672073091378383}
-  - component: {fileID: 8888835996735646340}
+  - component: {fileID: -7096309098292669141}
   m_Layer: 5
   m_Name: D.D.D
   m_TagString: Untagged
@@ -516,7 +516,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &8888835996735646340
+--- !u!114 &-7096309098292669141
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -525,13 +525,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 8758210154268841977}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f6a8bb5995cb6d4aa6abf53ea0ae07a, type: 3}
+  m_Script: {fileID: 11500000, guid: 8466d71b2b93f594d8684e72a7ed59eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rectTransform: {fileID: 0}
-  startPoint: {x: -1000, y: 0}
-  targetPoint: {x: 0, y: 0}
-  endPoint: {x: 1000, y: 0}
+  type: 2
+  origin: {fileID: 0}
+  doppel: {fileID: 0}
+  moveEase: 2
 --- !u!1 &8838281353389072287
 GameObject:
   m_ObjectHideFlags: 0

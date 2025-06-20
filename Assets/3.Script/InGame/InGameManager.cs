@@ -20,18 +20,34 @@ public class Apartment
         this.apart_Floor = apart_Floor;
         this.apart_Number = apart_Number;
         this.telephoneNum = "";
-
+        residents = new();
         checkAtHome = new();
     }
 
     public void SetResident(List<Profile> residents)
     {
         this.residents = new(residents);
+        InitCheckAtHome();
     }
 
     public void SetTelephone(string number)
     {
         this.telephoneNum = number;
+    }
+
+    private void InitCheckAtHome()
+    {
+        if (residents == null || residents.Count <= 0) return;
+
+        foreach (var p in residents)
+        {
+            checkAtHome[p] = true;
+        }
+    }
+
+    public void UpdateCheckAtHome(Profile profile)
+    {
+        checkAtHome[profile] = false;
     }
 }
 
@@ -41,6 +57,7 @@ public class InGameManager : BehaviourSingleton<InGameManager>
 
     [Header("Controller")]
     CharacterSpawner characterSpawner;
+    [SerializeField] WarningCallController warningCall;
 
     [Header("Level Data")]
     [SerializeField] int level;
@@ -81,6 +98,39 @@ public class InGameManager : BehaviourSingleton<InGameManager>
         if (todayEntryListController == null) return;
 
         spawner.SetCharacters(todayEntryListController.TodayEntryList, 7);
+        spawner.OnCompleteSpawn += InitAtHome;
+
+        InteractionManager.I.OnExitResident += ResidentExitHandler;
+    }
+
+    void ResidentExitHandler(Profile profile)
+    {
+        string ad = SearchAddress(profile);
+        addressDic[ad].UpdateCheckAtHome(profile);
+
+        //후처리로 캐릭터 스폰하기
+        DOVirtual.DelayedCall(5f, () => spawner.SpawnCharacter());
+    }
+
+    void InitAtHome(List<ResidentController> list)
+    {
+        List<ResidentController> residents = new();
+
+        foreach (var r in list)
+        {
+            if (r.type.Equals(CharacterType.Resident))
+            {
+                //도플갱어인 경우 AtHome을 true로 설정하기
+                residents.Add(r);
+            }
+        }
+
+        // 아파트에 없다는 정보 갱신
+        foreach (var r in residents)
+        {
+            string ad = SearchAddress(r.profile);
+            addressDic[ad].UpdateCheckAtHome(r.profile);
+        }        
     }
 
     void InitAddress()
@@ -107,6 +157,7 @@ public class InGameManager : BehaviourSingleton<InGameManager>
         foreach (var mateList in familyDatas.mateList)
         {
             if (index >= addressKeys.Count) break;
+
             string address = addressKeys[index];
             addressDic[address].SetResident(mateList.mates);
             addressDic[address].SetTelephone(telephoneNumbers[index]);
@@ -118,9 +169,17 @@ public class InGameManager : BehaviourSingleton<InGameManager>
 
     public string SearchAddress(Profile profile)
     {
+        Debug.Log($"Dic Count : {addressDic.Count}");
         //해당 주민에 대한 주소 찾기
         foreach (var add in addressDic)
         {
+            var apartment = add.Value;
+            if (apartment.residents == null)
+            {
+                Debug.LogWarning("residents is null.");
+                return "";
+            }
+
             bool check = add.Value.residents.Find(r => r.Equals(profile));
             if (check)
             {
@@ -141,7 +200,8 @@ public class InGameManager : BehaviourSingleton<InGameManager>
         Profile profile = npcs.Find(p => p.id.Equals("000000000"));               // DDD 직원 id
 
         npc_DDD = Instantiate(profile.model, characterLayer).GetComponent<ResidentController>();
-        npc_DDD.SetProfile(profile);
+        npc_DDD.SetProperty(profile, CharacterType.NPC);
+        warningCall.Init(npc_DDD);
 
         startSeq.AppendInterval(1f)
             .AppendCallback(() => InGameUIController.I.MoveShutDownDoor(800f))
@@ -153,7 +213,7 @@ public class InGameManager : BehaviourSingleton<InGameManager>
             });
     }
 
-    public void EndTutorial()
+    public void EndDDDBehaviour()
     {
         Sequence endSeq = DOTween.Sequence();
 

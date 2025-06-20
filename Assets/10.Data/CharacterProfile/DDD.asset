@@ -25,6 +25,11 @@ MonoBehaviour:
     msgs:
     - "\uC624\uB298\uBD80\uD130 \uC77C\uD558\uAC8C \uB41C \uACBD\uBE44\uC6D0 \uC774\uC2DC\uAD70\uC694."
     - "\uC798 \uBD80\uD0C1 \uB4DC\uB9BD\uB2C8\uB2E4."
+  - code: Call
+    msgs:
+    - "\uC815\uD654 \uC791\uC5C5 \uC644\uB8CC\uD588\uC2B5\uB2C8\uB2E4."
+    - "\uC218\uACE0\uD558\uC138\uC694."
+  entryRequestReasons: []
   startPoint: {x: 0, y: 0}
   targetPoint: {x: 0, y: 0}
   endPoint: {x: -1000, y: 0}
