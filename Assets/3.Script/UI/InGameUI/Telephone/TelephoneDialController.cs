@@ -163,16 +163,15 @@ public class TelephoneDialController : MonoBehaviour, IBeginDragHandler, IEndDra
             target = atHomeProfiles[Random.Range(0, atHomeProfiles.Count)];
             dialog = target.dialogs.Find(d => d.code.Equals("Call_With_None"));
         }
+
         Debug.Log($"Target : {target}");
-        
         Debug.Log($"DiaLog : {dialog.code}");
 
-        // if (dialog == null)
-        // {
-        //     Debug.Log("적절한 대화가 없습니다.");
-
-        //     return;
-        // }
+        if (dialog == null)
+        {
+            Debug.Log("적절한 대화가 없습니다.");
+            return;
+        }
 
         // 3초 후 대사 출력
         DOVirtual.DelayedCall(3f, () => InGameUIController.I.ShowTextBox(dialog));
