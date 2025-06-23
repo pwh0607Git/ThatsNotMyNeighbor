@@ -251,7 +251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTMP: {fileID: 1209494442}
-  normalColor: {r: 0, g: 0, b: 0, a: 0}
+  normalColor: {r: 0, g: 0, b: 0, a: 1}
   hoverColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &41567242
 MonoBehaviour:
@@ -1312,7 +1312,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTMP: {fileID: 150206864}
-  normalColor: {r: 0, g: 0, b: 0, a: 0}
+  normalColor: {r: 0, g: 0, b: 0, a: 1}
   hoverColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &132356912
 MonoBehaviour:
@@ -1595,7 +1595,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTMP: {fileID: 160631380}
-  normalColor: {r: 0, g: 0, b: 0, a: 0}
+  normalColor: {r: 0, g: 0, b: 0, a: 1}
   hoverColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &160255990
 MonoBehaviour:
@@ -2288,7 +2288,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTMP: {fileID: 1958458743}
-  normalColor: {r: 0, g: 0, b: 0, a: 0}
+  normalColor: {r: 0, g: 0, b: 0, a: 1}
   hoverColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1 &186635482
 GameObject:
@@ -2530,7 +2530,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTMP: {fileID: 838665407}
-  normalColor: {r: 0, g: 0, b: 0, a: 0}
+  normalColor: {r: 0, g: 0, b: 0, a: 1}
   hoverColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &231864355
 MonoBehaviour:
@@ -6033,6 +6033,7 @@ GameObject:
   m_Component:
   - component: {fileID: 672127376}
   - component: {fileID: 672127377}
+  - component: {fileID: 672127378}
   m_Layer: 0
   m_Name: InGameUIManager
   m_TagString: Untagged
@@ -6082,6 +6083,20 @@ MonoBehaviour:
     popUp: {fileID: 2090337795}
   textBox: {fileID: 858146673}
   shutdownDoor: {fileID: 52500368}
+--- !u!114 &672127378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 672127375}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ea6bb6492812a445a7b6d4985142e65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  view: {fileID: 1394908054}
+  groupKey: 00000000010000000200000003000000
 --- !u!1 &673350658
 GameObject:
   m_ObjectHideFlags: 0
@@ -6317,8 +6332,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1394908054}
-        m_TargetAssemblyTypeName: CheckList, Assembly-CSharp
-        m_MethodName: OnClickCompleteButton
+        m_TargetAssemblyTypeName: CheckListView, Assembly-CSharp
+        m_MethodName: OnClickQuestionButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6426,7 +6441,7 @@ MonoBehaviour:
   m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 411b1cca054688247bb76db5bf660893, type: 2}
-  m_sharedMaterial: {fileID: -2384139189195782004, guid: f8c42de59d65b2d4884f556d1e2e2ada, type: 2}
+  m_sharedMaterial: {fileID: 2348745154186696456, guid: 411b1cca054688247bb76db5bf660893, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -6489,7 +6504,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &681005270
@@ -7045,8 +7060,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -20}
-  m_SizeDelta: {x: 0, y: -40}
+  m_AnchoredPosition: {x: 40, y: -20}
+  m_SizeDelta: {x: -80, y: -40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &739318968
 MonoBehaviour:
@@ -8377,7 +8392,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTMP: {fileID: 1893272461}
-  normalColor: {r: 0, g: 0, b: 0, a: 0}
+  normalColor: {r: 0, g: 0, b: 0, a: 1}
   hoverColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &963905916
 MonoBehaviour:
@@ -12006,13 +12021,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fa64bf701bcee5740ac96fc3449b4340, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 1954740951393060278, guid: 67230dd34fe939b4c82eae19c0d896ee, type: 3}
+  prefab: {fileID: 7410842557679389896, guid: 67230dd34fe939b4c82eae19c0d896ee, type: 3}
   groupParent: {fileID: 739318967}
-  groupKey:
-  - ID
-  - Appearance
-  - Entry Request
-  - Is it on today's List
 --- !u!1 &1400349296
 GameObject:
   m_ObjectHideFlags: 0
@@ -14305,7 +14315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targetTMP: {fileID: 542872577}
-  normalColor: {r: 0, g: 0, b: 0, a: 0}
+  normalColor: {r: 0, g: 0, b: 0, a: 1}
   hoverColor: {r: 1, g: 1, b: 1, a: 1}
 --- !u!114 &1722463095
 MonoBehaviour:

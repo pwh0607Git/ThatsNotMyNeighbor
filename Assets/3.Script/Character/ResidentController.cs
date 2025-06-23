@@ -1,14 +1,7 @@
-using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
 
-
 public enum CharacterType { Resident, Doppel, NPC }
-
-public enum DoppelType
-{
-    Apearence, ID, EntryRequest, TodayEntryList, AtHome
-}
 
 public class ResidentController : MonoBehaviour
 {
@@ -18,7 +11,7 @@ public class ResidentController : MonoBehaviour
 
     RectTransform rectTransform;
 
-    private Animator animator;
+    private Animator mouth_Animator;
 
     [SerializeField] Transform origin;
     [SerializeField] Transform doppel;
@@ -31,6 +24,7 @@ public class ResidentController : MonoBehaviour
 
     public void SetProperty(Profile profile, CharacterType type)
     {
+        mouth_Animator = GetComponentInChildren<Animator>();
         this.profile = profile;
 
         rectTransform ??= GetComponent<RectTransform>();
@@ -98,13 +92,12 @@ public class ResidentController : MonoBehaviour
         if (dialog == null) return;
 
         InGameUIController.I.ShowTextBox(dialog);
-        // animator.SetTrigger("Talk");
+        mouth_Animator.SetTrigger("Talk");
     }
     #endregion
 
 
     #region Behaviour
-
     private IResidentBehavior CreateBehaviour(CharacterType type)
     {
         return type switch

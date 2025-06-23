@@ -37,14 +37,21 @@ MonoBehaviour:
     - "\uB124 Mia Stone \uC804\uD654 \uBC1B\uC558\uC2B5\uB2C8\uB2E4."
     - "\uC9C0\uAE08 \uC800\uC640 \uC57D\uD63C\uC790\uB294 \uC9D1\uC5D0 \uC788\uC2B5\uB2C8\uB2E4."
     - "\uC624\uB298 \uBC16\uC5D0 \uB098\uAC08 \uC77C\uC774 \uC5C6\uC744 \uAC70 \uAC19\uC544\uC694."
-  - code: Mistake
+  - code: IDCard_Mistake
     msgs:
     - "\uC544 \uAE5C\uBE61 \uD588\uB124\uC694."
     - "\uC5EC\uAE30 \uC788\uC5B4\uC694."
-  - code: Mistake
+  - code: IDCard_Exist
+    msgs:
+    - "ID \uCE74\uB4DC \uC774\uBBF8 \uBC1B\uC73C\uC168\uC5B4\uC694."
+  - code: EntryRequest_Mistake
     msgs:
     - "\uC544 \uAE5C\uBE61 \uD588\uB124\uC694. \uC5EC\uAE30\uC694."
+  - code: EntryRequest_Exist
+    msgs:
+    - "\uCD9C\uC785\uC99D \uC774\uBBF8 \uB2F9\uC2E0 \uC55E\uC5D0 \uC788\uB294\uB370\uC694?"
   entryRequestReasons: []
   startPoint: {x: -1000, y: 0}
   targetPoint: {x: 0, y: 0}
   endPoint: {x: 1000, y: 0}
+  doppelData: {fileID: 0}

@@ -28,6 +28,9 @@ public class Profile : ScriptableObject
     public Vector2 startPoint = new Vector2(0, -1000f);
     public Vector2 targetPoint = new Vector2(0f, 0f);
     public Vector2 endPoint = new Vector2(0, 1000f);
+
+    [Header("DoppelData")]
+    public DoppelData doppelData;
 }
 
 [Serializable]

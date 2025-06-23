@@ -72,10 +72,14 @@ public class InGameUIController : BehaviourSingleton<InGameUIController>
 
     public void ShowTextBox(Dialog dialog)
     {
+        if (textBox.gameObject.activeSelf)
+        {
+            textBox.SetTextQueue(dialog);
+            return;
+        }
         textBox.gameObject.SetActive(true);
         textBox.SetTextQueue(dialog);
     }
-
 
     void OnCompletePrintText(string code)
     {

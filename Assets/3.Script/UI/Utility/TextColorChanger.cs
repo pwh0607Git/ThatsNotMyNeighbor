@@ -20,7 +20,13 @@ public class TextColorChanger : MonoBehaviour, IPointerEnterHandler, IPointerExi
         targetTMP.color = hoverColor;
     }
 
-    public void OnPointerExit(PointerEventData eventData) {
+    public void OnPointerExit(PointerEventData eventData)
+    {
         targetTMP.color = normalColor;
-    }             
+    }
+
+    void OnEnable()
+    {
+        targetTMP.color = normalColor;
+    }
 }

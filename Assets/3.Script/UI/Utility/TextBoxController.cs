@@ -18,7 +18,7 @@ public class TextBoxController : MonoBehaviour, IPointerDownHandler
 
     private Sequence typingSequence;
     private string currentShowText;
-    private Queue<string> textQueue;
+    private Queue<string> textQueue = new();
 
     public UnityAction<string> OnCompletePrintText;
 
@@ -28,14 +28,24 @@ public class TextBoxController : MonoBehaviour, IPointerDownHandler
     {
         currentDialogCode = dialog.code;
 
-        textQueue = new();
+        // 타이핑 중이거나, 큐에 텍스트가 이미 있을 경우: 그냥 대사 추가만
+        if ((typingSequence != null && typingSequence.IsActive()) || textQueue.Count > 0)
+        {
+            EnqueueDialog(dialog);
+            return;
+        }
 
+        // 아무것도 출력 중이 아닐 때만: 큐에 넣고 출력 시작
+        EnqueueDialog(dialog);
+        ShowText();
+    }
+
+    public void EnqueueDialog(Dialog dialog)
+    {           
         foreach (string m in dialog.msgs)
         {
             textQueue.Enqueue(m);
         }
-
-        ShowText();
     }
 
     public void ShowText()
@@ -43,7 +53,7 @@ public class TextBoxController : MonoBehaviour, IPointerDownHandler
         if (textQueue.Count <= 0)
         {
             Debug.Log("출력할 대사가 없습니다.");
-    
+
             OnCompletePrintText?.Invoke(currentDialogCode);
             currentDialogCode = "";
 

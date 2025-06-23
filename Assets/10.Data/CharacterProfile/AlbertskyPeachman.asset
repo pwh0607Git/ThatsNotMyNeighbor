@@ -38,7 +38,22 @@ MonoBehaviour:
     - "\uB124 AlberSky \uC804\uD654 \uBC1B\uC558\uC2B5\uB2C8\uB2E4."
     - "\uC9C0\uAE08 \uC800\uC640 \uB3D9\uC0DD\uC740 \uC9D1\uC5D0 \uC788\uC2B5\uB2C8\uB2E4."
     - "\uC624\uB298\uC740 \uC678\uCD9C \uC77C\uC815\uC774 \uC5C6\uC5B4\uC694."
+  - code: IDCard_Mistake
+    msgs:
+    - "\uC8C4\uC1A1\uD569\uB2C8\uB2E4. \uC5EC\uAE30\uC694."
+  - code: IDCard_Exist
+    msgs:
+    - "IDCard\uC694?"
+    - "\uC774\uBBF8 \uB2F9\uC2E0 \uC55E\uC5D0 \uC788\uC2B5\uB2C8\uB2E4."
+  - code: EntryRequest_Mistake
+    msgs:
+    - "\uCD9C\uC785\uC99D\uC774\uC694? \uC544 \uC5EC\uAE30\uC694!"
+  - code: EntryRequest_Exist
+    msgs:
+    - "\uCD9C\uC785\uC99D\uC740 \uC774\uBBF8 \uB2F9\uC2E0\uC5D0\uAC8C \uB4DC\uB838\uC2B5\uB2C8\uB2E4."
+    - "\uC798 \uD655\uC778 \uD574\uBCF4\uC138\uC694."
   entryRequestReasons: []
   startPoint: {x: -1000, y: 0}
   targetPoint: {x: 0, y: 0}
   endPoint: {x: 1000, y: 0}
+  doppelData: {fileID: 0}

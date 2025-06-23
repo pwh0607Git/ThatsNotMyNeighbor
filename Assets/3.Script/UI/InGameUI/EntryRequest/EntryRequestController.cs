@@ -31,6 +31,11 @@ public class EntryRequestController : MonoBehaviour
         entryRequestButton.gameObject.SetActive(on);
     }
 
+    public bool GetActiveButton()
+    {
+        return entryRequestButton.gameObject.activeSelf;
+    }
+
     public void OnClickOpenButton() => presenter.OnClickOpenButton();
     public void OnClickExitButton() => presenter.OnClickCloseButton();
 }

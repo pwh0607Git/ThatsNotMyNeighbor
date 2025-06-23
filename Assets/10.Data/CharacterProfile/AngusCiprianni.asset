@@ -32,7 +32,20 @@ MonoBehaviour:
     - "\uB124 Angus\uC785\uB2C8\uB2E4."
     - "\uC800\uB294 \uC9C0\uAE08 \uC9D1\uC5D0 \uC640 \uC788\uC2B5\uB2C8\uB2E4."
     - "\uC624\uB298\uC740 \uC678\uCD9C \uC77C\uC815\uC774 \uC5C6\uC5B4\uC694."
+  - code: IDCard_Mistake
+    msgs:
+    - "\uC624\uC6B0 \uC8C4\uC1A1\uD569\uB2C8\uB2E4. \uC5EC\uAE30\uC694!"
+  - code: IDCard_Exist
+    msgs:
+    - "ID \uCE74\uB4DC\uB294 \uC774\uBBF8 \uB4DC\uB9B0\uAC70 \uAC19\uC740\uB370\uC694..?"
+  - code: EntryRequest_Mistake
+    msgs:
+    - "\uC5EC\uAE30\uC694!"
+  - code: EntryRequest_Exist
+    msgs:
+    - "\uCD9C\uC785\uC99D\uC740 \uC774\uBBF8 \uB4DC\uB9B0\uAC70 \uAC19\uC740\uB370\uC694?"
   entryRequestReasons: []
   startPoint: {x: -1000, y: 0}
   targetPoint: {x: 0, y: 0}
   endPoint: {x: 1000, y: 0}
+  doppelData: {fileID: 0}

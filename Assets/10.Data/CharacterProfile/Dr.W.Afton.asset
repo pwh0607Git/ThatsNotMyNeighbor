@@ -34,7 +34,20 @@ MonoBehaviour:
     - "\uC5EC\uBCF4\uC138\uC694.  Afton \uBC15\uC0AC\uC785\uB2C8\uB2E4."
     - "\uC9C0\uAE08 Mia\uC640 \uC800\uB294 \uC9D1\uC5D0 \uC788\uC2B5\uB2C8\uB2E4."
     - "\uC624\uB298\uC740 \uC9D1\uC5D0 \uC788\uC744 \uC608\uC815\uC785\uB2C8\uB2E4."
+  - code: IDCard_Mistake
+    msgs:
+    - "\uC8C4\uC1A1\uD569\uB2C8\uB2E4. \uC5EC\uAE30\uC694."
+  - code: IDCard_Exist
+    msgs:
+    - "\uC774\uBBF8 \uB2F9\uC2E0 \uC55E\uC5D0 \uC788\uC2B5\uB2C8\uB2E4."
+  - code: EntryRequest_Mistake
+    msgs:
+    - "\uC5EC\uAE30\uC694."
+  - code: EntryRequest_Exist
+    msgs:
+    - "\uC774\uBBF8 \uB2F9\uC2E0 \uC55E\uC5D0 \uC788\uC2B5\uB2C8\uB2E4."
   entryRequestReasons: []
   startPoint: {x: -1000, y: 0}
   targetPoint: {x: 0, y: 0}
   endPoint: {x: 1000, y: 0}
+  doppelData: {fileID: 0}

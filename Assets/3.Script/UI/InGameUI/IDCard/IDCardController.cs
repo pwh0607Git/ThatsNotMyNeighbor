@@ -28,6 +28,11 @@ public class IDCardController : MonoBehaviour
         idCardButton.gameObject.SetActive(on);
     }
 
+    public bool GetActiveButton()
+    {
+        return idCardButton.gameObject.activeSelf;
+    }
+
     public void OnClickOpenButton() => presenter.OnClickOpenButton();
     public void OnClickExitButton() => presenter.OnClickCloseButton();
 }

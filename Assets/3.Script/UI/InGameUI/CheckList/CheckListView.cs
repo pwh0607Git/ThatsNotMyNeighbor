@@ -1,36 +1,34 @@
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+
+public enum QuestionType
+{
+    IDCard, EntryRequest, Appearance, TodayEntryList
+}
 
 public class CheckListView : MonoBehaviour
 {
-    Dictionary<string, bool> currentChecking;
+    Dictionary<QuestionType, bool> currentChecking  = new();
 
-    [SerializeField] CheckGroup prefab;
+    public CheckListComponent prefab;
     [SerializeField] Transform groupParent;
-    [SerializeField] string[] groupKey;
-    List<CheckGroup> checkGroups;
 
-    void Start()
+    List<CheckListComponent> checkGroups = new();
+
+    public void MakeCheckComponent(QuestionType key)
     {
-        currentChecking = new();
-        checkGroups = new();
-        MakeCheckGroup();
+        CheckListComponent instance = Instantiate(prefab, groupParent);
+        Debug.Log(key.ToString());
+        instance.InitCheckComponent(key);
+        currentChecking.Add(key, false);
+        checkGroups.Add(instance);
+        instance.OnUpdateToggle += OnToggleCheck;
     }
 
-    void MakeCheckGroup()
+    public void OnToggleCheck(QuestionType id, bool on)
     {
-        foreach (var key in groupKey)
-        {
-            CheckGroup instance = Instantiate(prefab, groupParent);
-            instance.InitCheckComponent(key);
-            currentChecking.Add(key, true);
-            checkGroups.Add(instance);
-            instance.OnUpdateToggle += OnToggleCheck;
-        }
-    }
-
-    public void OnToggleCheck(string id, bool on)
-    {
+        Debug.Log($"Type : {id} => {on}");
         currentChecking[id] = on;
     }
 
@@ -48,6 +46,11 @@ public class CheckListView : MonoBehaviour
         {
             group.OnUpdateToggle += OnToggleCheck;
         }
+
+        foreach (var d in currentChecking.ToList())
+        {
+            currentChecking[d.Key] = false;
+        }
     }
 
     public void OnClickExitButton()
@@ -55,11 +58,11 @@ public class CheckListView : MonoBehaviour
         this.gameObject.SetActive(false);
     }
 
-    public void OnClickCompleteButton()
+    public void OnClickQuestionButton()
     {
-        // 질문 시퀀스 시작하기
-        // InGameManager에서 시퀀스 시작!
-
+        InteractionManager.I.StartQuestion(currentChecking);
         this.gameObject.SetActive(false);
     }
+
+    public void SetActive(bool on) => gameObject.SetActive(on);
 }
