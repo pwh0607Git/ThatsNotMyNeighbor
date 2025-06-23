@@ -6,8 +6,8 @@ AnimatorOverrideController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Robertsky
+  m_Name: Anim.Rafttellyn
   m_Controller: {fileID: 9100000, guid: 4ca3d6b65be2beb44a7e7cb983b9fe7f, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 7400000, guid: faba12332f7948043bfef9d6b85cf845, type: 2}
-    m_OverrideClip: {fileID: 7400000, guid: f19e03bcfefa35e4d999a6b1bd4d9ee9, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 73e5f6c6f4e066441b992da0f9b02916, type: 2}

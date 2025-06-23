@@ -375,42 +375,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!1 &3511531063697627724
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3666202756159205564}
-  m_Layer: 5
-  m_Name: _doppel
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &3666202756159205564
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3511531063697627724}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 4696085365500931843}
-  m_Father: {fileID: 5272024584146603027}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 140}
-  m_SizeDelta: {x: 370, y: 450}
-  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &3898914571190885221
 GameObject:
   m_ObjectHideFlags: 0
@@ -421,7 +385,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4696085365500931843}
   m_Layer: 5
-  m_Name: Doppel_Face (2)
+  m_Name: Face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -445,12 +409,12 @@ RectTransform:
   - {fileID: 4474576034775534908}
   - {fileID: 244136667538294501}
   - {fileID: 3333557034007365943}
-  m_Father: {fileID: 3666202756159205564}
+  m_Father: {fileID: 5272024584146603027}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 140}
+  m_SizeDelta: {x: 370, y: 450}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4177554469734314852
 GameObject:
@@ -537,6 +501,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5272024584146603027}
   - component: {fileID: 1313345758913003728}
+  - component: {fileID: -8106699463501505474}
   m_Layer: 5
   m_Name: Doppel_AlbertSky 2
   m_TagString: Untagged
@@ -558,7 +523,7 @@ RectTransform:
   m_Children:
   - {fileID: 2767715649321204146}
   - {fileID: 1247866637596765514}
-  - {fileID: 3666202756159205564}
+  - {fileID: 4696085365500931843}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -582,6 +547,27 @@ MonoBehaviour:
   origin: {fileID: 0}
   doppel: {fileID: 0}
   moveEase: 1
+--- !u!95 &-8106699463501505474
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5396286691285834843}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: 50f66cc5fb0cf8648867fe229d2778ac, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6588245145969779358
 GameObject:
   m_ObjectHideFlags: 0

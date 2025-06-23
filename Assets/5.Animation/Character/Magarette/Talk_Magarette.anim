@@ -22,24 +22,24 @@ AnimationClip:
     curve:
     - time: 0
       value: {fileID: 21300000, guid: 1da6349fc4921a341a201470f315aa2b, type: 3}
-    - time: 0.11666667
+    - time: 0.1
       value: {fileID: 21300000, guid: 820465c9cc42cec4f9da2eb24e43ba30, type: 3}
-    - time: 0.23333333
+    - time: 0.18333334
       value: {fileID: 21300000, guid: c15e6ed39f918734b956d673cb6c69de, type: 3}
-    - time: 0.33333334
+    - time: 0.26666668
       value: {fileID: 21300000, guid: 820465c9cc42cec4f9da2eb24e43ba30, type: 3}
-    - time: 0.41666666
+    - time: 0.36666667
       value: {fileID: 21300000, guid: 1da6349fc4921a341a201470f315aa2b, type: 3}
-    - time: 0.53333336
+    - time: 0.46666667
       value: {fileID: 21300000, guid: 820465c9cc42cec4f9da2eb24e43ba30, type: 3}
-    - time: 0.65
+    - time: 0.55
       value: {fileID: 21300000, guid: c15e6ed39f918734b956d673cb6c69de, type: 3}
-    - time: 0.75
+    - time: 0.6333333
       value: {fileID: 21300000, guid: 820465c9cc42cec4f9da2eb24e43ba30, type: 3}
-    - time: 0.8333333
+    - time: 0.71666664
       value: {fileID: 21300000, guid: 1da6349fc4921a341a201470f315aa2b, type: 3}
     attribute: m_Sprite
-    path: _origin/Face/Mouth
+    path: Face/Mouth
     classID: 114
     script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
     flags: 2
@@ -51,7 +51,7 @@ AnimationClip:
   m_ClipBindingConstant:
     genericBindings:
     - serializedVersion: 2
-      path: 1482474335
+      path: 3540024577
       attribute: 2015549526
       script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
       typeID: 114
@@ -74,7 +74,7 @@ AnimationClip:
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.84999996
+    m_StopTime: 0.7333333
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0

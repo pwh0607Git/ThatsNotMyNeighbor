@@ -310,7 +310,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7437572127864352295}
   m_Layer: 5
-  m_Name: Doppel_Face_3
+  m_Name: Face
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -335,47 +335,11 @@ RectTransform:
   - {fileID: 1158771828573566920}
   - {fileID: 8075875696338027480}
   - {fileID: 3423610990861156671}
-  m_Father: {fileID: 2991623130053686951}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -100}
-  m_SizeDelta: {x: 370, y: 400}
-  m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &3811040486186051906
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2991623130053686951}
-  m_Layer: 5
-  m_Name: _doppel
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &2991623130053686951
-RectTransform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3811040486186051906}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 7437572127864352295}
   m_Father: {fileID: 7459165016718773719}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -15, y: 140}
+  m_AnchoredPosition: {x: -15, y: 40}
   m_SizeDelta: {x: 370, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &4420928245834499680
@@ -688,6 +652,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7459165016718773719}
   - component: {fileID: 993746610112864420}
+  - component: {fileID: -7443735890215894744}
   m_Layer: 5
   m_Name: Doppel_Alf 2
   m_TagString: Untagged
@@ -708,7 +673,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4183236900410527983}
-  - {fileID: 2991623130053686951}
+  - {fileID: 7437572127864352295}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -732,3 +697,24 @@ MonoBehaviour:
   origin: {fileID: 0}
   doppel: {fileID: 0}
   moveEase: 1
+--- !u!95 &-7443735890215894744
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8493888391440923774}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: c26b64b410f8f2f4bb384811ed8138ea, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
