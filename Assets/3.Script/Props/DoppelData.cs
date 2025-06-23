@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum DoppelType
+public enum DoppelApearanceType
 {
-    Apearence_NoneMouth, ID, EntryRequest, TodayEntryList, AtHome
+    None, NoneMouth, NoneLanguage
 }
 
 [CreateAssetMenu(fileName = "DoppelgangerData", menuName = "Character/DoppelgangerData")]
@@ -18,6 +18,6 @@ public class DoppelData : ScriptableObject
 [Serializable]
 public class DoppelInform
 {
-    public DoppelType type;
+    public DoppelApearanceType type;
     public GameObject model;
 }

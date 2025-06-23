@@ -11,20 +11,11 @@ public class ResidentController : MonoBehaviour
 
     RectTransform rectTransform;
 
-    private Animator mouth_Animator;
-
-    [SerializeField] Transform origin;
-    [SerializeField] Transform doppel;
-
-    void InitAppearanceRef()
-    {
-        origin = transform.Find("_origin");
-        doppel = transform.Find("_doppel");
-    }
+    private Animator animator;
 
     public void SetProperty(Profile profile, CharacterType type)
     {
-        mouth_Animator = GetComponentInChildren<Animator>();
+        animator = GetComponentInChildren<Animator>();
         this.profile = profile;
 
         rectTransform ??= GetComponent<RectTransform>();
@@ -35,9 +26,6 @@ public class ResidentController : MonoBehaviour
         if (type == CharacterType.NPC) return;
 
         behavior = CreateBehaviour(type);
-
-        InitAppearanceRef();
-        SetAppearance(type);
     }
 
     void OnEnable()
@@ -79,7 +67,7 @@ public class ResidentController : MonoBehaviour
 
     public void Exit()
     {
-        InteractionManager.I.ExitResident(); 
+        InteractionManager.I.ExitResident();
         rectTransform.DOAnchorPos(profile.endPoint, 3f).OnComplete(() => this.gameObject.SetActive(false));
     }
 
@@ -92,7 +80,10 @@ public class ResidentController : MonoBehaviour
         if (dialog == null) return;
 
         InGameUIController.I.ShowTextBox(dialog);
-        mouth_Animator.SetTrigger("Talk");
+
+        if (animator == null) return;
+
+        animator.SetTrigger("Talk");
     }
     #endregion
 
@@ -109,47 +100,16 @@ public class ResidentController : MonoBehaviour
     }
     #endregion
 
-    #region Setter
-    private void SetAppearance(CharacterType type)
+    public void RevealDoppel()
     {
-        if (doppel == null || origin == null)
-        {
-            Debug.Log("외모 세팅 transform 이 없다.");
-            return;
-        }
+        GameObject revealFace = transform.Find("_RevealFace").gameObject;
 
-        if (type.Equals(CharacterType.Resident))
-        {
-            doppel.gameObject.SetActive(false);
-            origin.gameObject.SetActive(true);
+        //대사만 출력.
+        if (revealFace == null) return;
 
-            int ci = Random.Range(0, origin.childCount);
-
-            for (int i = 0; i < origin.childCount; i++)
-            {
-                if (i == ci)
-                    origin.GetChild(i).gameObject.SetActive(true);
-                else
-                    origin.GetChild(i).gameObject.SetActive(false);
-            }
-        }
-        else if (type.Equals(CharacterType.Doppel))
-        {
-            origin.gameObject.SetActive(false);
-            doppel.gameObject.SetActive(true);
-
-            int ci = Random.Range(0, doppel.childCount);
-
-            for (int i = 0; i < doppel.childCount; i++)
-            {
-                if (i == ci)
-                    doppel.GetChild(i).gameObject.SetActive(true);
-                else
-                    doppel.GetChild(i).gameObject.SetActive(false);
-            }
-        }
+        revealFace.SetActive(true);
+        animator.SetTrigger("Reveal");
     }
-    #endregion
 }
 
 

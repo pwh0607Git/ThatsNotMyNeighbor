@@ -150,12 +150,33 @@ public class InteractionManager : BehaviourSingleton<InteractionManager>
         }
         else if (type.Equals(QuestionType.Appearance))
         {
-            return "Appearance";
+            return "Question_Appearance";
         }
         else if (type.Equals(QuestionType.TodayEntryList))
         {
-            return "TodayEntryList_None";
+            if (IsDoppel())
+            {
+                // 만약 도플갱어라면 확률 적으로 정체가 밝혀진 것을 체크한다.
+                float rndVal = Random.Range(0, 1);
+
+                // if (rndVal <= 0.3f)
+                // {
+                //     currentResident.RevealDoppel();
+                //     return "Reveal_TodayEntryList";
+                // }
+                // else
+                // {
+                //     return "Question_TodayEntryList_None";
+                // }
+                return "Question_TodayEntryList_None";
+            }
+            else
+            {
+                return "Question_TodayEntryList_None";
+            }
         }
         return "";
     }
+
+    private bool IsDoppel() => currentResident.type.Equals(CharacterType.Doppel);
 }

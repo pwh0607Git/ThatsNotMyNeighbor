@@ -12,7 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39aae41a22367654383453d7ab84298b, type: 3}
   m_Name: RomanStilnsky
   m_EditorClassIdentifier: 
-  models: []
+  models:
+  - type: 0
+    model: {fileID: 4918190570779647745, guid: 67b53ee3799e8a347aacaec0c2c34199, type: 3}
+  - type: 0
+    model: {fileID: 4918190570779647745, guid: 182aa5f6fe0674244b3497a9211bd921, type: 3}
+  - type: 0
+    model: {fileID: 4918190570779647745, guid: 2dabdbedbbe24554ca28507914f76cb4, type: 3}
+  - type: 0
+    model: {fileID: 4918190570779647745, guid: e2a52c08500b0154eadb1e4ac4ce6837, type: 3}
   revealDialog:
   - code: Reveal_Props
     msgs:

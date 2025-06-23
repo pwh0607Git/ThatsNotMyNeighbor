@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39aae41a22367654383453d7ab84298b, type: 3}
   m_Name: SelenneSverchzt
   m_EditorClassIdentifier: 
-  models: []
+  models:
+  - type: 0
+    model: {fileID: 6238595125757120730, guid: 1b3e324e7d06f644cb8adef10a94d458, type: 3}
+  - type: 0
+    model: {fileID: 6238595125757120730, guid: eca64d74ca5e32d46a76011b3d5f4729, type: 3}
   revealDialog:
   - code: Reveal_Props
     msgs:

@@ -12,7 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39aae41a22367654383453d7ab84298b, type: 3}
   m_Name: RobertskyPeachman
   m_EditorClassIdentifier: 
-  models: []
+  models:
+  - type: 0
+    model: {fileID: 1649156364659624134, guid: f4ec762070a1e1b41b52dd442dcde103, type: 3}
+  - type: 0
+    model: {fileID: 1649156364659624134, guid: 9b9ec08666f043c44a08f292bfe99d79, type: 3}
+  - type: 2
+    model: {fileID: 1649156364659624134, guid: 7a01b8899f7b4f241806237ca91f4752, type: 3}
   revealDialog:
   - code: Reveal_Props
     msgs:

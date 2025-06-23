@@ -50,8 +50,17 @@ MonoBehaviour:
   - code: EntryRequest_Exist
     msgs:
     - "\uC774\uBBF8 \uB4DC\uB838\uC2B5\uB2C8\uB2E4."
+  - code: Question_TodayEntryList_None
+    msgs:
+    - "\uC81C\uAC00 \uB9AC\uC2A4\uD2B8\uC5D0 \uC5C6\uB2E4\uACE0\uC694?"
+    - "\uADF8\uB7F4\uB9AC\uAC00\uC694 \uBB54\uAC00 \uBB38\uC81C\uAC00 \uC788\uB294
+      \uAC70 \uAC19\uC544\uC694."
+  - code: Question_Appearance
+    msgs:
+    - "\uC81C \uC5BC\uAD74\uC774\uC694?"
+    - "\uADF8\uB0E5 \uD3C9\uC18C\uB791 \uAC19\uC740 \uAC70 \uAC19\uC740\uB370\uC694."
   entryRequestReasons: []
   startPoint: {x: -1000, y: 0}
   targetPoint: {x: 0, y: 0}
   endPoint: {x: 1000, y: 0}
-  doppelData: {fileID: 0}
+  doppelData: {fileID: 11400000, guid: 14308c7307d85df4a88ba0c6a3af23a8, type: 2}

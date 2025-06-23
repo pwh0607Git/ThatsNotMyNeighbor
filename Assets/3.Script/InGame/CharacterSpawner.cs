@@ -65,20 +65,28 @@ public class CharacterSpawner : MonoBehaviour
             int index = UnityEngine.Random.Range(0, characters.Count);
 
             Profile profile = characters[index];
-            ResidentController character = Instantiate(profile.model, characterLayer).GetComponent<ResidentController>();
+            float rnd = UnityEngine.Random.value;
+            CharacterType type = rnd < 0.2f ? CharacterType.Resident : CharacterType.Doppel;
+
+            ResidentController character = null;
+            if (type.Equals(CharacterType.Resident))
+            {
+                character = Instantiate(profile.model, characterLayer).GetComponent<ResidentController>();
+            }
+            else if (type.Equals(CharacterType.Doppel))
+            {
+                int doppelIndex = UnityEngine.Random.Range(0, profile.doppelData.models.Count);
+
+                DoppelInform info = profile.doppelData.models[doppelIndex];
+
+                character = Instantiate(info.model, characterLayer).GetComponent<ResidentController>();
+            }
+
+            if (character == null) return;
 
             characterList.Add(character);
-            float rnd = UnityEngine.Random.value;
-            
-            if (rnd < 0.2f)
-            {
-                character.SetProperty(profile, CharacterType.Resident);
-            }
-            else
-            {
-                character.SetProperty(profile, CharacterType.Doppel);
-            }
 
+            character.SetProperty(profile, type);
             character.gameObject.SetActive(false);
         }
     }

@@ -12,7 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39aae41a22367654383453d7ab84298b, type: 3}
   m_Name: Dr.W.Afton
   m_EditorClassIdentifier: 
-  models: []
+  models:
+  - type: 0
+    model: {fileID: 8199791500238815742, guid: f056ab55066e8fe49ac2b7dc37397a94, type: 3}
+  - type: 0
+    model: {fileID: 8199791500238815742, guid: 98b56e3a8ab15474fb3b8185449da7e8, type: 3}
+  - type: 0
+    model: {fileID: 8199791500238815742, guid: 1aa5788e076dd5149914d47404230ce7, type: 3}
+  - type: 0
+    model: {fileID: 8199791500238815742, guid: 29fa0b687a0d06848b89e567da5164fa, type: 3}
   revealDialog:
   - code: Reveal_Props
     msgs:

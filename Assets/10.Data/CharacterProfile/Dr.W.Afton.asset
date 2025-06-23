@@ -18,7 +18,7 @@ MonoBehaviour:
   profileImage: {fileID: 21300000, guid: 515238d699547464b8a66885dd094d52, type: 3}
   characteristics: []
   job: "\uBB3C\uB9AC\uD559\uC790"
-  expiration: 
+  expiration: 05/1965
   model: {fileID: 8199791500238815742, guid: 655c5d0364926ed409cc6123796a687d, type: 3}
   dialogs:
   - code: Greeting
@@ -46,8 +46,17 @@ MonoBehaviour:
   - code: EntryRequest_Exist
     msgs:
     - "\uC774\uBBF8 \uB2F9\uC2E0 \uC55E\uC5D0 \uC788\uC2B5\uB2C8\uB2E4."
+  - code: Question_TodayEntryList_None
+    msgs:
+    - "\uC81C\uAC00 \uB9AC\uC2A4\uD2B8\uC5D0 \uC5C6\uB2E4\uACE0\uC694?"
+    - "\uADF8\uB7F4\uB9AC\uAC00\uC694 \uBB54\uAC00 \uBB38\uC81C\uAC00 \uC788\uB294
+      \uAC70 \uAC19\uAD70\uC694."
+  - code: Question_Appearance
+    msgs:
+    - "\uC81C \uC5BC\uAD74\uC774\uC694?"
+    - "\uADF8\uB0E5 \uD3C9\uC18C\uB791 \uAC19\uC740 \uAC70 \uAC19\uC740\uB370\uC694."
   entryRequestReasons: []
   startPoint: {x: -1000, y: 0}
   targetPoint: {x: 0, y: 0}
   endPoint: {x: 1000, y: 0}
-  doppelData: {fileID: 0}
+  doppelData: {fileID: 11400000, guid: aa52c4f4ab47cd84e9d2ad54fb63b4db, type: 2}
