@@ -652,7 +652,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2813290895475307829}
-  - component: {fileID: 4462458589267802220}
+  - component: {fileID: 64890317665420098}
   m_Layer: 5
   m_Name: Doppel_Anold 2
   m_TagString: Untagged
@@ -681,7 +681,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &4462458589267802220
+--- !u!114 &64890317665420098
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -690,12 +690,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7898247696784489879}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f6a8bb5995cb6d4aa6abf53ea0ae07a, type: 3}
+  m_Script: {fileID: 11500000, guid: 18a7c05c1e1a66b4d8505eb1cdaa6fda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
-  origin: {fileID: 0}
-  doppel: {fileID: 0}
+  type: 1
   moveEase: 1
 --- !u!1 &8504488561018750555
 GameObject:

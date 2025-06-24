@@ -13,10 +13,15 @@ MonoBehaviour:
   m_Name: SelenneSverchzt
   m_EditorClassIdentifier: 
   models:
-  - type: 0
+  - type: 1
     model: {fileID: 6238595125757120730, guid: 1b3e324e7d06f644cb8adef10a94d458, type: 3}
-  - type: 0
+    reason: 
+  - type: 1
     model: {fileID: 6238595125757120730, guid: eca64d74ca5e32d46a76011b3d5f4729, type: 3}
+    reason: 
+  - type: 4
+    model: {fileID: 6238595125757120730, guid: 290bb1055771d6447bd020b8a5b3d578, type: 3}
+    reason: 
   revealDialog:
   - code: Reveal_Props
     msgs:

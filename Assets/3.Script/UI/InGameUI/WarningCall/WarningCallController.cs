@@ -4,7 +4,6 @@ using UnityEngine.Events;
 
 public class WarningCallController : MonoBehaviour
 {
-
     [Header("Siren")]
     [SerializeField] GameObject siren;
     public ResidentController ddd { get; private set; }
@@ -38,7 +37,7 @@ public class WarningCallController : MonoBehaviour
                     .AppendInterval(2f)
                     .AppendCallback(() =>
                     {
-                        ddd.Talk("Call");
+                        ddd.TalkByCode("Call");
                     });
     }
 

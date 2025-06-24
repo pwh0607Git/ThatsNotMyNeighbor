@@ -195,7 +195,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6024322163686643483}
-  - component: {fileID: 8850091578207375324}
+  - component: {fileID: -2617088076504162304}
   m_Layer: 5
   m_Name: Doppel_Angus 2
   m_TagString: Untagged
@@ -224,7 +224,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &8850091578207375324
+--- !u!114 &-2617088076504162304
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -233,10 +233,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 8144141320643921870}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f6a8bb5995cb6d4aa6abf53ea0ae07a, type: 3}
+  m_Script: {fileID: 11500000, guid: 18a7c05c1e1a66b4d8505eb1cdaa6fda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
-  origin: {fileID: 0}
-  doppel: {fileID: 0}
-  moveEase: 1
+  type: 1
+  moveEase: 0

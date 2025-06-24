@@ -202,8 +202,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  origin: {fileID: 0}
-  doppel: {fileID: 0}
   moveEase: 1
 --- !u!95 &2593014732622973586
 Animator:
@@ -215,7 +213,7 @@ Animator:
   m_GameObject: {fileID: 1181699558817077477}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 86d4833b2ffb7a248852ab19ae61963a, type: 2}
+  m_Controller: {fileID: 22100000, guid: e17913173823352418ef45578a65c540, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

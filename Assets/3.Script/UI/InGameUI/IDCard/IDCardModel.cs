@@ -2,11 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 
-// 위조 형태
-public enum ForgedType
-{
-    None, Id, Mark, Expiration
-}
 
 public class IDCardModel
 {

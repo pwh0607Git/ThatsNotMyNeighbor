@@ -36,6 +36,11 @@ public class EntryRequestController : MonoBehaviour
         return entryRequestButton.gameObject.activeSelf;
     }
 
+    public void SetForgedData(Profile profile)
+    {
+        // presenter.SetEntryRequestModel(profile, true);
+    }
+
     public void OnClickOpenButton() => presenter.OnClickOpenButton();
     public void OnClickExitButton() => presenter.OnClickCloseButton();
 }

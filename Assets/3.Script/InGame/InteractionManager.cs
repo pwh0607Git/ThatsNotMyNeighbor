@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using System.ComponentModel;
+using System.Data.Common;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
@@ -33,8 +33,25 @@ public class InteractionManager : BehaviourSingleton<InteractionManager>
 
         this.currentResident = resident;
 
-        idCardController.SetData(resident.profile);
-        entryRequestController.SetData(resident.profile);
+        if (resident is not DoppelController doppel)
+        {
+            idCardController.SetData(resident.profile);
+            entryRequestController.SetData(resident.profile);
+        }
+        else
+        {
+            // 위조 데이터 생성.
+            if (doppel.doppelType.Equals(DoppelType.ForgedID))
+            {
+                idCardController.SetForgedData(resident.profile);
+            }
+
+            if (doppel.doppelType.Equals(DoppelType.ForgedEntryRequest))
+            {
+                entryRequestController.SetForgedData(resident.profile); 
+            }
+        }
+
 
         DOVirtual.DelayedCall(0.2f, () =>
         {
@@ -45,30 +62,33 @@ public class InteractionManager : BehaviourSingleton<InteractionManager>
     private void ShowProps()
     {
         int num = Random.Range(0, 4);
+        
+        bool hasIDCard = currentResident.HasIDCard();
+        bool hasEntryRequest = currentResident.HasEntryRequest();
 
         Debug.Log($"Props Number : {num}");
         switch (num)
         {
             case 0:
                 {
-                    idCardController.SetActiveButton(true);
+                    if(hasIDCard) idCardController.SetActiveButton(true);
                     entryRequestController.SetActiveButton(true);
                     break;
                 }
             case 1:
                 {
-                    idCardController.SetActiveButton(true);
+                    if(hasIDCard) idCardController.SetActiveButton(true);
                     break;
                 }
             case 2:
                 {
-                    entryRequestController.SetActiveButton(true);
+                    if(hasEntryRequest) entryRequestController.SetActiveButton(true);
                     break;
                 }
             case 3:
                 {
-                    idCardController.SetActiveButton(true);
-                    entryRequestController.SetActiveButton(true);
+                    if(hasIDCard) idCardController.SetActiveButton(true);
+                    if(hasEntryRequest) entryRequestController.SetActiveButton(true);
                     break;
                 }
         }
@@ -116,12 +136,18 @@ public class InteractionManager : BehaviourSingleton<InteractionManager>
             if (!q.Value) continue;
 
             string dialogCode = GetDialogCode(q.Key);
-            currentResident.Talk(dialogCode);
+
+            if (dialogCode == "") return;
+
+            currentResident.TalkByCode(dialogCode);
         }
     }
 
     private string GetDialogCode(QuestionType type)
     {
+        bool hasIDCard = currentResident.HasIDCard();
+        bool hasEntryRequest = currentResident.HasEntryRequest();
+
         if (type.Equals(QuestionType.IDCard))
         {
             if (idCardController.GetActiveButton())
@@ -131,9 +157,21 @@ public class InteractionManager : BehaviourSingleton<InteractionManager>
             }
             else
             {
-                idCardController.SetActiveButton(true);
-                return "IDCard_Mistake";
+                if (hasIDCard)
+                {
+                    idCardController.SetActiveButton(true);
+                    return "IDCard_Mistake";
+                }
+                else
+                {
+                    if (currentResident is DoppelController doppel && doppel.doppelType.Equals(DoppelType.NonePaper))
+                    {
+                        doppel.Reveal("Reveal_Props");
+                        return "";
+                    }
+                }
             }
+            
         }
         else if (type.Equals(QuestionType.EntryRequest))
         {
@@ -144,34 +182,58 @@ public class InteractionManager : BehaviourSingleton<InteractionManager>
             }
             else
             {
-                entryRequestController.SetActiveButton(true);
-                return "EntryRequest_Mistake";
+                if (hasEntryRequest)
+                {
+                    entryRequestController.SetActiveButton(true);
+                    return "EntryRequest_Mistake";
+                }
+                else
+                {
+                    if (currentResident is DoppelController doppel && doppel.doppelType.Equals(DoppelType.NonePaper))
+                    {
+                        doppel.Reveal("Reveal_Props");
+                        return "";
+                    }
+                }
             }
         }
         else if (type.Equals(QuestionType.Appearance))
         {
+            if (currentResident is DoppelController doppel && doppel.doppelType.Equals(DoppelType.Appearance))
+            {
+                //걸렸을 때. => 20프로 확률로 Reveal 호출.
+                float per = Random.value;
+
+                if (per <= 0.3f)
+                {
+                    doppel.Reveal("Reveal_Appearance");
+                    return "";
+                }
+                else
+                {
+                    return "Question_Appearance";
+                }
+            }
             return "Question_Appearance";
         }
         else if (type.Equals(QuestionType.TodayEntryList))
         {
-            if (IsDoppel())
+            if (currentResident is DoppelController doppel && doppel.type.Equals(DoppelType.TodayEntryList))
             {
-                // 만약 도플갱어라면 확률 적으로 정체가 밝혀진 것을 체크한다.
-                float rndVal = Random.Range(0, 1);
-
-                // if (rndVal <= 0.3f)
-                // {
-                //     currentResident.RevealDoppel();
-                //     return "Reveal_TodayEntryList";
-                // }
-                // else
-                // {
-                //     return "Question_TodayEntryList_None";
-                // }
-                return "Question_TodayEntryList_None";
+                float per = Random.value;
+                if (per <= 0.2f)
+                {
+                    doppel.Reveal("Reveal_TodayEntryList");
+                    return "";
+                }
+                else
+                {
+                    return "Question_TodayEntryList_None";
+                }
             }
             else
             {
+                //주민인 경우.
                 return "Question_TodayEntryList_None";
             }
         }

@@ -13,12 +13,18 @@ MonoBehaviour:
   m_Name: RobertskyPeachman
   m_EditorClassIdentifier: 
   models:
-  - type: 0
+  - type: 1
     model: {fileID: 1649156364659624134, guid: f4ec762070a1e1b41b52dd442dcde103, type: 3}
-  - type: 0
+    reason: 
+  - type: 1
     model: {fileID: 1649156364659624134, guid: 9b9ec08666f043c44a08f292bfe99d79, type: 3}
-  - type: 2
+    reason: 
+  - type: 3
     model: {fileID: 1649156364659624134, guid: 7a01b8899f7b4f241806237ca91f4752, type: 3}
+    reason: 
+  - type: 4
+    model: {fileID: 1649156364659624134, guid: 36edb4f9ad63b6e47b6762c07c54222c, type: 3}
+    reason: 
   revealDialog:
   - code: Reveal_Props
     msgs:
@@ -26,6 +32,6 @@ MonoBehaviour:
   - code: Reveal_TodayEntryList
     msgs:
     - "\uD760... \uADF8\uB7F0\uAC8C \uC788\uC5C8\uB2E4\uB2C8..."
-  - code: Reveal_Apearance
+  - code: Reveal_Appearance
     msgs:
     - "\uC644\uBCBD\uD558\uAC8C \uC228\uACBC\uB2E4\uACE0 \uC0DD\uAC01\uD588\uB294\uB370..."

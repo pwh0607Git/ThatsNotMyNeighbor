@@ -13,10 +13,15 @@ MonoBehaviour:
   m_Name: MiaStone
   m_EditorClassIdentifier: 
   models:
-  - type: 0
+  - type: 1
     model: {fileID: 1181699558817077477, guid: f956600c355e852459d1ffaa4d6e8ea7, type: 3}
-  - type: 2
+    reason: 
+  - type: 1
     model: {fileID: 1181699558817077477, guid: 4a71ed7ff86adae4bb21e99b7db41679, type: 3}
+    reason: 
+  - type: 4
+    model: {fileID: 1181699558817077477, guid: 15bf1832cd8ce624a809e5b876affc25, type: 3}
+    reason: 
   revealDialog:
   - code: Reveal_Props
     msgs:
@@ -24,6 +29,6 @@ MonoBehaviour:
   - code: Reveal_TodayEntryList
     msgs:
     - "\uD760... \uADF8\uB7F0\uAC8C \uC788\uC5C8\uB2E4\uB2C8..."
-  - code: Reveal_Apearance
+  - code: Reveal_Appearance
     msgs:
     - "\uC644\uBCBD\uD558\uAC8C \uC228\uACBC\uB2E4\uACE0 \uC0DD\uAC01\uD588\uB294\uB370..."

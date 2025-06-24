@@ -20,7 +20,12 @@ public class IDCardController : MonoBehaviour
 
     public void SetData(Profile profile)
     {
-        presenter.SetIDCardModel(profile);
+        presenter.SetIDCardModel(profile, false);
+    }
+
+    public void SetForgedData(Profile profile)
+    {
+        presenter.SetIDCardModel(profile, true);
     }
 
     public void SetActiveButton(bool on)

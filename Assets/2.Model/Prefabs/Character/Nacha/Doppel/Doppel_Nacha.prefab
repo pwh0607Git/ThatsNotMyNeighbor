@@ -426,7 +426,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3228176733513369965}
-  - component: {fileID: 6493333678834691486}
+  - component: {fileID: -544036276753267418}
+  - component: {fileID: 8913093414244820812}
   m_Layer: 5
   m_Name: Doppel_Nacha
   m_TagString: Untagged
@@ -456,7 +457,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &6493333678834691486
+--- !u!114 &-544036276753267418
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -465,13 +466,36 @@ MonoBehaviour:
   m_GameObject: {fileID: 4541840464828541624}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f6a8bb5995cb6d4aa6abf53ea0ae07a, type: 3}
+  m_Script: {fileID: 11500000, guid: 18a7c05c1e1a66b4d8505eb1cdaa6fda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
-  origin: {fileID: 0}
-  doppel: {fileID: 0}
-  moveEase: 1
+  type: 1
+  moveEase: 0
+  eye: {fileID: 0}
+  reveal_Eye: {fileID: 0}
+  mouth: {fileID: 0}
+  reveal_mouth: {fileID: 0}
+--- !u!95 &8913093414244820812
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4541840464828541624}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: c709ba520a7781446981a4d71e97dc1f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7096051320397403934
 GameObject:
   m_ObjectHideFlags: 0

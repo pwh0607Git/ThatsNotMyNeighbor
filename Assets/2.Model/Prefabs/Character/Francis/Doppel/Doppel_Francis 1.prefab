@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 670058882939621868}
-  - component: {fileID: 1094595386741695612}
+  - component: {fileID: 3584485556727629084}
   m_Layer: 5
   m_Name: Doppel_Francis 1
   m_TagString: Untagged
@@ -37,7 +37,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1094595386741695612
+--- !u!114 &3584485556727629084
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -46,13 +46,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1302150920101488649}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f6a8bb5995cb6d4aa6abf53ea0ae07a, type: 3}
+  m_Script: {fileID: 11500000, guid: 18a7c05c1e1a66b4d8505eb1cdaa6fda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  type: 0
-  origin: {fileID: 0}
-  doppel: {fileID: 0}
-  moveEase: 1
+  type: 1
+  moveEase: 0
 --- !u!1 &1377992941161686931
 GameObject:
   m_ObjectHideFlags: 0

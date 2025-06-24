@@ -13,16 +13,24 @@ MonoBehaviour:
   m_Name: AngusCiprianni
   m_EditorClassIdentifier: 
   models:
-  - type: 0
-    model: {fileID: 8144141320643921870, guid: 32a48276bd7ce5645b3ffe9537dd177a, type: 3}
-  - type: 0
-    model: {fileID: 8144141320643921870, guid: 0efd0c35325edab47b9c3458444bea13, type: 3}
   - type: 1
+    model: {fileID: 8144141320643921870, guid: 32a48276bd7ce5645b3ffe9537dd177a, type: 3}
+    reason: 
+  - type: 1
+    model: {fileID: 8144141320643921870, guid: 0efd0c35325edab47b9c3458444bea13, type: 3}
+    reason: 
+  - type: 2
     model: {fileID: 8144141320643921870, guid: e804ee2d38e2e3d4284b1ed14ab7dc63, type: 3}
-  - type: 0
+    reason: 
+  - type: 1
     model: {fileID: 8144141320643921870, guid: cedc9016c84b4444ea00893d9bda8828, type: 3}
-  - type: 0
+    reason: 
+  - type: 1
     model: {fileID: 8144141320643921870, guid: 671c4382e83b5d147ae3c4c69a498cb6, type: 3}
+    reason: 
+  - type: 4
+    model: {fileID: 8144141320643921870, guid: c7a40148f1ff01c489f3c055e7746654, type: 3}
+    reason: 
   revealDialog:
   - code: Reveal_Props
     msgs:
@@ -30,6 +38,6 @@ MonoBehaviour:
   - code: Reveal_TodayEntryList
     msgs:
     - "\uD760... \uADF8\uB7F0\uAC8C \uC788\uC5C8\uB2E4\uB2C8..."
-  - code: Reveal_Apearance
+  - code: Reveal_Appearance
     msgs:
     - "\uC644\uBCBD\uD558\uAC8C \uC228\uACBC\uB2E4\uACE0 \uC0DD\uAC01\uD588\uB294\uB370..."

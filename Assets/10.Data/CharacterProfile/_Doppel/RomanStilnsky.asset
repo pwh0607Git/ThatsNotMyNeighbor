@@ -13,14 +13,21 @@ MonoBehaviour:
   m_Name: RomanStilnsky
   m_EditorClassIdentifier: 
   models:
-  - type: 0
+  - type: 1
     model: {fileID: 4918190570779647745, guid: 67b53ee3799e8a347aacaec0c2c34199, type: 3}
-  - type: 0
+    reason: 
+  - type: 1
     model: {fileID: 4918190570779647745, guid: 182aa5f6fe0674244b3497a9211bd921, type: 3}
-  - type: 0
+    reason: 
+  - type: 1
     model: {fileID: 4918190570779647745, guid: 2dabdbedbbe24554ca28507914f76cb4, type: 3}
-  - type: 0
+    reason: 
+  - type: 1
     model: {fileID: 4918190570779647745, guid: e2a52c08500b0154eadb1e4ac4ce6837, type: 3}
+    reason: 
+  - type: 4
+    model: {fileID: 4918190570779647745, guid: 15e4414d18d88714bb3f10e985ddd265, type: 3}
+    reason: 
   revealDialog:
   - code: Reveal_Props
     msgs:
@@ -28,6 +35,6 @@ MonoBehaviour:
   - code: Reveal_TodayEntryList
     msgs:
     - "\uD760... \uADF8\uB7F0\uAC8C \uC788\uC5C8\uB2E4\uB2C8..."
-  - code: Reveal_Apearance
+  - code: Reveal_Appearance
     msgs:
     - "\uC644\uBCBD\uD558\uAC8C \uC228\uACBC\uB2E4\uACE0 \uC0DD\uAC01\uD588\uB294\uB370..."

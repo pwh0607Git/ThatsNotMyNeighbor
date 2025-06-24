@@ -543,8 +543,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   type: 0
-  origin: {fileID: 0}
-  doppel: {fileID: 0}
   moveEase: 1
 --- !u!95 &4416588641796341494
 Animator:
@@ -556,7 +554,7 @@ Animator:
   m_GameObject: {fileID: 8199791500238815742}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 342c911f5bc4fd940a0a3cef0c8953d4, type: 2}
+  m_Controller: {fileID: 22100000, guid: 7488a23c84106064c983f0449c45f39d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

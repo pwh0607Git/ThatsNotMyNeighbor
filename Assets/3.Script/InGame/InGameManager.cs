@@ -214,7 +214,7 @@ public class InGameManager : BehaviourSingleton<InGameManager>
         Profile profile = npcs.Find(p => p.id.Equals("000000000"));               // DDD 직원 id
 
         npc_DDD = Instantiate(profile.model, characterLayer).GetComponent<ResidentController>();
-        npc_DDD.SetProperty(profile, CharacterType.NPC);
+        npc_DDD.SetProperty(profile, CharacterType.NPC, BehaviourFactory.CreateResidentBehaviour());
         warningCall.Init(npc_DDD);
 
         startSeq.AppendInterval(1f)
@@ -223,7 +223,7 @@ public class InGameManager : BehaviourSingleton<InGameManager>
             .AppendCallback(() =>
             {
                 // 대사 출력
-                npc_DDD.GetComponent<ResidentController>().Talk("Tutorial");
+                npc_DDD.GetComponent<ResidentController>().TalkByCode("Tutorial");
             });
     }
 

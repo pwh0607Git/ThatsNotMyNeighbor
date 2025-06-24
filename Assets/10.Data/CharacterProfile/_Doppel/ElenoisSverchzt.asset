@@ -13,12 +13,18 @@ MonoBehaviour:
   m_Name: ElenoisSverchzt
   m_EditorClassIdentifier: 
   models:
-  - type: 0
+  - type: 1
     model: {fileID: 4419056343376614214, guid: 1432b774a5e2b9d458b276a01374d695, type: 3}
-  - type: 0
+    reason: 
+  - type: 1
     model: {fileID: 4419056343376614214, guid: 24fb9bd8b4e93ac488b5bb2331bdd5b8, type: 3}
-  - type: 0
+    reason: 
+  - type: 1
     model: {fileID: 4419056343376614214, guid: 864759114fe8e0143a302a05520724ce, type: 3}
+    reason: 
+  - type: 4
+    model: {fileID: 4419056343376614214, guid: 7de4073f5ee842e418df4a73315aac2f, type: 3}
+    reason: 
   revealDialog:
   - code: Reveal_Props
     msgs:
@@ -26,6 +32,6 @@ MonoBehaviour:
   - code: Reveal_TodayEntryList
     msgs:
     - "\uD760... \uADF8\uB7F0\uAC8C \uC788\uC5C8\uB2E4\uB2C8..."
-  - code: Reveal_Apearance
+  - code: Reveal_Appearance
     msgs:
     - "\uC644\uBCBD\uD558\uAC8C \uC228\uACBC\uB2E4\uACE0 \uC0DD\uAC01\uD588\uB294\uB370..."

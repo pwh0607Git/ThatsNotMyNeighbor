@@ -13,14 +13,21 @@ MonoBehaviour:
   m_Name: AlbertskyPeachman
   m_EditorClassIdentifier: 
   models:
-  - type: 0
+  - type: 1
     model: {fileID: 5396286691285834843, guid: d7e8c727f2d15a641bac7fd0c399d99f, type: 3}
-  - type: 0
+    reason: "\uC5BC\uAD74 \uD615\uD0DC\uAC00 \uB2E4\uB985\uB2C8\uB2E4."
+  - type: 1
     model: {fileID: 5396286691285834843, guid: f3e6e58041e551f47b66273f3721f225, type: 3}
-  - type: 0
+    reason: "\uB208\uC379 \uC0C9\uAE54\uC774 \uB2E4\uB985\uB2C8\uB2E4."
+  - type: 1
     model: {fileID: 5396286691285834843, guid: c3c80e5c53ffddd4f904f9ca79af3cc2, type: 3}
-  - type: 0
+    reason: "\uCF54\uC758 \uD06C\uAE30\uAC00 \uB2E4\uB985\uB2C8\uB2E4."
+  - type: 1
     model: {fileID: 5396286691285834843, guid: 0dc659a289e0bdc4e9f32857db8c3bb6, type: 3}
+    reason: "\uCF67\uC218\uC5FC\uC758 \uBAA8\uC591\uC774 \uB2E4\uB985\uB2C8\uB2E4."
+  - type: 4
+    model: {fileID: 5396286691285834843, guid: 907e4d621b965f340876069936876343, type: 3}
+    reason: "\uC678\uBAA8 \uC774\uC0C1 \uC5C6"
   revealDialog:
   - code: Reveal_Props
     msgs:
@@ -28,6 +35,6 @@ MonoBehaviour:
   - code: Reveal_TodayEntryList
     msgs:
     - "\uD760... \uADF8\uB7F0\uAC8C \uC788\uC5C8\uB2E4\uB2C8..."
-  - code: Reveal_Apearance
+  - code: Reveal_Appearance
     msgs:
     - "\uC644\uBCBD\uD558\uAC8C \uC228\uACBC\uB2E4\uACE0 \uC0DD\uAC01\uD588\uB294\uB370..."

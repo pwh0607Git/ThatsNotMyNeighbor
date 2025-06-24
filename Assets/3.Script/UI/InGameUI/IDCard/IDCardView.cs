@@ -1,4 +1,3 @@
-using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -14,7 +13,7 @@ public class IDCardView : MonoBehaviour
 
     [SerializeField] Image mark;
 
-    public void SetIDCard(Profile profile, List<ForgedType> types = null)
+    public void SetIDCard(Profile profile, ForgedType forgedType)
     {
         this.firstName.text = profile.firstName;
         this.lastName.text = profile.lastName;
@@ -22,30 +21,24 @@ public class IDCardView : MonoBehaviour
         this.exp.text = profile.expiration;
         this.profileImage.sprite = profile.profileImage;
 
-        //위조 데이터 생성
-        if (types == null || types.Count <= 0) return;
-
-        foreach (var type in types)
+        switch (forgedType)
         {
-            switch (type)
-            {
-                case ForgedType.Mark:
-                    {
-                        mark.enabled = false;
-                        break;
-                    }
-                case ForgedType.Expiration:
-                    {
-                        exp.text = "";
-                        break;
-                    }
-                case ForgedType.Id:
-                    {
-
-                        break;
+            case ForgedType.Mark:
+                {
+                    mark.enabled = false;
+                    break;
                 }
-
+            case ForgedType.Expiration:
+                {
+                    exp.text = "";
+                    break;
+                }
+            case ForgedType.Id:
+                {
+                    id.text = "111888555";
+                    break;
             }
+
         }
     }
 

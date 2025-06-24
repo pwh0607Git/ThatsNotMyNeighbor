@@ -5,11 +5,14 @@ using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
 
+public enum TextType
+{
+    Normal,
+    Reveal,
+}
+
 public class TextBoxController : MonoBehaviour, IPointerDownHandler
 {
-    [Header("Test Inspector")]
-    [SerializeField] List<string> testTexts;
-
     // List를 받아서 queue에 넣기
     // Queue에 있는 데이터들 모두 순차적으로 출력
     // Queue 가 비어있으면 text box 클릭시 종료.
@@ -41,7 +44,7 @@ public class TextBoxController : MonoBehaviour, IPointerDownHandler
     }
 
     public void EnqueueDialog(Dialog dialog)
-    {           
+    {
         foreach (string m in dialog.msgs)
         {
             textQueue.Enqueue(m);
