@@ -3,12 +3,18 @@ using DG.Tweening;
 using UnityEngine;
 
 public enum CharacterType { Resident, Doppel, NPC }
+public enum DespawnType
+{
+    Enter,
+    Death,
+}
 
 public class ResidentController : MonoBehaviour
 {
     private Queue<string> textQueue = new();
     public Profile profile { get; private set; }
     public CharacterType type;
+    public DespawnType despawnType = DespawnType.Enter;
     protected ICharacterBehaviour behavior;
 
     RectTransform rectTransform;
@@ -34,9 +40,10 @@ public class ResidentController : MonoBehaviour
         Enter();
     }
 
-    void OnDisable()
+    public void SetDespawnType(DespawnType type)
     {
-
+        Debug.Log("DespawnType Change");
+        this.despawnType = type;
     }
 
     #region Move
@@ -63,6 +70,7 @@ public class ResidentController : MonoBehaviour
 
     public void Exit()
     {
+        LogManager.I.WriteLog(type, DespawnType.Enter);
         InteractionManager.I.ExitResident();
         rectTransform.DOAnchorPos(profile.endPoint, 3f).OnComplete(() => this.gameObject.SetActive(false));
     }

@@ -4,15 +4,22 @@ using UnityEngine;
 
 public class LobbyManager : MonoBehaviour
 {
-    // Start is called before the first frame update
+    OptionPanelController optionPanelController;
+
     void Start()
     {
-        
+        TryGetComponent(out optionPanelController);
+
+        InitPanel();
     }
 
-    // Update is called once per frame
-    void Update()
+    void InitPanel()
     {
-        
+        optionPanelController.SetActivePanel(false);
+    }
+
+    public void OnClickOptionButton()
+    {
+        optionPanelController.SetActivePanel(true);
     }
 }

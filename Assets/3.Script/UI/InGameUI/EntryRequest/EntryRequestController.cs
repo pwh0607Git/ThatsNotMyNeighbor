@@ -23,7 +23,13 @@ public class EntryRequestController : MonoBehaviour
     public void SetData(Profile profile)
     {
         string address = InGameManager.I.SearchAddress(profile);   
-        presenter.SetEntryRequestModel(profile, address);
+        presenter.SetEntryRequestModel(profile, address, false);
+    }
+
+    public void SetForgedData(Profile profile)
+    {
+        string address = InGameManager.I.SearchAddress(profile); 
+        presenter.SetEntryRequestModel(profile, address, true);
     }
 
     public void SetActiveButton(bool on)
@@ -36,10 +42,7 @@ public class EntryRequestController : MonoBehaviour
         return entryRequestButton.gameObject.activeSelf;
     }
 
-    public void SetForgedData(Profile profile)
-    {
-        // presenter.SetEntryRequestModel(profile, true);
-    }
+
 
     public void OnClickOpenButton() => presenter.OnClickOpenButton();
     public void OnClickExitButton() => presenter.OnClickCloseButton();

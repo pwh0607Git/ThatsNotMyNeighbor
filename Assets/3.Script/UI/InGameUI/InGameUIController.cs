@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using UnityEngine;
@@ -23,7 +22,7 @@ public class InGameUIController : BehaviourSingleton<InGameUIController>
     [Header("Popup")]
     [SerializeField] List<PopUpPair> pairs;
     [SerializeField] TextBoxController textBox;
-
+    [SerializeField] TextBoxController textBox_noise;
 
     [Header("Init Event")]
     private UnityAction OnCompleteInitEvent;
@@ -36,11 +35,13 @@ public class InGameUIController : BehaviourSingleton<InGameUIController>
     void OnEnable()
     {
         textBox.OnCompletePrintText += OnCompletePrintText;
+        textBox_noise.OnCompletePrintText += OnCompletePrintText;
     }
 
     void OnDisable()
     {
         textBox.OnCompletePrintText -= OnCompletePrintText;
+        textBox_noise.OnCompletePrintText -= OnCompletePrintText;
     }
 
     public void InitControllers(ResidentFolderController residentFileController, TodayEntryListController todayEntryListController)
@@ -79,6 +80,17 @@ public class InGameUIController : BehaviourSingleton<InGameUIController>
         }
         textBox.gameObject.SetActive(true);
         textBox.SetTextQueue(dialog);
+    }
+
+    public void ShowTextBox_Noise(Dialog dialog)
+    {
+        if (textBox_noise.gameObject.activeSelf)
+        {
+            textBox_noise.SetTextQueue(dialog);
+            return;
+        }
+        textBox_noise.gameObject.SetActive(true);
+        textBox_noise.SetTextQueue(dialog);
     }
 
     void OnCompletePrintText(string code)

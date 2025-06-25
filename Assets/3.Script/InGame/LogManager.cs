@@ -1,11 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using System.Diagnostics;
 
 public static class Log
 {
     public static int capturedDoppelCount = 0;
-    
     public static int enterResidentCount = 0;
     public static int enterDoppelCount = 0;
     public static int deadResidentCount = 0;
@@ -41,4 +38,50 @@ public static class Log
 public class LogManager : BehaviourSingleton<LogManager>
 {
     protected override bool IsDontDestroy() => false;
+
+    public int capturedDoppelCount = 0;
+    public int enterResidentCount = 0;
+    public int enterDoppelCount = 0;
+    public int deadResidentCount = 0;
+
+    public void WriteLog(CharacterType characterType, DespawnType despawnType)
+    {
+        if (characterType.Equals(CharacterType.Resident))
+        {
+            if (despawnType.Equals(DespawnType.Enter))
+            {
+                Log.enterResidentCount++;
+            }
+            else if (despawnType.Equals(DespawnType.Death))
+            {
+                Log.deadResidentCount++;
+            }
+        }
+        else if (characterType.Equals(CharacterType.Doppel))
+        {
+            if (despawnType.Equals(DespawnType.Enter))
+            {
+                Log.enterDoppelCount++;
+            }
+            else if (despawnType.Equals(DespawnType.Death))
+            {
+                Log.capturedDoppelCount++;
+            }
+        }
+
+        ShowCount();
+    }
+
+    void OnEnable()
+    {
+        Log.Reset();
+    }
+
+    void ShowCount()
+    {
+        capturedDoppelCount = Log.capturedDoppelCount;
+        enterResidentCount = Log.enterResidentCount;
+        enterDoppelCount = Log.enterDoppelCount;
+        deadResidentCount = Log.deadResidentCount;
+    }
 }

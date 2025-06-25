@@ -2,8 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
+using UnityEditor.SearchService;
 using UnityEngine;
-using UnityEngine.Lumin;
+using UnityEngine.SceneManagement;
 
 [Serializable]
 public class Apartment
@@ -94,14 +95,18 @@ public class InGameManager : BehaviourSingleton<InGameManager>
         StartTutorial();
     }
 
+    [Header("SpawnCount")]
+    [SerializeField] int fullCount;
+
     void InitSpawner()
     {
         if (todayEntryListController == null) return;
         spawner.OnCompleteSpawn += InitAtHome;
 
-        spawner.SetCharacters(todayEntryListController.TodayEntryList, 7);
+        spawner.SetCharacters(todayEntryListController.TodayEntryList, fullCount);
 
         InteractionManager.I.OnExitResident += ResidentExitHandler;
+        spawner.OnEmptyCharacterQueue += EndGame;
     }
 
     void ResidentExitHandler(Profile profile)
@@ -134,7 +139,7 @@ public class InGameManager : BehaviourSingleton<InGameManager>
             addressDic[ad].UpdateCheckAtHome(r.profile, false);
 
             Debug.Log($"{r.profile}은 현재 외출중...");
-        }        
+        }
     }
 
     void InitAddress()
@@ -237,7 +242,7 @@ public class InGameManager : BehaviourSingleton<InGameManager>
             .OnComplete(() =>
             {
                 Debug.Log("캐릭터 스폰 로직 수행!!");
-                characterSpawner.SpawnCharacter();   
+                characterSpawner.SpawnCharacter();
             });
     }
     #endregion
@@ -254,8 +259,20 @@ public class InGameManager : BehaviourSingleton<InGameManager>
 
         InGameUIController.I.InitControllers(residentFileController, todayEntryListController);
     }
-    
-    #region MVP Datas
 
-    #endregion
+    void EndGame()
+    {
+        Sequence endSeq = DOTween.Sequence();
+
+        endSeq.AppendInterval(1.0f)
+            .AppendCallback(() => Debug.Log("End Game"))
+            .AppendCallback(() => InGameUIController.I.MoveShutDownDoor(0f))
+            .AppendInterval(1f)
+            .AppendCallback(() => LoadToResultScene());
+    }
+
+    private void LoadToResultScene()
+    {
+        SceneManager.LoadScene("Scn2.Result");
+    }
 }

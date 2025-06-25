@@ -27,6 +27,7 @@ public class CharacterSpawner : MonoBehaviour
     List<ResidentController> characterList;
 
     public UnityAction<List<ResidentController>> OnCompleteSpawn;
+    public UnityAction OnEmptyCharacterQueue;
 
     public void SetCharacters(List<Profile> todayEntryList, int count)
     {
@@ -122,7 +123,7 @@ public class CharacterSpawner : MonoBehaviour
 
             int rndI = UnityEngine.Random.Range(0, filtered.Count);
 
-            var doppelInfo = filtered[rndI];                            //DoppelInfo
+            var doppelInfo = filtered[rndI];                                                          //DoppelInfo
             doppel = Instantiate(doppelInfo.model, characterLayer).GetComponent<DoppelController>();
             appearanceType = doppelInfo.type;
         }
@@ -171,14 +172,17 @@ public class CharacterSpawner : MonoBehaviour
 
     public void SpawnCharacter()
     {
+        if (residentQueue.Count <= 0)
+        {
+            OnEmptyCharacterQueue?.Invoke();
+        }
+
         ResidentController resident = residentQueue.Dequeue();
 
         Debug.Log($"Spawn Character : [{resident.profile.firstName}]");
         resident.gameObject.SetActive(true);
     }
 }
-
-
 
 public static class BehaviourFactory
 {
@@ -297,7 +301,15 @@ public class DoppelgangerBehavior : ICharacterBehaviour
         DoppelController doppel = resident as DoppelController;
 
         if (dialog == null) return;
-        InGameUIController.I.ShowTextBox(dialog);
+
+        if (dialog.code.Contains("Reveal"))
+        {
+            InGameUIController.I.ShowTextBox_Noise(dialog);
+        }
+        else
+        {
+            InGameUIController.I.ShowTextBox(dialog);
+        }
 
         if (doppel.animator == null) return;
         doppel.animator.SetTrigger("Talk");

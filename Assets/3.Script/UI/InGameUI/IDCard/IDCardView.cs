@@ -13,7 +13,7 @@ public class IDCardView : MonoBehaviour
 
     [SerializeField] Image mark;
 
-    public void SetIDCard(Profile profile, ForgedType forgedType)
+    public void SetData(Profile profile, ForgedType forgedType)
     {
         this.firstName.text = profile.firstName;
         this.lastName.text = profile.lastName;
@@ -38,7 +38,6 @@ public class IDCardView : MonoBehaviour
                     id.text = "111888555";
                     break;
             }
-
         }
     }
 

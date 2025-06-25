@@ -44,10 +44,12 @@ public class InteractionManager : BehaviourSingleton<InteractionManager>
             if (doppel.doppelType.Equals(DoppelType.ForgedID))
             {
                 idCardController.SetForgedData(resident.profile);
+                entryRequestController.SetData(resident.profile);
             }
 
             if (doppel.doppelType.Equals(DoppelType.ForgedEntryRequest))
             {
+                idCardController.SetData(resident.profile);
                 entryRequestController.SetForgedData(resident.profile); 
             }
         }
@@ -121,11 +123,12 @@ public class InteractionManager : BehaviourSingleton<InteractionManager>
 
     public void CleanDoppel()
     {
+        LogManager.I.WriteLog(currentResident.type, DespawnType.Death);
         currentResident.gameObject.SetActive(false);
         currentResident = null;
 
         idCardController.SetActiveButton(false);
-        entryRequestController.SetActiveButton(false);
+        entryRequestController.SetActiveButton(false);  
     }
 
     public void StartQuestion(Dictionary<QuestionType, bool> questions)

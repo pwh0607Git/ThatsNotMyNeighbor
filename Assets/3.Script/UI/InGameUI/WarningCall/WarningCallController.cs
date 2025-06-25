@@ -28,7 +28,7 @@ public class WarningCallController : MonoBehaviour
                     {
                         ddd.gameObject.SetActive(true);
                         ddd.GetComponent<RectTransform>().anchoredPosition = Vector2.zero;
-
+                        
                         SirenActive(false);
 
                         InteractionManager.I.CleanDoppel();

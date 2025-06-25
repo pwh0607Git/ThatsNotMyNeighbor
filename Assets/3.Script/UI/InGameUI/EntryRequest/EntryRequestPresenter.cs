@@ -14,10 +14,10 @@ public class EntryRequestPresenter
         model = new();
     }
 
-    public void SetEntryRequestModel(Profile profile, string address, List<ForgedType> types = null)
+    public void SetEntryRequestModel(Profile profile, string address, bool isForged)
     {
-        model.SetModel(profile, address);
-        view.SetData(model.profile, model.address, model.reason);
+        model.SetModel(profile, address, isForged);
+        view.SetData(model.GetProfile(), model.address, model.reason, model.forgedType);
     }
 
     public void OnClickOpenButton() => view.SetActive(true);

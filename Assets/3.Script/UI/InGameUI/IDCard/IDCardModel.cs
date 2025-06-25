@@ -1,36 +1,36 @@
 using System;
-using System.Collections.Generic;
 using System.Linq;
 
 
 public class IDCardModel
 {
-    public ForgedType forgedType;
-    private Profile currentProfile;
-    public List<ForgedType> forgedTypes;
-    public bool isDoppel;
+    public ForgedType forgedType { get; private set; } = ForgedType.None;
+    private Profile profile;
+    public bool isForged { get; private set; }
 
-    public void SetProfile(Profile profile, bool isDoppel)
+    public void SetModel(Profile profile, bool isForged)
     {
-        this.currentProfile = profile;
-        this.isDoppel = isDoppel;
+        this.profile = profile;
+        this.isForged = isForged;
 
-        if (isDoppel)
-        {
-            
-        }
+        if (isForged)
+            forgedType = GetRandomForgedType();
+        else
+            forgedType = ForgedType.None;
     }
 
-    ForgedType GetRandomType()
+    private ForgedType GetRandomForgedType()
     {
-        //일단은 한개만...
-         // None을 제외한 ForgedType 값 배열
-        var validValues = Enum.GetValues(typeof(ForgedType))
-                              .Cast<ForgedType>()
-                              .ToList();
+        var values = Enum.GetValues(typeof(ForgedType))
+                         .Cast<ForgedType>()
+                         .Where(t => t != ForgedType.None)
+                         .ToList();
 
-        // 랜덤 선택
-        int index = UnityEngine.Random.Range(0, validValues.Count);
-        return validValues[index];
+        if (values.Count == 0) return ForgedType.None;
+
+        int index = UnityEngine.Random.Range(0, values.Count);
+        return values[index];
     }
+
+    public Profile GetProfile() => profile;
 }
