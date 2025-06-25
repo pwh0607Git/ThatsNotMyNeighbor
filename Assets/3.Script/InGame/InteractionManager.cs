@@ -31,26 +31,35 @@ public class InteractionManager : BehaviourSingleton<InteractionManager>
     {
         if (resident is DDDController) return;
 
+        Debug.Log($"current Resident Set : {resident.profile}");
+
         this.currentResident = resident;
 
         if (resident is not DoppelController doppel)
         {
+            Debug.Log("현재 주민은 도플 갱어가 아닙니다.");
             idCardController.SetData(resident.profile);
             entryRequestController.SetData(resident.profile);
         }
         else
         {
+            
+            Debug.Log("현재 주민은 도플 갱어 입니다.");
             // 위조 데이터 생성.
             if (doppel.doppelType.Equals(DoppelType.ForgedID))
             {
                 idCardController.SetForgedData(resident.profile);
                 entryRequestController.SetData(resident.profile);
             }
-
-            if (doppel.doppelType.Equals(DoppelType.ForgedEntryRequest))
+            else if (doppel.doppelType.Equals(DoppelType.ForgedEntryRequest))
             {
                 idCardController.SetData(resident.profile);
-                entryRequestController.SetForgedData(resident.profile); 
+                entryRequestController.SetForgedData(resident.profile);
+            }
+            else
+            {
+                idCardController.SetData(resident.profile);
+                entryRequestController.SetData(resident.profile);
             }
         }
 

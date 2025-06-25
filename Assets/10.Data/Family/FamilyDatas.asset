@@ -27,3 +27,21 @@ MonoBehaviour:
   - mates:
     - {fileID: 11400000, guid: 20088b71d906bf8449a6a8754df2caec, type: 2}
     - {fileID: 11400000, guid: 3cf4fbaaa3e1d0448b793bcf890aec94, type: 2}
+  - mates:
+    - {fileID: 11400000, guid: 8662037aeac6b404188633a7a6496400, type: 2}
+    - {fileID: 11400000, guid: 54ca5086e3ab13a47bad27d4b3624bab, type: 2}
+  - mates:
+    - {fileID: 11400000, guid: b32a6058989e7fa4cb4356fea3bbe719, type: 2}
+  - mates:
+    - {fileID: 11400000, guid: fa850a59896c9e744abc0571fb11c1c9, type: 2}
+  - mates:
+    - {fileID: 11400000, guid: af36465951896c841809c370060016d0, type: 2}
+    - {fileID: 11400000, guid: 4bc88805b0a68f04c9c6794ae278c6d9, type: 2}
+  - mates:
+    - {fileID: 11400000, guid: 114c83d588b9baf438aabc3ed7296cab, type: 2}
+  - mates:
+    - {fileID: 11400000, guid: 9080997e7cbe6de40b1cadc09c87b3b7, type: 2}
+    - {fileID: 11400000, guid: f6588d41aad52d84d874854c75cb4051, type: 2}
+  - mates:
+    - {fileID: 11400000, guid: fe2d43256fb7dbf4caedf40ff36bc1a9, type: 2}
+    - {fileID: 11400000, guid: e1ab47230d74cd74894f7349553a3117, type: 2}

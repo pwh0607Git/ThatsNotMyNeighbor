@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 670058882939621868}
   - component: {fileID: 3584485556727629084}
+  - component: {fileID: 7326237707806382356}
   m_Layer: 5
   m_Name: Doppel_Francis 1
   m_TagString: Untagged
@@ -49,8 +50,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18a7c05c1e1a66b4d8505eb1cdaa6fda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  profile: {fileID: 0}
   type: 1
-  moveEase: 0
+  despawnType: 0
+  animator: {fileID: 0}
+  eye: {fileID: 0}
+  reveal_Eye: {fileID: 0}
+  mouth: {fileID: 0}
+  reveal_mouth: {fileID: 0}
+  appearanceType: 0
+  doppelType: 0
+--- !u!95 &7326237707806382356
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1302150920101488649}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: ec90be2088d4ad04b86b9f70ecccd733, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1377992941161686931
 GameObject:
   m_ObjectHideFlags: 0

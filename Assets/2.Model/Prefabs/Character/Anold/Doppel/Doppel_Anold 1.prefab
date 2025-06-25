@@ -654,6 +654,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2813290895475307829}
   - component: {fileID: -3410254401035667012}
+  - component: {fileID: -5604614275641731023}
   m_Layer: 5
   m_Name: Doppel_Anold 1
   m_TagString: Untagged
@@ -694,7 +695,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18a7c05c1e1a66b4d8505eb1cdaa6fda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  profile: {fileID: 0}
   type: 1
+  despawnType: 0
   animator: {fileID: 0}
   eye: {fileID: 0}
   reveal_Eye: {fileID: 0}
@@ -702,6 +705,27 @@ MonoBehaviour:
   reveal_mouth: {fileID: 0}
   appearanceType: 0
   doppelType: 0
+--- !u!95 &-5604614275641731023
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7898247696784489879}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: a5f3eeac6862b1647b457669715c6d5e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &8198301781778188764
 GameObject:
   m_ObjectHideFlags: 0

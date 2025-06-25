@@ -18,6 +18,8 @@ public class InGameUIController : BehaviourSingleton<InGameUIController>
     [Header("Controller")]
     ResidentFolderController residentFileController;
     TodayEntryListController todayEntryListController;
+    CheckListController checkListController;
+
 
     [Header("Popup")]
     [SerializeField] List<PopUpPair> pairs;
@@ -48,12 +50,7 @@ public class InGameUIController : BehaviourSingleton<InGameUIController>
     {
         this.residentFileController = residentFileController;
         this.todayEntryListController = todayEntryListController;
-    }
-
-    public void OnClickButton(string key)
-    {
-        var p = pairs.Find((p) => p.key == key);
-        p.popUp.SetActive(true);
+        TryGetComponent(out clips);
     }
 
     public void InitUI()
@@ -71,26 +68,26 @@ public class InGameUIController : BehaviourSingleton<InGameUIController>
         OnCompleteInitEvent -= action;
     }
 
-    public void ShowTextBox(Dialog dialog)
+    public void ShowTextBox(ResidentController resident, Dialog dialog)
     {
         if (textBox.gameObject.activeSelf)
         {
-            textBox.SetTextQueue(dialog);
+            textBox.SetTextQueue(resident, dialog, resident.profile.talkClip);
             return;
         }
         textBox.gameObject.SetActive(true);
-        textBox.SetTextQueue(dialog);
+        textBox.SetTextQueue(resident, dialog, resident.profile.talkClip);
     }
 
-    public void ShowTextBox_Noise(Dialog dialog)
+    public void ShowTextBox_Noise(ResidentController resident, Dialog dialog)
     {
         if (textBox_noise.gameObject.activeSelf)
         {
-            textBox_noise.SetTextQueue(dialog);
+            textBox_noise.SetTextQueue(resident, dialog, resident.profile.doppelData.talkClip);
             return;
         }
         textBox_noise.gameObject.SetActive(true);
-        textBox_noise.SetTextQueue(dialog);
+        textBox_noise.SetTextQueue(resident, dialog, resident.profile.doppelData.talkClip);
     }
 
     void OnCompletePrintText(string code)
@@ -101,17 +98,14 @@ public class InGameUIController : BehaviourSingleton<InGameUIController>
             InGameManager.I.EndDDDBehaviour();
         }
     }
-
-    public void UpdateProps()
-    {
-
-    }
-    
-    
+        
     [SerializeField] GameObject shutdownDoor;
-    
+    InGameSoundClipContainer clips;
+
     public void MoveShutDownDoor(float targetY)
     {
+        SoundManager.I.SetEffectAudio(clips.windowClip);
+        
         Vector2 targetPoint = new Vector2(0, targetY);
         shutdownDoor.GetComponent<RectTransform>().DOAnchorPos(targetPoint, 0.8f);
     }

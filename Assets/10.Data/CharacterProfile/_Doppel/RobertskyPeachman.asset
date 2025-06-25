@@ -25,6 +25,7 @@ MonoBehaviour:
   - type: 4
     model: {fileID: 1649156364659624134, guid: 36edb4f9ad63b6e47b6762c07c54222c, type: 3}
     reason: 
+  talkClip: {fileID: 8300000, guid: b943898091e7fe943bb8041d59ef7d23, type: 3}
   revealDialog:
   - code: Reveal_Props
     msgs:

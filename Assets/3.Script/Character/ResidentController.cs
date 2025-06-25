@@ -12,7 +12,7 @@ public enum DespawnType
 public class ResidentController : MonoBehaviour
 {
     private Queue<string> textQueue = new();
-    public Profile profile { get; private set; }
+    public Profile profile;
     public CharacterType type;
     public DespawnType despawnType = DespawnType.Enter;
     protected ICharacterBehaviour behavior;
@@ -49,6 +49,9 @@ public class ResidentController : MonoBehaviour
     #region Move
     public void Enter()
     {
+        SoundManager.I.SetEffectAudio(profile.walkClip);
+        animator.SetFloat("Movement", 1f);
+
         Sequence enterSeq = DOTween.Sequence();
 
         enterSeq.Append(rectTransform.DOAnchorPos(profile.targetPoint, 4f)).SetEase(Ease.Linear)
@@ -60,6 +63,7 @@ public class ResidentController : MonoBehaviour
                         enterSeq.Kill();
                         Exit();
                     }
+                    animator.SetFloat("Movement", 0f);
                 })
                 .AppendInterval(0.7f)
                 .AppendCallback(() =>
@@ -70,6 +74,9 @@ public class ResidentController : MonoBehaviour
 
     public void Exit()
     {
+        SoundManager.I.SetEffectAudio(profile.walkClip);
+        animator.SetFloat("Movement", 1);
+        
         LogManager.I.WriteLog(type, DespawnType.Enter);
         InteractionManager.I.ExitResident();
         rectTransform.DOAnchorPos(profile.endPoint, 3f).OnComplete(() => this.gameObject.SetActive(false));
@@ -77,12 +84,10 @@ public class ResidentController : MonoBehaviour
 
     public void TalkByCode(string code)
     {
-        Debug.Log("Greeting=>=>=>");
-        if (behavior == null)
-        {
-            Debug.Log("behaviour is null..");
-            return;
-        }
+        Debug.Log($"Talk : {code}");
+
+        if (behavior == null) return;
+                
         Dialog dialog = behavior.GetDialog(this, code);
         behavior.Talk(this, dialog);
     }

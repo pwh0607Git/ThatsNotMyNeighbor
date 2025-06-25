@@ -20,6 +20,7 @@ public class IDCardController : MonoBehaviour
 
     public void SetData(Profile profile)
     {
+        Debug.Log($"[IDCard Set] : {profile}");
         presenter.SetIDCardModel(profile, false);
     }
 

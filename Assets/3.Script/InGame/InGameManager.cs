@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
-using UnityEditor.SearchService;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -75,14 +74,17 @@ public class InGameManager : BehaviourSingleton<InGameManager>
 
     public Dictionary<string, Apartment> addressDic { get; private set; }
 
-    [Header("Dialog code")]
-    [SerializeField] List<string> dialogCodes;
-    [SerializeField] CharacterSpawner spawner;
+    [Header("Spawner")]
+    CharacterSpawner spawner;
 
-    void Start()
+    [Header("InGameSource")]
+    [SerializeField] GameObject gameOverPan;
+    [SerializeField] AudioClip inGameBgm;
+
+    void ResetGame()
     {
-        addressDic = new();
-
+        InitInGameSource();
+        
         TryGetComponent(out spawner);
         TryGetComponent(out characterSpawner);
 
@@ -93,6 +95,18 @@ public class InGameManager : BehaviourSingleton<InGameManager>
         InitSpawner();
 
         StartTutorial();
+    }
+
+    void InitInGameSource()
+    {
+        addressDic = new();
+        SoundManager.I.SetMasterAudio(inGameBgm);
+        gameOverPan?.SetActive(false);
+    }
+
+    void Start()
+    {
+        ResetGame();
     }
 
     [Header("SpawnCount")]
@@ -114,6 +128,13 @@ public class InGameManager : BehaviourSingleton<InGameManager>
         string ad = SearchAddress(profile);
         addressDic[ad].UpdateCheckAtHome(profile, true);
 
+        if (Log.enterDoppelCount >= 3)
+        {
+            Debug.Log("도플갱어가 들어간 수가 3개를 넘어 갔습니다.");
+            GameOver();
+            return;
+        }
+
         //후처리로 캐릭터 스폰하기
         DOVirtual.DelayedCall(5f, () => spawner.SpawnCharacter());
     }
@@ -125,6 +146,8 @@ public class InGameManager : BehaviourSingleton<InGameManager>
 
         foreach (var r in list)
         {
+            if (r.type.Equals(CharacterType.NPC)) continue;
+
             if (r.type.Equals(CharacterType.Resident))
             {
                 //도플갱어인 경우 AtHome을 true로 설정하기
@@ -136,9 +159,9 @@ public class InGameManager : BehaviourSingleton<InGameManager>
         foreach (var r in residents)
         {
             string ad = SearchAddress(r.profile);
-            addressDic[ad].UpdateCheckAtHome(r.profile, false);
 
-            Debug.Log($"{r.profile}은 현재 외출중...");
+            if (r.type.Equals(CharacterType.NPC)) continue;
+            addressDic[ad].UpdateCheckAtHome(r.profile, false);
         }
     }
 
@@ -265,11 +288,21 @@ public class InGameManager : BehaviourSingleton<InGameManager>
         Sequence endSeq = DOTween.Sequence();
 
         endSeq.AppendInterval(1.0f)
-            .AppendCallback(() => Debug.Log("End Game"))
             .AppendCallback(() => InGameUIController.I.MoveShutDownDoor(0f))
             .AppendInterval(1f)
             .AppendCallback(() => LoadToResultScene());
     }
+
+    public void GameOver()
+    {
+        Sequence overSeq = DOTween.Sequence();
+
+        overSeq.AppendInterval(1f)
+                .AppendCallback(() => gameOverPan.SetActive(true))
+                .AppendInterval(5f)
+                .AppendCallback(() => LoadToResultScene());
+    }
+
 
     private void LoadToResultScene()
     {

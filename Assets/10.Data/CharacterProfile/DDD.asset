@@ -15,10 +15,12 @@ MonoBehaviour:
   firstName: DDD
   lastName: Manager
   id: 000000000
+  characterType: 2
   profileImage: {fileID: 21300000, guid: 053239c8dd080664898ff31bf3520f17, type: 3}
-  characteristics: []
+  talkClip: {fileID: 8300000, guid: 08933d401aa567942ba2d237b1156f14, type: 3}
+  walkClip: {fileID: 8300000, guid: 9fe180251ffba5c4aaf0c718a0c4907b, type: 3}
   job: "DDD \uC5C5\uCCB4 \uC9C1"
-  expiration: 
+  expiration: 0000
   model: {fileID: 8758210154268841977, guid: 77e39787b3f57544e8437eda0df4c510, type: 3}
   dialogs:
   - code: Tutorial
@@ -33,3 +35,4 @@ MonoBehaviour:
   startPoint: {x: 0, y: 0}
   targetPoint: {x: 0, y: 0}
   endPoint: {x: -1000, y: 0}
+  doppelData: {fileID: 0}

@@ -22,6 +22,7 @@ MonoBehaviour:
   - type: 4
     model: {fileID: 6238595125757120730, guid: 290bb1055771d6447bd020b8a5b3d578, type: 3}
     reason: 
+  talkClip: {fileID: 8300000, guid: 960686666620af84698840594b5ac6a2, type: 3}
   revealDialog:
   - code: Reveal_Props
     msgs:
@@ -29,6 +30,6 @@ MonoBehaviour:
   - code: Reveal_TodayEntryList
     msgs:
     - "\uD760... \uADF8\uB7F0\uAC8C \uC788\uC5C8\uB2E4\uB2C8..."
-  - code: Reveal_Apearance
+  - code: Reveal_Appearance
     msgs:
     - "\uC644\uBCBD\uD558\uAC8C \uC228\uACBC\uB2E4\uACE0 \uC0DD\uAC01\uD588\uB294\uB370..."

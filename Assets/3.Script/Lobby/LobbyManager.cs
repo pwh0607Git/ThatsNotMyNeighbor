@@ -1,9 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LobbyManager : MonoBehaviour
 {
+    [SerializeField] AudioClip lobbyBgmClip;
     OptionPanelController optionPanelController;
 
     void Start()
@@ -11,6 +11,11 @@ public class LobbyManager : MonoBehaviour
         TryGetComponent(out optionPanelController);
 
         InitPanel();
+    }
+
+    void OnEnable()
+    {
+        SoundManager.I.SetMasterAudio(lobbyBgmClip);
     }
 
     void InitPanel()
@@ -21,5 +26,10 @@ public class LobbyManager : MonoBehaviour
     public void OnClickOptionButton()
     {
         optionPanelController.SetActivePanel(true);
+    }
+
+    public void OnClickGameButton()
+    {
+        SceneManager.LoadScene("Scn1.InGame");
     }
 }

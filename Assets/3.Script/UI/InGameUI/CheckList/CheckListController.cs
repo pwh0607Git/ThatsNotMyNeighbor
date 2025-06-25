@@ -19,4 +19,7 @@ public class CheckListController : MonoBehaviour
     {
         presenter.InitCheckList(groupKey);
     }
+
+    public void OnClickOpenButton() => presenter.OnClickOpenButton();
+    public void OnClickExitButton() => presenter.OnClickCloseButton();
 }

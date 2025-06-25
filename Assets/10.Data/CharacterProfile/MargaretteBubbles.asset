@@ -1,0 +1,62 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e8680ced610c8e4e8d912edd8d5c82a, type: 3}
+  m_Name: MargaretteBubbles
+  m_EditorClassIdentifier: 
+  firstName: Margarette
+  lastName: Bubbles
+  id: 103268014
+  profileImage: {fileID: 21300000, guid: c2e3bc57a4edd0e47b9c94d731288911, type: 3}
+  talkClip: {fileID: 8300000, guid: 6aa0eff0521d4eb4d8f01ef45d76bf29, type: 3}
+  walkClip: {fileID: 8300000, guid: 9fe180251ffba5c4aaf0c718a0c4907b, type: 3}
+  characteristics:
+  - "\uAE34 \uBAA9"
+  - "\uCF67\uC218\uC5FC"
+  - "\uC791\uC740 \uB208"
+  job: "\uC7AC\uBD09\uC0AC"
+  expiration: 12/1975
+  model: {fileID: 1208375154756587022, guid: 73e6c34831d3d18468d9ea4f38919714, type: 3}
+  dialogs:
+  - code: Greeting
+    msgs:
+    - "\uC548\uB155\uD558\uC138\uC694."
+  - code: Call_With_Mate
+    msgs:
+    - "\uB124 Margarette \uC804\uD654 \uBC1B\uC558\uC2B5\uB2C8\uB2E4."
+    - "\uC800\uB294 \uC9C0\uAE08 \uC9D1\uC5D0 \uC640 \uC788\uC5B4\uC694."
+    - "\uC624\uB298\uC740 \uC678\uCD9C \uC77C\uC815\uC774 \uC5C6\uC5B4\uC694."
+  - code: IDCard_Mistake
+    msgs:
+    - "\uC624\uC6B0 \uC8C4\uC1A1\uD569\uB2C8\uB2E4. \uC5EC\uAE30\uC694!"
+  - code: IDCard_Exist
+    msgs:
+    - "ID \uCE74\uB4DC\uB294 \uC774\uBBF8 \uB4DC\uB9B0\uAC70 \uAC19\uC740\uB370\uC694..?"
+  - code: EntryRequest_Mistake
+    msgs:
+    - "\uC5EC\uAE30\uC694!"
+  - code: EntryRequest_Exist
+    msgs:
+    - "\uCD9C\uC785\uC99D\uC740 \uC774\uBBF8 \uB4DC\uB9B0\uAC70 \uAC19\uC740\uB370\uC694?"
+  - code: Question_TodayEntryList_None
+    msgs:
+    - "\uC81C\uAC00 \uB9AC\uC2A4\uD2B8\uC5D0 \uC5C6\uB2E4\uACE0\uC694?"
+    - "\uADF8\uB7F4\uB9AC\uAC00\uC694 \uBB54\uAC00 \uBB38\uC81C\uAC00 \uC788\uB294
+      \uAC70 \uAC19\uC544\uC694."
+  - code: Question_Appearance
+    msgs:
+    - "\uC81C \uC5BC\uAD74\uC774\uC694?"
+    - "\uADF8\uB0E5 \uD3C9\uC18C\uB791 \uAC19\uC740 \uAC70 \uAC19\uC740\uB370\uC694."
+  entryRequestReasons: []
+  startPoint: {x: -1000, y: 0}
+  targetPoint: {x: 0, y: 0}
+  endPoint: {x: 1000, y: 0}
+  doppelData: {fileID: 11400000, guid: 5c0eeec101e50ff419ddb12dbb2d7b70, type: 2}

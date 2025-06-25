@@ -56,8 +56,10 @@ public class ResidentFolderView : MonoBehaviour
             if (file.Equals(currentFile)) continue;
             file.SetActive(false);
         }
+        
+        telephoneNumber.text = InGameManager.I.addressDic[key].telephoneNum;
 
-        this.gameObject.SetActive(false);
+        this.gameObject.SetActive(false);      
     }
 
     public void SetActive(bool on)

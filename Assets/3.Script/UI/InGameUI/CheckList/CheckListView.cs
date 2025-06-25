@@ -19,7 +19,6 @@ public class CheckListView : MonoBehaviour
     public void MakeCheckComponent(QuestionType key)
     {
         CheckListComponent instance = Instantiate(prefab, groupParent);
-        Debug.Log(key.ToString());
         instance.InitCheckComponent(key);
         currentChecking.Add(key, false);
         checkGroups.Add(instance);

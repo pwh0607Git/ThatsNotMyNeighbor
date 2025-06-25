@@ -24,7 +24,7 @@ public enum DoppelType
 public class DoppelData : ScriptableObject
 {
     public List<DoppelInform> models;
-
+    public AudioClip talkClip;
     public List<Dialog> revealDialog;               //정체가 밝혀 졌을 때의 대사.
 }
 

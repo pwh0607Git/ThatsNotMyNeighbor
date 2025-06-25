@@ -275,10 +275,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f6a8bb5995cb6d4aa6abf53ea0ae07a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  profile: {fileID: 0}
   type: 0
-  origin: {fileID: 0}
-  doppel: {fileID: 0}
-  moveEase: 1
+  despawnType: 0
+  animator: {fileID: 0}
 --- !u!95 &7637663685255864843
 Animator:
   serializedVersion: 5
@@ -289,7 +289,7 @@ Animator:
   m_GameObject: {fileID: 1302150920101488649}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 378c545451b7367409ceba2ff1146bee, type: 2}
+  m_Controller: {fileID: 22100000, guid: ec90be2088d4ad04b86b9f70ecccd733, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 [CreateAssetMenu(fileName = "CharacterProfile", menuName = "Character/Profile")]
 public class Profile : ScriptableObject
 {
@@ -10,12 +9,14 @@ public class Profile : ScriptableObject
     public string firstName;                // 성
     public string lastName;               // 이름
     public string id;                       // 주민 번호
+    public CharacterType characterType;
 
     [Header("Sprite")]
     public Sprite profileImage;
-
+    public AudioClip talkClip;
+    public AudioClip walkClip;
+    
     [Header("Characteristic")]
-    public List<string> characteristics;    // 특징
     public string job;
 
     [Header("Props")]

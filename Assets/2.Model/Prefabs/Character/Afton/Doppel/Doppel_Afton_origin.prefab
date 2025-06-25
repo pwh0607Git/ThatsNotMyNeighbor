@@ -500,8 +500,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2047995202218219904}
-  - component: {fileID: 4416588641796341494}
   - component: {fileID: 8402724317484528671}
+  - component: {fileID: 4416588641796341494}
   m_Layer: 5
   m_Name: Doppel_Afton_origin
   m_TagString: Untagged
@@ -530,6 +530,28 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &8402724317484528671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8199791500238815742}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18a7c05c1e1a66b4d8505eb1cdaa6fda, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  profile: {fileID: 0}
+  type: 1
+  despawnType: 0
+  animator: {fileID: 0}
+  eye: {fileID: 0}
+  reveal_Eye: {fileID: 0}
+  mouth: {fileID: 0}
+  reveal_mouth: {fileID: 0}
+  appearanceType: 4
+  doppelType: 0
 --- !u!95 &4416588641796341494
 Animator:
   serializedVersion: 5
@@ -551,26 +573,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &8402724317484528671
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8199791500238815742}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18a7c05c1e1a66b4d8505eb1cdaa6fda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 1
-  moveEase: 1
-  eye: {fileID: 0}
-  reveal_Eye: {fileID: 0}
-  mouth: {fileID: 0}
-  reveal_mouth: {fileID: 0}
-  appearanceType: 4
-  doppelType: 0
 --- !u!1 &8473102072867951762
 GameObject:
   m_ObjectHideFlags: 0

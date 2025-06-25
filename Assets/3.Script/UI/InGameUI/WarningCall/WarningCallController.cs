@@ -7,6 +7,7 @@ public class WarningCallController : MonoBehaviour
     [Header("Siren")]
     [SerializeField] GameObject siren;
     public ResidentController ddd { get; private set; }
+    [SerializeField] GameObject sirenBack;
 
     public UnityAction OnCompleteCleaning;
 
@@ -15,6 +16,16 @@ public class WarningCallController : MonoBehaviour
     public void Init(ResidentController npc)
     {
         this.ddd = npc;
+    }
+
+    public void SetActiveSireBack(bool on)
+    {
+        sirenBack.SetActive(on);
+    }
+
+    void OnEnable()
+    {
+        SetActiveSireBack(false);
     }
 
     void StartCleaningProtocol()
@@ -32,6 +43,8 @@ public class WarningCallController : MonoBehaviour
                         SirenActive(false);
 
                         InteractionManager.I.CleanDoppel();
+                        SetActiveSireBack(false);
+
                         InGameUIController.I.MoveShutDownDoor(800f);
                     })
                     .AppendInterval(2f)
@@ -40,7 +53,7 @@ public class WarningCallController : MonoBehaviour
                         ddd.TalkByCode("Call");
                     });
     }
-
+    [SerializeField] AudioClip sirenClip;
     public void OnClickDangerButton()
     {
         SirenActive(true);
@@ -48,8 +61,10 @@ public class WarningCallController : MonoBehaviour
         //shutdowndoor 닫기
         InGameUIController.I.MoveShutDownDoor(0f);
         Debug.Log("Danger Button Click!!");
-
+        SoundManager.I.SetEffectAudio(sirenClip);
         StartCleaningProtocol();
+
+        SetActiveSireBack(true);
     }
 
     private void SirenActive(bool on)

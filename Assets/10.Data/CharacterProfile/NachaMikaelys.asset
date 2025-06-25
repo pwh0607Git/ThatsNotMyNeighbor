@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e8680ced610c8e4e8d912edd8d5c82a, type: 3}
+  m_Name: NachaMikaelys
+  m_EditorClassIdentifier: 
+  firstName: Nacha
+  lastName: Mikaelys
+  id: 789653665
+  profileImage: {fileID: 21300000, guid: f2d620c00519a364fbdd461c93d1a52d, type: 3}
+  talkClip: {fileID: 8300000, guid: 0be429ac236c6e74db60bec3522a10fd, type: 3}
+  walkClip: {fileID: 8300000, guid: 9fe180251ffba5c4aaf0c718a0c4907b, type: 3}
+  characteristics:
+  - "\uC624\uB978\uCABD \uBEA8\uC5D0 \uC810"
+  - "\uB124\uBAA8 \uADC0\uAC78\uC774 \uCC29\uC6A9"
+  - "\uB2E4\uD64D\uC0C9 \uC6D0\uD53C\uC2A4 \uCC29\uC6A9"
+  job: "\uC250\uD504"
+  expiration: 11/1973
+  model: {fileID: 6238595125757120730, guid: a9a0895833db80e4caaa0e45de7d56c2, type: 3}
+  dialogs:
+  - code: Greeting
+    msgs:
+    - "\uC548\uB155\uD558\uC138\uC694."
+  - code: Call_With_None
+    msgs:
+    - "\uB124 Nacha \uC804\uD654 \uBC1B\uC558\uC2B5\uB2C8\uB2E4."
+    - "\uC6B0\uB9AC \uB538\uC740 \uC9C0\uAE08 \uD559\uAD50\uC5D0 \uAC00\uC788\uC5B4\uC694."
+    - "\uC9C0\uAE08 \uC640 \uC788\uB098\uC694?"
+  - code: Call_With_Mate
+    msgs:
+    - "\uB124 Nacha \uC804\uD654 \uBC1B\uC558\uC2B5\uB2C8\uB2E4."
+    - "\uC800\uD76C \uAC00\uC871\uC740 \uC9C0\uAE08 \uC9D1\uC5D0 \uC788\uC5B4\uC694."
+    - "\uC624\uB298\uC740 \uBC16\uC73C\uB85C \uC548\uB098\uAC08 \uC608\uC815\uC774\uC5D0\uC694."
+  - code: IDCard_Mistake
+    msgs:
+    - "\uAE5C\uBE61\uD588\uB124\uC694. \uC5EC\uAE30\uC694."
+  - code: IDCard_Exist
+    msgs:
+    - "\uC774\uBBF8 \uBC1B\uC73C\uC168\uC5B4\uC694~"
+  - code: EntryRequest_Mistake
+    msgs:
+    - "\uAE5C\uBE61\uD588\uB124\uC694. \uC5EC\uAE30\uC694."
+  - code: EntryRequest_Exist
+    msgs:
+    - "\uC774\uBBF8 \uB4DC\uB9B0\uAC70 \uAC19\uC740\uB370\uC694~?"
+  - code: Question_TodayEntryList_None
+    msgs:
+    - "\uC81C\uAC00 \uB9AC\uC2A4\uD2B8\uC5D0 \uC5C6\uB2E4\uACE0\uC694?"
+    - "\uADF8\uB7F4\uB9AC\uAC00\uC694 \uBB54\uAC00 \uBB38\uC81C\uAC00 \uC788\uB294
+      \uAC70 \uAC19\uC544\uC694."
+  - code: Question_Appearance
+    msgs:
+    - "\uC81C \uC5BC\uAD74\uC774\uC694?"
+    - "\uADF8\uB0E5 \uD3C9\uC18C\uB791 \uAC19\uC740 \uAC70 \uAC19\uC740\uB370\uC694."
+  entryRequestReasons: []
+  startPoint: {x: -1000, y: 0}
+  targetPoint: {x: 0, y: 0}
+  endPoint: {x: 1000, y: 0}
+  doppelData: {fileID: 11400000, guid: e5223f0c2cd631a47966c89c5a852267, type: 2}

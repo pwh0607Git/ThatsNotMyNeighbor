@@ -1,6 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class OptionPanel : MonoBehaviour
@@ -9,22 +8,37 @@ public class OptionPanel : MonoBehaviour
     [SerializeField] Slider sliderMaster;
     [SerializeField] Slider sliderEffect;
 
-    public float amountMaster;
-    public float amountEffect;
+    public float amountMaster { get; private set; }
+    public float amountEffect { get; private set; }
+
+    public UnityAction<float> OnChangedMasterVolume;
+    public UnityAction<float> OnChangedEffectVolume;
 
     void Start()
     {
-        amountMaster = 0f;
-        amountEffect = 0f;
+        sliderMaster.value = 0.5f;
+        sliderEffect.value = 0.5f;
+
+        amountMaster = sliderMaster.value;
+        amountEffect = sliderEffect.value;
+    }
+
+    public void SetSlideBar(float amountMaster, float amountEffect)
+    {
+        sliderMaster.value = amountMaster;
+        sliderEffect.value = amountEffect;
     }
 
     public void OnChangedValueMaster()
     {
         amountMaster = sliderMaster.value;
+        OnChangedMasterVolume?.Invoke(sliderMaster.value);
     }
-        
+
     public void OnChangedValueEffect()
     {
         amountEffect = sliderEffect.value;
+        
+        OnChangedEffectVolume?.Invoke(sliderEffect.value);
     }
 }

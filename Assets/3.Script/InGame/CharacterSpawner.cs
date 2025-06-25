@@ -224,10 +224,7 @@ public class ResidentBehaviour : ICharacterBehaviour
     public void Talk(ResidentController resident, Dialog dialog)
     {
         if (dialog == null) return;
-        InGameUIController.I.ShowTextBox(dialog);
-
-        if (resident.animator == null) return;
-        resident.animator.SetTrigger("Talk");
+        InGameUIController.I.ShowTextBox(resident, dialog);
     }
    
     public bool HasIDCard() => true;
@@ -279,6 +276,7 @@ public class DoppelgangerBehavior : ICharacterBehaviour
             Debug.LogWarning($"Dialog with code '{code}' not found.");
             return null;
         }
+        
         return dialog;
     }
 
@@ -294,6 +292,13 @@ public class DoppelgangerBehavior : ICharacterBehaviour
         return dialog;
     }
 
+    private string CheckType(DoppelApearanceType type)
+        => type switch {
+            DoppelApearanceType.NoneLanguage => "NoneLanguage",
+            DoppelApearanceType.NoneMouth => "NoneLanguage",
+            _ => "",
+        };
+
     public void Talk(ResidentController resident, Dialog dialog)
     {
         if (resident is not DoppelController) return;
@@ -304,15 +309,12 @@ public class DoppelgangerBehavior : ICharacterBehaviour
 
         if (dialog.code.Contains("Reveal"))
         {
-            InGameUIController.I.ShowTextBox_Noise(dialog);
+            InGameUIController.I.ShowTextBox_Noise(resident, dialog);
         }
         else
         {
-            InGameUIController.I.ShowTextBox(dialog);
+            InGameUIController.I.ShowTextBox(resident, dialog);
         }
-
-        if (doppel.animator == null) return;
-        doppel.animator.SetTrigger("Talk");
     }
 
     public void Reveal(ResidentController resident, string code)

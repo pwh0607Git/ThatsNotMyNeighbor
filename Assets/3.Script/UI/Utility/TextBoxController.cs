@@ -26,10 +26,15 @@ public class TextBoxController : MonoBehaviour, IPointerDownHandler
     public UnityAction<string> OnCompletePrintText;
 
     private string currentDialogCode = "";
+    private ResidentController currentResident;
 
-    public void SetTextQueue(Dialog dialog)
+    public void SetTextQueue(ResidentController resident, Dialog dialog, AudioClip talkClip)
     {
+        currentTalkClip = talkClip;
         currentDialogCode = dialog.code;
+
+        if (resident != null) currentResident = resident;
+        else currentResident = null;
 
         // 타이핑 중이거나, 큐에 텍스트가 이미 있을 경우: 그냥 대사 추가만
         if ((typingSequence != null && typingSequence.IsActive()) || textQueue.Count > 0)
@@ -51,11 +56,13 @@ public class TextBoxController : MonoBehaviour, IPointerDownHandler
         }
     }
 
+    private AudioClip currentTalkClip;
+
     public void ShowText()
     {
         if (textQueue.Count <= 0)
         {
-            Debug.Log("출력할 대사가 없습니다.");
+            // Debug.Log("출력할 대사가 없습니다.");
 
             OnCompletePrintText?.Invoke(currentDialogCode);
             currentDialogCode = "";
@@ -70,6 +77,12 @@ public class TextBoxController : MonoBehaviour, IPointerDownHandler
         currentShowText = text;
 
         typingSequence = DOTween.Sequence();
+
+        if (currentResident != null)
+        {
+            currentResident.animator.SetTrigger("Talk");
+            SoundManager.I.SetEffectAudio(currentTalkClip);
+        }
 
         for (int i = 0; i < text.Length; i++)
         {
@@ -87,18 +100,18 @@ public class TextBoxController : MonoBehaviour, IPointerDownHandler
     public void OnPointerDown(PointerEventData eventData)
     {
         // Dotween 시퀀스를 Kill하고 그냥 전체 텍스트 보여주기
-        Debug.Log("TextBox Click!!");
+        // Debug.Log("TextBox Click!!");
 
         // 만약 타이핑 중이라면.. 죽이고 대사 전체 추출하기
         if (typingSequence != null && typingSequence.IsActive())
         {
-            Debug.Log("전체 대사 출력!");
+            // Debug.Log("전체 대사 출력!");
             typingSequence.Kill();
             ShowTotalText();
         }
         else
         {
-            Debug.Log("대사 출력이 완료 되었습니다 다음 대사 출력하겠습니다.");
+            // Debug.Log("대사 출력이 완료 되었습니다 다음 대사 출력하겠습니다.");
             ShowText();
         }
     }

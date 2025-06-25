@@ -16,6 +16,8 @@ MonoBehaviour:
   lastName: Sverchzt
   id: 785613269
   profileImage: {fileID: 21300000, guid: 01da10960fccbda46892df1f0773a840, type: 3}
+  talkClip: {fileID: 8300000, guid: 0be429ac236c6e74db60bec3522a10fd, type: 3}
+  walkClip: {fileID: 8300000, guid: 9fe180251ffba5c4aaf0c718a0c4907b, type: 3}
   characteristics:
   - "\uC624\uB978\uCABD \uBEA8\uC5D0 \uC810"
   - "\uB124\uBAA8 \uADC0\uAC78\uC774 \uCC29\uC6A9"
@@ -36,7 +38,7 @@ MonoBehaviour:
     msgs:
     - "\uB124 Selenne \uC804\uD654 \uBC1B\uC558\uC2B5\uB2C8\uB2E4."
     - "\uC800\uC640 \uB3D9\uC0DD\uC740 \uC9C0\uAE08 \uC9D1\uC5D0 \uC788\uC5B4\uC694."
-    - "\uC624\uB298\uC740 \uBC16\uC73C\uB85C \uC548\uB098\uAC08 \uC608\uC815\uC774\uC5D0."
+    - "\uC624\uB298\uC740 \uBC16\uC73C\uB85C \uC548\uB098\uAC08 \uC608\uC815\uC774\uC5D0\uC694."
   - code: IDCard_Mistake
     msgs:
     - "\uAE5C\uBE61\uD588\uB124\uC694. \uC5EC\uAE30\uC694."
