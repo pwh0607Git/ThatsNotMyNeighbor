@@ -11,7 +11,6 @@ public enum DespawnType
 
 public class ResidentController : MonoBehaviour
 {
-    private Queue<string> textQueue = new();
     public Profile profile;
     public CharacterType type;
     public DespawnType despawnType = DespawnType.Enter;
@@ -82,12 +81,12 @@ public class ResidentController : MonoBehaviour
         rectTransform.DOAnchorPos(profile.endPoint, 3f).OnComplete(() => this.gameObject.SetActive(false));
     }
 
-    public void TalkByCode(string code)
+    public virtual void TalkByCode(string code)
     {
         Debug.Log($"Talk : {code}");
 
         if (behavior == null) return;
-                
+
         Dialog dialog = behavior.GetDialog(this, code);
         behavior.Talk(this, dialog);
     }

@@ -6702,7 +6702,7 @@ MonoBehaviour:
   m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 411b1cca054688247bb76db5bf660893, type: 2}
-  m_sharedMaterial: {fileID: 8734605920163206228, guid: 411b1cca054688247bb76db5bf660893, type: 2}
+  m_sharedMaterial: {fileID: 2273906452650631433, guid: 411b1cca054688247bb76db5bf660893, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -9080,6 +9080,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   toggle_Open: {fileID: 1414390047}
   toggle_Close: {fileID: 328093834}
+  openClip: {fileID: 8300000, guid: 56dd1604dfe7bfc49a79dc1f023c41eb, type: 3}
+  closeClip: {fileID: 8300000, guid: 29114d204886af949bb629a8c19cb7b0, type: 3}
 --- !u!1 &967830462
 GameObject:
   m_ObjectHideFlags: 0
@@ -11243,6 +11245,8 @@ MonoBehaviour:
   - {fileID: 920694888}
   currentFile: {fileID: 0}
   telephoneNumber: {fileID: 1082222419}
+  fileClip: {fileID: 8300000, guid: 4b08b2ceebd460b429a8f5df24765ae6, type: 3}
+  fileButtonClip: {fileID: 8300000, guid: 011dbcd38f7fc544b8f9e3d8bb94f4f2, type: 3}
 --- !u!1 &1207676895
 GameObject:
   m_ObjectHideFlags: 0
@@ -16890,8 +16894,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 411b1cca054688247bb76db5bf660893, type: 2}
-  m_sharedMaterial: {fileID: 8734605920163206228, guid: 411b1cca054688247bb76db5bf660893, type: 2}
+  m_fontAsset: {fileID: 0}
+  m_sharedMaterial: {fileID: 0}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

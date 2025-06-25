@@ -292,13 +292,6 @@ public class DoppelgangerBehavior : ICharacterBehaviour
         return dialog;
     }
 
-    private string CheckType(DoppelApearanceType type)
-        => type switch {
-            DoppelApearanceType.NoneLanguage => "NoneLanguage",
-            DoppelApearanceType.NoneMouth => "NoneLanguage",
-            _ => "",
-        };
-
     public void Talk(ResidentController resident, Dialog dialog)
     {
         if (resident is not DoppelController) return;

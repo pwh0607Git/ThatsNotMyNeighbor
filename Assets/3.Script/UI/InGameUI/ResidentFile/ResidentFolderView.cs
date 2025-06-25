@@ -17,6 +17,11 @@ public class ResidentFolderView : MonoBehaviour
     [SerializeField] GameObject currentFile;
     [SerializeField] TextMeshProUGUI telephoneNumber;
 
+    [Header("SoundSource")]
+    [SerializeField] AudioClip fileClip;
+   
+    [SerializeField] AudioClip fileButtonClip;
+
     public void SetFileIndex()
     {
         Debug.Log("FileTabController : initFiles");
@@ -64,9 +69,10 @@ public class ResidentFolderView : MonoBehaviour
 
     public void SetActive(bool on)
     {
+        SoundManager.I.SetEffectAudio(fileClip);
         this.gameObject.SetActive(on);
     }
-        
+
     // 호 수
     public void OnClickFileButtonI1(int index)
     {
@@ -78,6 +84,7 @@ public class ResidentFolderView : MonoBehaviour
         currentFile.SetActive(true);
 
         telephoneNumber.text = InGameManager.I.addressDic[key].telephoneNum;
+        SoundManager.I.SetEffectAudio(fileButtonClip);
     }
 
     // 층 번호
@@ -91,5 +98,6 @@ public class ResidentFolderView : MonoBehaviour
         currentFile.SetActive(true);
 
         telephoneNumber.text = InGameManager.I.addressDic[key].telephoneNum;
+        SoundManager.I.SetEffectAudio(fileButtonClip);
     }
 }

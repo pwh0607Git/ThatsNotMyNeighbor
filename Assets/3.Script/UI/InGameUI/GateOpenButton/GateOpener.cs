@@ -6,6 +6,8 @@ public class GateOpener : MonoBehaviour
 {
     [SerializeField] Toggle toggle_Open;
     [SerializeField] Toggle toggle_Close;
+    [SerializeField] AudioClip openClip;
+    [SerializeField] AudioClip closeClip;
 
     public UnityAction<bool> OnGateUpdated;
 
@@ -17,11 +19,13 @@ public class GateOpener : MonoBehaviour
 
     public void OnClickOpenToggle()
     {
+        SoundManager.I.SetEffectAudio(openClip);
         OnGateUpdated?.Invoke(true);
     }
 
     public void OnClickCloseToggle()
     {
+        SoundManager.I.SetEffectAudio(closeClip);
         OnGateUpdated?.Invoke(false);
     }
 }

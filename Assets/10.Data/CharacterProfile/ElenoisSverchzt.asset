@@ -15,13 +15,10 @@ MonoBehaviour:
   firstName: Elenois
   lastName: Sverchzt
   id: 845323014
+  characterType: 0
   profileImage: {fileID: 21300000, guid: f18476908973891449009eb2ee9cf2d8, type: 3}
   talkClip: {fileID: 8300000, guid: df548af387d369b4f97a97bb911b1bb8, type: 3}
   walkClip: {fileID: 8300000, guid: 9fe180251ffba5c4aaf0c718a0c4907b, type: 3}
-  characteristics:
-  - "\uC67C\uCABD \uBEA8\uC5D0 \uC810"
-  - "\uC138\uBAA8 \uADC0\uAC78\uC774 \uCC29\uC6A9"
-  - "\uB178\uB780\uC0C9 \uC6D0\uD53C\uC2A4 \uCC29\uC6A9"
   job: "\uBAA8\uB378"
   expiration: 03/1980
   model: {fileID: 4419056343376614214, guid: 5502718c6809bc74089380ec3a23ba1e, type: 3}
@@ -60,6 +57,12 @@ MonoBehaviour:
     msgs:
     - "\uC81C \uC5BC\uAD74\uC774\uC694?"
     - "\uADF8\uB0E5 \uD3C9\uC18C\uB791 \uAC19\uC740 \uAC70 \uAC19\uC740\uB370\uC694."
+  - code: NoneLanguage
+    msgs:
+    - "\uC5B4...\uC6B0...\uC5B4...\uC6CC..."
+  - code: NoneMouth
+    msgs:
+    - ... ... ...
   entryRequestReasons: []
   startPoint: {x: -1000, y: 0}
   targetPoint: {x: 0, y: 0}

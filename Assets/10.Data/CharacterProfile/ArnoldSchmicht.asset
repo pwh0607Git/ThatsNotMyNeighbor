@@ -15,10 +15,10 @@ MonoBehaviour:
   firstName: Arnold
   lastName: Schmicht
   id: 778566219
+  characterType: 0
   profileImage: {fileID: 21300000, guid: 455ad0b8f0c5d8f48a5d580250082fc6, type: 3}
   talkClip: {fileID: 8300000, guid: 08933d401aa567942ba2d237b1156f14, type: 3}
   walkClip: {fileID: 8300000, guid: 9fe180251ffba5c4aaf0c718a0c4907b, type: 3}
-  characteristics: []
   job: "\uC791\uAC00"
   expiration: 10/1971
   model: {fileID: 7898247696784489879, guid: 8cd419461fcdf544bbc3bab38e72dd49, type: 3}
@@ -57,6 +57,12 @@ MonoBehaviour:
     msgs:
     - "\uC81C \uC5BC\uAD74\uC774\uC694?"
     - "\uADF8\uB0E5 \uD3C9\uC18C\uB791 \uAC19\uC740 \uAC70 \uAC19\uC740\uB370\uC694."
+  - code: NoneLanguage
+    msgs:
+    - "\uC5B4...\uC6B0...\uC5B4...\uC6CC..."
+  - code: NoneMouth
+    msgs:
+    - ... ... ...
   entryRequestReasons: []
   startPoint: {x: -1000, y: 0}
   targetPoint: {x: 0, y: 0}

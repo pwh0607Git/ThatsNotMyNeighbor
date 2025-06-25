@@ -15,14 +15,10 @@ MonoBehaviour:
   firstName: Roman
   lastName: Stilnsky
   id: 483924059
+  characterType: 0
   profileImage: {fileID: 21300000, guid: 310dc14afb04eb742bac7e82b5715899, type: 3}
   talkClip: {fileID: 8300000, guid: 08933d401aa567942ba2d237b1156f14, type: 3}
   walkClip: {fileID: 8300000, guid: 9fe180251ffba5c4aaf0c718a0c4907b, type: 3}
-  characteristics:
-  - "\uAE34 \uCF54"
-  - "\uC624\uB978\uCABD \uD131 \uD749\uD130"
-  - "\uAE34 \uC5BC\uAD74"
-  - "\uC77C\uC790 \uB208\uC379"
   job: "\uD68C\uACC4\uC0AC"
   expiration: 05/1968
   model: {fileID: 4918190570779647745, guid: ce16ec832629ed349a19f86a664f7b2d, type: 3}
@@ -57,10 +53,12 @@ MonoBehaviour:
     - "\uC81C\uAC00 \uB9AC\uC2A4\uD2B8\uC5D0 \uC5C6\uB2E4\uACE0\uC694?"
     - "\uADF8\uB7F4\uB9AC\uAC00\uC694 \uBB54\uAC00 \uBB38\uC81C\uAC00 \uC788\uB294
       \uAC70 \uAC19\uC544\uC694."
-  - code: Question_Appearance
+  - code: NoneLanguage
     msgs:
-    - "\uC81C \uC5BC\uAD74\uC774\uC694?"
-    - "\uADF8\uB0E5 \uD3C9\uC18C\uB791 \uAC19\uC740 \uAC70 \uAC19\uC740\uB370\uC694."
+    - "\uC5B4...\uC6B0...\uC5B4...\uC6CC..."
+  - code: NoneMouth
+    msgs:
+    - ... ... ...
   entryRequestReasons: []
   startPoint: {x: -1000, y: 0}
   targetPoint: {x: 0, y: 0}

@@ -15,13 +15,10 @@ MonoBehaviour:
   firstName: Margarette
   lastName: Bubbles
   id: 103268014
+  characterType: 0
   profileImage: {fileID: 21300000, guid: c2e3bc57a4edd0e47b9c94d731288911, type: 3}
   talkClip: {fileID: 8300000, guid: 6aa0eff0521d4eb4d8f01ef45d76bf29, type: 3}
   walkClip: {fileID: 8300000, guid: 9fe180251ffba5c4aaf0c718a0c4907b, type: 3}
-  characteristics:
-  - "\uAE34 \uBAA9"
-  - "\uCF67\uC218\uC5FC"
-  - "\uC791\uC740 \uB208"
   job: "\uC7AC\uBD09\uC0AC"
   expiration: 12/1975
   model: {fileID: 1208375154756587022, guid: 73e6c34831d3d18468d9ea4f38919714, type: 3}
@@ -55,6 +52,12 @@ MonoBehaviour:
     msgs:
     - "\uC81C \uC5BC\uAD74\uC774\uC694?"
     - "\uADF8\uB0E5 \uD3C9\uC18C\uB791 \uAC19\uC740 \uAC70 \uAC19\uC740\uB370\uC694."
+  - code: NoneLanguage
+    msgs:
+    - "\uC5B4...\uC6B0...\uC5B4...\uC6CC..."
+  - code: NoneMouth
+    msgs:
+    - ... ... ...
   entryRequestReasons: []
   startPoint: {x: -1000, y: 0}
   targetPoint: {x: 0, y: 0}

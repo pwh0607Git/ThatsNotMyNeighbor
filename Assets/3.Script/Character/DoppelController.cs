@@ -30,13 +30,34 @@ public class DoppelController : ResidentController
         this.doppelType = doppelType;
     }
 
+    public override void TalkByCode(string code)
+    {
+        if (behavior == null) return;
+
+        code = CheckType(appearanceType) == "None" ? code : CheckType(appearanceType);
+
+        Dialog dialog = behavior.GetDialog(this, code);
+        behavior.Talk(this, dialog);
+    }
+    
+    private string CheckType(DoppelApearanceType type) => type switch {
+            DoppelApearanceType.NoneLanguage => "NoneLanguage",
+            DoppelApearanceType.NoneMouth => "NoneMouth",
+            _ => "None",
+        };
+
     public void Reveal(string code)
     {
         DoppelgangerBehavior doppel_Behavior = this.behavior as DoppelgangerBehavior;
 
         Debug.Log("Reveal...");
-        eye?.SetActive(false);
-        reveal_Eye?.SetActive(true);
+
+        // 눈을 따로 가지고 있는 경우만 호출.
+        if (reveal_Eye != null)
+        {
+            eye?.SetActive(false);
+            reveal_Eye?.SetActive(true);
+        }
         doppel_Behavior?.Reveal(this, code);
     }
 }

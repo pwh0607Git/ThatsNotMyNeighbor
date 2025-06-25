@@ -35,10 +35,26 @@ public class IDCardView : MonoBehaviour
                 }
             case ForgedType.Id:
                 {
-                    id.text = "111888555";
+                    id.text = MakeForgedId(profile.id);
                     break;
             }
         }
+    }
+
+    private string MakeForgedId(string id)
+    {
+        int index = Random.Range(0, id.Length);
+        char originalChar = id[index];
+        char newChar;
+        do
+        {
+            newChar = (char)('0' + Random.Range(0, 10));
+        } while (newChar == originalChar);
+
+        char[] chars = id.ToCharArray();
+        chars[index] = newChar;
+
+        return new string(chars);
     }
 
     public void SetActive(bool on)

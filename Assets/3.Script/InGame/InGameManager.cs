@@ -84,7 +84,7 @@ public class InGameManager : BehaviourSingleton<InGameManager>
     void ResetGame()
     {
         InitInGameSource();
-        
+
         TryGetComponent(out spawner);
         TryGetComponent(out characterSpawner);
 
@@ -102,11 +102,6 @@ public class InGameManager : BehaviourSingleton<InGameManager>
         addressDic = new();
         SoundManager.I.SetMasterAudio(inGameBgm);
         gameOverPan?.SetActive(false);
-    }
-
-    void Start()
-    {
-        ResetGame();
     }
 
     [Header("SpawnCount")]
@@ -307,5 +302,22 @@ public class InGameManager : BehaviourSingleton<InGameManager>
     private void LoadToResultScene()
     {
         SceneManager.LoadScene("Scn2.Result");
+    }
+
+
+    void OnEnable()
+    {
+        SceneManager.sceneLoaded += OnSceneLoaded;
+    }
+
+    void OnDisable()
+    {
+        SceneManager.sceneLoaded -= OnSceneLoaded;
+    }
+
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        Debug.Log("[InGameManager] : Scene Loaded => Game Reset");
+        ResetGame();
     }
 }

@@ -216,7 +216,7 @@ public class InteractionManager : BehaviourSingleton<InteractionManager>
                 //걸렸을 때. => 20프로 확률로 Reveal 호출.
                 float per = Random.value;
 
-                if (per <= 0.3f)
+                if (per <= 0.5f)
                 {
                     doppel.Reveal("Reveal_Appearance");
                     return "";
@@ -230,11 +230,14 @@ public class InteractionManager : BehaviourSingleton<InteractionManager>
         }
         else if (type.Equals(QuestionType.TodayEntryList))
         {
-            if (currentResident is DoppelController doppel && doppel.type.Equals(DoppelType.TodayEntryList))
+            
+            Debug.Log("Question Start : TodayEntryList");
+            if (currentResident is DoppelController doppel && doppel.doppelType.Equals(DoppelType.TodayEntryList))
             {
                 float per = Random.value;
-                if (per <= 0.2f)
+                if (per >= 0.2f)
                 {
+                    Debug.Log("Question Start : TodayEntryList");
                     doppel.Reveal("Reveal_TodayEntryList");
                     return "";
                 }
