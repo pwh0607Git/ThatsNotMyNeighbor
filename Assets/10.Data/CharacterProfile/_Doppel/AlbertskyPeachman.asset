@@ -15,19 +15,24 @@ MonoBehaviour:
   models:
   - type: 1
     model: {fileID: 5396286691285834843, guid: d7e8c727f2d15a641bac7fd0c399d99f, type: 3}
+    wanted: {fileID: 21300000, guid: 8e7d2fb39eead7341aca328baab35265, type: 3}
     reason: "\uC5BC\uAD74 \uD615\uD0DC\uAC00 \uB2E4\uB985\uB2C8\uB2E4."
   - type: 1
     model: {fileID: 5396286691285834843, guid: f3e6e58041e551f47b66273f3721f225, type: 3}
+    wanted: {fileID: 21300000, guid: bd51e5fc9183ed34b897b08a967bb881, type: 3}
     reason: "\uB208\uC379 \uC0C9\uAE54\uC774 \uB2E4\uB985\uB2C8\uB2E4."
   - type: 1
     model: {fileID: 5396286691285834843, guid: c3c80e5c53ffddd4f904f9ca79af3cc2, type: 3}
-    reason: "\uCF54\uC758 \uD06C\uAE30\uAC00 \uB2E4\uB985\uB2C8\uB2E4."
+    wanted: {fileID: 21300000, guid: 150ee1b588aed2c41b2f9a2959347b42, type: 3}
+    reason: "\uB208 \uBAA8\uC591\uC774 \uB2E4\uB985\uB2C8\uB2E4."
   - type: 1
     model: {fileID: 5396286691285834843, guid: 0dc659a289e0bdc4e9f32857db8c3bb6, type: 3}
+    wanted: {fileID: 21300000, guid: dc372e08adfcd1a47ab551dbf39e39c8, type: 3}
     reason: "\uCF67\uC218\uC5FC\uC758 \uBAA8\uC591\uC774 \uB2E4\uB985\uB2C8\uB2E4."
   - type: 4
     model: {fileID: 5396286691285834843, guid: 907e4d621b965f340876069936876343, type: 3}
-    reason: "\uC678\uBAA8 \uC774\uC0C1 \uC5C6"
+    wanted: {fileID: 0}
+    reason: "\uC678\uBAA8 \uC774\uC0C1 \uC5C6\uC74C."
   talkClip: {fileID: 8300000, guid: b943898091e7fe943bb8041d59ef7d23, type: 3}
   revealDialog:
   - code: Reveal_Props

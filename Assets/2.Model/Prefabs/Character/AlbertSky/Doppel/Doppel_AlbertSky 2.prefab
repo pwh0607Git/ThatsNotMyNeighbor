@@ -410,7 +410,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 15.75, y: 77.5}
-  m_SizeDelta: {x: 240, y: 80}
+  m_SizeDelta: {x: 300, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9171366958715897387
 CanvasRenderer:
@@ -440,7 +440,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 93976e52d608ede428293ec43f37575f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 9ccad81faed0cca469308fd3a90067fb, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -527,7 +527,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 10, y: 44.5}
-  m_SizeDelta: {x: 180, y: 180}
+  m_SizeDelta: {x: 120, y: 120}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &393127643605477531
 CanvasRenderer:
@@ -640,12 +640,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18a7c05c1e1a66b4d8505eb1cdaa6fda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  profile: {fileID: 0}
   type: 1
+  despawnType: 0
   animator: {fileID: 0}
   eye: {fileID: 0}
   reveal_Eye: {fileID: 0}
   mouth: {fileID: 0}
   reveal_mouth: {fileID: 0}
+  information:
+    type: 0
+    model: {fileID: 0}
+    wanted: {fileID: 0}
+    reason: 
   appearanceType: 0
   doppelType: 0
 --- !u!1 &6588245145969779358

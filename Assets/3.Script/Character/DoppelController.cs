@@ -8,6 +8,8 @@ public class DoppelController : ResidentController
     [SerializeField] GameObject mouth;
     [SerializeField] GameObject reveal_mouth;
 
+    public DoppelInform information;
+
     public DoppelApearanceType appearanceType;// { get; private set; }
     public DoppelType doppelType;// { get; private set; }
 
@@ -24,10 +26,11 @@ public class DoppelController : ResidentController
         reveal_mouth?.SetActive(false);
     }
 
-    public void SetType(DoppelApearanceType appearanceType, DoppelType doppelType)
+    public void SetType(DoppelApearanceType appearanceType, DoppelType doppelType, DoppelInform information)
     {
         this.appearanceType = appearanceType;
         this.doppelType = doppelType;
+        this.information = information;
     }
 
     public override void TalkByCode(string code)

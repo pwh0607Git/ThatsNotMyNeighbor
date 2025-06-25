@@ -114,6 +114,8 @@ public class CharacterSpawner : MonoBehaviour
 
         DoppelController doppel = null;
 
+        DoppelInform doppelInfo = null;
+
         // 2. info에서 외모 이상한 모델 추출하기
         if (doppelType.Equals(DoppelType.Appearance))
         {
@@ -123,28 +125,28 @@ public class CharacterSpawner : MonoBehaviour
 
             int rndI = UnityEngine.Random.Range(0, filtered.Count);
 
-            var doppelInfo = filtered[rndI];                                                          //DoppelInfo
+            doppelInfo = filtered[rndI];                                                          //DoppelInfo
             doppel = Instantiate(doppelInfo.model, characterLayer).GetComponent<DoppelController>();
             appearanceType = doppelInfo.type;
         }
         else
         {
             //외모 문제 none 추출하기
-            var doppelInfo = profile.doppelData.models.Find(m => m.type.Equals(DoppelApearanceType.None));
+            doppelInfo = profile.doppelData.models.Find(m => m.type.Equals(DoppelApearanceType.None));
 
             if (doppelInfo == null)
             {
                 Debug.LogError("doppel Info is null...");
                 return null;
             }
-            
+
             // doppelType
             doppel = Instantiate(doppelInfo.model, characterLayer).GetComponent<DoppelController>();
             appearanceType = DoppelApearanceType.None;
         }
 
         doppel.SetProperty(profile, CharacterType.Doppel, BehaviourFactory.CreateDoppelBehaviour(doppelType, appearanceType));
-        doppel.SetType(appearanceType, doppelType);              //외모 문제는 있지만 타입이 없음.
+        doppel.SetType(appearanceType, doppelType, doppelInfo);              //외모 문제는 있지만 타입이 없음.
 
         return doppel;
     }

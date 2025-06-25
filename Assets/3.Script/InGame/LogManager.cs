@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Diagnostics;
 
 public static class Log
@@ -31,6 +32,30 @@ public static class Log
         else res = "F";
 
         return res;
+    }
+
+
+    public static List<DoppelPair> capturedDoppels;
+
+    public static void CaptureDoppel(DoppelInform doppelInform, Profile originProfile)
+    {
+        //중복 체크 코드 만들기!!!
+        DoppelPair pair = new(doppelInform, originProfile);
+        capturedDoppels.Add(pair);
+    }
+
+    public static bool IsExisting(DoppelInform inform) => capturedDoppels.Find(pair => pair.doppelInform.Equals(inform)) != null;
+}
+
+public class DoppelPair
+{
+    public DoppelInform doppelInform;
+    public Profile originProfile;
+
+    public DoppelPair(DoppelInform doppelInform, Profile originProfile)
+    {
+        this.doppelInform = doppelInform;
+        this.originProfile = originProfile;
     }
 }
 

@@ -215,7 +215,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 1f97fefc1fb96a84c96b1b4193227137, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 98e210671d9dd9b4987bd17320f79c7d, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -673,12 +673,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18a7c05c1e1a66b4d8505eb1cdaa6fda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  profile: {fileID: 0}
   type: 1
+  despawnType: 0
   animator: {fileID: 0}
   eye: {fileID: 0}
   reveal_Eye: {fileID: 0}
   mouth: {fileID: 0}
   reveal_mouth: {fileID: 0}
+  information:
+    type: 0
+    model: {fileID: 0}
+    wanted: {fileID: 0}
+    reason: 
   appearanceType: 0
   doppelType: 0
 --- !u!1 &6197299211123947999

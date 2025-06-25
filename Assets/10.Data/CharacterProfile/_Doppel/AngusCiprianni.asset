@@ -15,21 +15,27 @@ MonoBehaviour:
   models:
   - type: 1
     model: {fileID: 8144141320643921870, guid: 32a48276bd7ce5645b3ffe9537dd177a, type: 3}
+    wanted: {fileID: 21300000, guid: 081bc71918376954f952fcee0ceaf1a3, type: 3}
     reason: 
   - type: 1
     model: {fileID: 8144141320643921870, guid: 0efd0c35325edab47b9c3458444bea13, type: 3}
+    wanted: {fileID: 21300000, guid: 98a8b9ee9981f4241bfcb0bbbc3cebbd, type: 3}
     reason: 
   - type: 2
     model: {fileID: 8144141320643921870, guid: e804ee2d38e2e3d4284b1ed14ab7dc63, type: 3}
+    wanted: {fileID: 21300000, guid: 13c3e384f277149489c1425385484d7e, type: 3}
     reason: 
   - type: 1
     model: {fileID: 8144141320643921870, guid: cedc9016c84b4444ea00893d9bda8828, type: 3}
+    wanted: {fileID: 21300000, guid: fbb4b2caa795f6f4991d53a62f1432ec, type: 3}
     reason: 
   - type: 1
     model: {fileID: 8144141320643921870, guid: 671c4382e83b5d147ae3c4c69a498cb6, type: 3}
+    wanted: {fileID: 21300000, guid: 4b6f7781a0188c148841150fa0e3c958, type: 3}
     reason: 
   - type: 4
     model: {fileID: 8144141320643921870, guid: c7a40148f1ff01c489f3c055e7746654, type: 3}
+    wanted: {fileID: 0}
     reason: 
   talkClip: {fileID: 8300000, guid: b943898091e7fe943bb8041d59ef7d23, type: 3}
   revealDialog:

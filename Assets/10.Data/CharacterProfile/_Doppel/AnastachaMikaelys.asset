@@ -15,18 +15,23 @@ MonoBehaviour:
   models:
   - type: 1
     model: {fileID: 3237743906514533023, guid: a94f9bc286e7dc849b238b403ca44922, type: 3}
+    wanted: {fileID: 21300000, guid: db7668eb80dab8044b684b0f70f77100, type: 3}
     reason: 
   - type: 1
     model: {fileID: 3237743906514533023, guid: 86cbdfeb91940704cab65e3eecf21c10, type: 3}
+    wanted: {fileID: 21300000, guid: f9a8461f6d7bf1243b9ff94956e18cfd, type: 3}
     reason: 
   - type: 1
     model: {fileID: 3237743906514533023, guid: 456cf02e56e9a644083e4019a44b3259, type: 3}
+    wanted: {fileID: 21300000, guid: d293e6dda70932040b4662350169de85, type: 3}
     reason: 
   - type: 1
     model: {fileID: 3237743906514533023, guid: fb754af2aa65b774794a0088a1ea3e2c, type: 3}
+    wanted: {fileID: 21300000, guid: ab7d525c317fbe247aca3ab27d31cbe5, type: 3}
     reason: 
   - type: 4
     model: {fileID: 3237743906514533023, guid: 5b6901285ed652c48b0724e6a8f34c41, type: 3}
+    wanted: {fileID: 0}
     reason: 
   talkClip: {fileID: 8300000, guid: 87913a4fa4b9d5641b183812d659f2af, type: 3}
   revealDialog:
