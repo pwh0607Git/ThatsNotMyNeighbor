@@ -20,7 +20,8 @@ public class IDCardView : MonoBehaviour
         this.id.text = profile.id;
         this.exp.text = profile.expiration;
         this.profileImage.sprite = profile.profileImage;
-
+        mark.enabled = true;
+        
         switch (forgedType)
         {
             case ForgedType.Mark:
@@ -37,7 +38,7 @@ public class IDCardView : MonoBehaviour
                 {
                     id.text = MakeForgedId(profile.id);
                     break;
-            }
+                }
         }
     }
 

@@ -15,15 +15,19 @@ MonoBehaviour:
   models:
   - type: 1
     model: {fileID: 1302150920101488649, guid: fae980060a120294fa66d8ae7205bfa7, type: 3}
+    wanted: {fileID: 0}
     reason: 
   - type: 1
     model: {fileID: 1302150920101488649, guid: dd0322d5eae8fdd4cb3c1e2316d258fb, type: 3}
+    wanted: {fileID: 21300000, guid: 08c5b5a9c052a5449bbedab177043e45, type: 3}
     reason: 
   - type: 1
     model: {fileID: 1302150920101488649, guid: e64c1486508bd3947a8aedd1177c2f0f, type: 3}
+    wanted: {fileID: 21300000, guid: 9fddcade4f2145e44bde8688d16d29ed, type: 3}
     reason: 
   - type: 4
     model: {fileID: 1302150920101488649, guid: 8cc4c07fc35f9494f82a6fc16565b573, type: 3}
+    wanted: {fileID: 0}
     reason: 
   talkClip: {fileID: 8300000, guid: 010a687dee6ea6640abb1192d1f91955, type: 3}
   revealDialog:

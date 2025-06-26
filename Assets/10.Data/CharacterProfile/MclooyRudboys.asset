@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   firstName: Mclooy
   lastName: Rudboys
-  id: 565845455
+  id: 964516184
   characterType: 0
   profileImage: {fileID: 21300000, guid: 7a24e5211d6c9e34c9ed7d1116ac3478, type: 3}
   talkClip: {fileID: 8300000, guid: 0be429ac236c6e74db60bec3522a10fd, type: 3}

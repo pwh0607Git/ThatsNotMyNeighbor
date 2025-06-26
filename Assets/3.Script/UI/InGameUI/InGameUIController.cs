@@ -79,6 +79,17 @@ public class InGameUIController : BehaviourSingleton<InGameUIController>
         textBox.SetTextQueue(resident, dialog, resident.profile.talkClip);
     }
 
+    public void ShowTextBox(Profile profile, Dialog dialog)
+    {
+        if (textBox.gameObject.activeSelf)
+        {
+            textBox.SetTextQueue(null, dialog, profile.talkClip);
+            return;
+        }
+        textBox.gameObject.SetActive(true);
+        textBox.SetTextQueue(null, dialog, profile.talkClip);
+    }
+
     public void ShowTextBox_Noise(ResidentController resident, Dialog dialog)
     {
         if (textBox_noise.gameObject.activeSelf)
@@ -92,21 +103,26 @@ public class InGameUIController : BehaviourSingleton<InGameUIController>
 
     void OnCompletePrintText(string code)
     {
-        if (code.Equals("Tutorial") || code.Equals("Call"))
+        if (code.Equals("Greeting") || code.Equals("CleanProtocol"))
         {
             // 튜토리얼 종료 로직 수행하기
             InGameManager.I.EndDDDBehaviour();
         }
     }
-        
+
     [SerializeField] GameObject shutdownDoor;
     InGameSoundClipContainer clips;
 
     public void MoveShutDownDoor(float targetY)
     {
         SoundManager.I.SetEffectAudio(clips.windowClip);
-        
+
         Vector2 targetPoint = new Vector2(0, targetY);
         shutdownDoor.GetComponent<RectTransform>().DOAnchorPos(targetPoint, 0.8f);
+    }
+
+    public void RegisterTextBoxAction(Action action)
+    {
+        // textBox.OnCompletePrintText += action;
     }
 }

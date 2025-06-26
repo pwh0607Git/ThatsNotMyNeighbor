@@ -20,6 +20,7 @@ public class TelephoneDialView : MonoBehaviour, IBeginDragHandler, IEndDragHandl
     [SerializeField] AudioClip callClip;
     [SerializeField] AudioClip rotateDialClip;
     [SerializeField] AudioClip resetDialClip;
+    [SerializeField] AudioClip noneCallClip;
 
     bool canRotate = true;
 
@@ -113,7 +114,7 @@ public class TelephoneDialView : MonoBehaviour, IBeginDragHandler, IEndDragHandl
 
     public void OnDrag(PointerEventData eventData)
     {
-        rotateSpeed = Mathf.Abs(Vector2.Distance(clickPoint, eventData.position)) * 5f;
+        rotateSpeed = Mathf.Abs(Vector2.Distance(clickPoint, eventData.position)) * 30f;
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -154,7 +155,7 @@ public class TelephoneDialView : MonoBehaviour, IBeginDragHandler, IEndDragHandl
         if (atHomeProfiles.Count == 0)
         {
             Debug.Log("아무도 집에 없습니다.");
-
+            SoundManager.I.SetEffectAudio(noneCallClip);
             DOVirtual.DelayedCall(3f, () => ResetDial());
             return;
         }
@@ -182,7 +183,7 @@ public class TelephoneDialView : MonoBehaviour, IBeginDragHandler, IEndDragHandl
 
         // 3초 후 대사 출력
         SoundManager.I.SetEffectAudio(callClip);
-        DOVirtual.DelayedCall(3f, () => InGameUIController.I.ShowTextBox(null, dialog));
+        DOVirtual.DelayedCall(7f, () => InGameUIController.I.ShowTextBox(target, dialog));
     }
 
     void OnEnable()

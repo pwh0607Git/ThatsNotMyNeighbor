@@ -17,7 +17,7 @@ MonoBehaviour:
   id: 894569723
   characterType: 0
   profileImage: {fileID: 21300000, guid: acca479caa6c4ec409e40128e910880c, type: 3}
-  talkClip: {fileID: 8300000, guid: bd4561f7ff0e4424ebb58c1201384848, type: 3}
+  talkClip: {fileID: 8300000, guid: 0be429ac236c6e74db60bec3522a10fd, type: 3}
   walkClip: {fileID: 8300000, guid: 9fe180251ffba5c4aaf0c718a0c4907b, type: 3}
   job: "\uC8FC\uBD80"
   expiration: 10/1969

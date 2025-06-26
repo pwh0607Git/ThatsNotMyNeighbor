@@ -78,8 +78,10 @@ public class InGameManager : BehaviourSingleton<InGameManager>
     CharacterSpawner spawner;
 
     [Header("InGameSource")]
-    [SerializeField] GameObject gameOverPan;
     [SerializeField] AudioClip inGameBgm;
+    [SerializeField] GameObject gameOverPan;
+    [SerializeField] AudioClip gameOverMasterSource;
+    [SerializeField] AudioClip gameOverEffectSource;
 
     void ResetGame()
     {
@@ -94,7 +96,7 @@ public class InGameManager : BehaviourSingleton<InGameManager>
 
         InitSpawner();
 
-        StartTutorial();
+        DOVirtual.DelayedCall(2f, () => StartTutorial());
     }
 
     void InitInGameSource()
@@ -118,12 +120,14 @@ public class InGameManager : BehaviourSingleton<InGameManager>
         spawner.OnEmptyCharacterQueue += EndGame;
     }
 
+    public int life;
+
     void ResidentExitHandler(Profile profile)
     {
         string ad = SearchAddress(profile);
         addressDic[ad].UpdateCheckAtHome(profile, true);
 
-        if (Log.enterDoppelCount >= 3)
+        if (Log.enterDoppelCount >= life)
         {
             Debug.Log("도플갱어가 들어간 수가 3개를 넘어 갔습니다.");
             GameOver();
@@ -246,7 +250,7 @@ public class InGameManager : BehaviourSingleton<InGameManager>
             .AppendCallback(() =>
             {
                 // 대사 출력
-                npc_DDD.GetComponent<ResidentController>().TalkByCode("Tutorial");
+                npc_DDD.GetComponent<ResidentController>().TalkByCode("Greeting");
             });
     }
 
@@ -292,9 +296,13 @@ public class InGameManager : BehaviourSingleton<InGameManager>
     {
         Sequence overSeq = DOTween.Sequence();
 
-        overSeq.AppendInterval(1f)
+        SoundManager.I.SetEffectAudio(gameOverMasterSource);
+
+        overSeq.AppendInterval(5f)
                 .AppendCallback(() => gameOverPan.SetActive(true))
-                .AppendInterval(5f)
+                .AppendInterval(4f)
+                .AppendCallback(()=> SoundManager.I.SetEffectAudio(gameOverEffectSource))
+                .AppendInterval(1.5f)
                 .AppendCallback(() => LoadToResultScene());
     }
 

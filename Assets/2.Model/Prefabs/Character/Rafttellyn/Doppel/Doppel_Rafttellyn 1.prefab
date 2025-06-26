@@ -201,12 +201,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18a7c05c1e1a66b4d8505eb1cdaa6fda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  profile: {fileID: 0}
   type: 1
-  moveEase: 0
+  despawnType: 0
+  animator: {fileID: 0}
   eye: {fileID: 0}
   reveal_Eye: {fileID: 0}
   mouth: {fileID: 0}
   reveal_mouth: {fileID: 0}
+  information:
+    type: 0
+    model: {fileID: 0}
+    wanted: {fileID: 0}
+    reason: 
+  appearanceType: 0
+  doppelType: 0
 --- !u!95 &-7443449456677900157
 Animator:
   serializedVersion: 5

@@ -23,13 +23,15 @@ MonoBehaviour:
   expiration: 0000
   model: {fileID: 8758210154268841977, guid: 77e39787b3f57544e8437eda0df4c510, type: 3}
   dialogs:
-  - code: Tutorial
+  - code: Greeting
     msgs:
     - "\uC624\uB298\uBD80\uD130 \uC77C\uD558\uAC8C \uB41C \uACBD\uBE44\uC6D0 \uC774\uC2DC\uAD70\uC694."
+    - "\uD639\uC2DC \uC5B4\uB824\uC6B4 \uC77C\uC774 \uC788\uB2E4\uBA74 \uC544\uB798\uC758
+      \uD30C\uB780\uC0C9 \uCC45\uC744 \uD655\uC778\uD574\uC8FC\uC138\uC694."
     - "\uC798 \uBD80\uD0C1 \uB4DC\uB9BD\uB2C8\uB2E4."
-  - code: Call
+  - code: CleanProtocol
     msgs:
-    - "\uC815\uD654 \uC791\uC5C5 \uC644\uB8CC\uD588\uC2B5\uB2C8\uB2E4."
+    - "\uC815\uD654 \uC791\uC5C5\uC644\uB8CC\uD588\uC2B5\uB2C8\uB2E4."
     - "\uC218\uACE0\uD558\uC138\uC694."
   entryRequestReasons: []
   startPoint: {x: 0, y: 0}

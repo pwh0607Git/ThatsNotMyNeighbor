@@ -45,7 +45,8 @@ public class TextBoxController : MonoBehaviour, IPointerDownHandler
 
         // 아무것도 출력 중이 아닐 때만: 큐에 넣고 출력 시작
         EnqueueDialog(dialog);
-        ShowText();
+
+        WriteText();
     }
 
     public void EnqueueDialog(Dialog dialog)
@@ -58,7 +59,7 @@ public class TextBoxController : MonoBehaviour, IPointerDownHandler
 
     private AudioClip currentTalkClip;
 
-    public void ShowText()
+    public void WriteText()
     {
         if (textQueue.Count <= 0)
         {
@@ -112,7 +113,7 @@ public class TextBoxController : MonoBehaviour, IPointerDownHandler
         else
         {
             // Debug.Log("대사 출력이 완료 되었습니다 다음 대사 출력하겠습니다.");
-            ShowText();
+            WriteText();
         }
     }
 

@@ -464,7 +464,7 @@ Animator:
   m_GameObject: {fileID: 4419056343376614214}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 49538b4b8c94cd148bce8646302ca3cb, type: 2}
+  m_Controller: {fileID: 22100000, guid: ae2a6e4846e79f646bfee662c9215a14, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -487,8 +487,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 18a7c05c1e1a66b4d8505eb1cdaa6fda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  profile: {fileID: 0}
   type: 1
-  moveEase: 1
+  despawnType: 0
+  animator: {fileID: 0}
+  eye: {fileID: 0}
+  reveal_Eye: {fileID: 0}
+  mouth: {fileID: 0}
+  reveal_mouth: {fileID: 0}
+  information:
+    type: 0
+    model: {fileID: 0}
+    wanted: {fileID: 0}
+    reason: 
+  appearanceType: 0
+  doppelType: 0
 --- !u!1 &5197831639940456152
 GameObject:
   m_ObjectHideFlags: 0

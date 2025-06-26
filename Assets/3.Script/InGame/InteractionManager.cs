@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Data.Common;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.Events;
@@ -133,15 +132,6 @@ public class InteractionManager : BehaviourSingleton<InteractionManager>
     public void CleanDoppel()
     {
         LogManager.I.WriteLog(currentResident.type, DespawnType.Death);
-
-        if (currentResident is DoppelController doppel && doppel.doppelType.Equals(DoppelType.Appearance))
-        {
-            //도플 갱어를 정상적으로 잡았다면...
-            Debug.Log("도플갱어 기록 성공.");
-
-            if (Log.IsExisting(doppel.information)) return;
-            Log.CaptureDoppel(doppel.information, doppel.profile);
-        }
 
         currentResident.gameObject.SetActive(false);
         currentResident = null;

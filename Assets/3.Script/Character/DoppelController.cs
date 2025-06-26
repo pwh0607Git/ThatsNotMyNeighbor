@@ -10,8 +10,8 @@ public class DoppelController : ResidentController
 
     public DoppelInform information;
 
-    public DoppelApearanceType appearanceType;// { get; private set; }
-    public DoppelType doppelType;// { get; private set; }
+    public DoppelApearanceType appearanceType { get; private set; }
+    public DoppelType doppelType { get; private set; }
 
     void Start()
     {
@@ -42,12 +42,13 @@ public class DoppelController : ResidentController
         Dialog dialog = behavior.GetDialog(this, code);
         behavior.Talk(this, dialog);
     }
-    
-    private string CheckType(DoppelApearanceType type) => type switch {
-            DoppelApearanceType.NoneLanguage => "NoneLanguage",
-            DoppelApearanceType.NoneMouth => "NoneMouth",
-            _ => "None",
-        };
+
+    private string CheckType(DoppelApearanceType type) => type switch
+    {
+        DoppelApearanceType.NoneLanguage => "NoneLanguage",
+        DoppelApearanceType.NoneMouth => "NoneMouth",
+        _ => "None",
+    };
 
     public void Reveal(string code)
     {
