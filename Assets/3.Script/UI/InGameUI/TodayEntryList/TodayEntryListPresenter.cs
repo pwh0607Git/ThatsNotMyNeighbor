@@ -33,6 +33,7 @@ public class TodayEntryListPresenter
         }
     }
 
+
     public void OnClickOpenButton() => view.SetActive(true);
     public void OnClickCloseButton() => view.SetActive(false);
 }

@@ -36,14 +36,11 @@ public class InteractionManager : BehaviourSingleton<InteractionManager>
 
         if (resident is not DoppelController doppel)
         {
-            Debug.Log("현재 주민은 도플 갱어가 아닙니다.");
             idCardController.SetData(resident.profile);
             entryRequestController.SetData(resident.profile);
         }
         else
         {
-            
-            Debug.Log("현재 주민은 도플 갱어 입니다.");
             // 위조 데이터 생성.
             if (doppel.doppelType.Equals(DoppelType.ForgedID))
             {
@@ -125,8 +122,11 @@ public class InteractionManager : BehaviourSingleton<InteractionManager>
 
         if (currentResident == null) return;
 
-        currentResident.Exit();
-        ExitResident();
+        if (on)
+        {
+            Debug.Log("Gate is Opend");
+            currentResident.Exit();
+        }
     }
 
     public void CleanDoppel()

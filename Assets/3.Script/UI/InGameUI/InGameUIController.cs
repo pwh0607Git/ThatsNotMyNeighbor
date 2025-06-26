@@ -15,41 +15,29 @@ public class InGameUIController : BehaviourSingleton<InGameUIController>
 {
     protected override bool IsDontDestroy() => false;
 
-    [Header("Controller")]
-    ResidentFolderController residentFileController;
-    TodayEntryListController todayEntryListController;
-    CheckListController checkListController;
+    [Header("View")]
+    [SerializeField] ResidentFolderView residentFolderView;
+    [SerializeField] TodayEntryListView todayEntryListView;
+    [SerializeField] CheckListView checkListView;
 
+    public ResidentFolderPresenter ResidentFolderPresenter{ get; private set; }
+    public TodayEntryListPresenter TodayEntryListPresenter{ get; private set; }
+    public CheckListPresenter CheckListPresenter{ get; private set; }
+    [SerializeField] QuestionType[] groupKey;
 
     [Header("Popup")]
-    [SerializeField] List<PopUpPair> pairs;
     [SerializeField] TextBoxController textBox;
     [SerializeField] TextBoxController textBox_noise;
 
     [Header("Init Event")]
     private UnityAction OnCompleteInitEvent;
 
-    protected override void Awake()
+    public void InitControllers()
     {
-        base.Awake();
-    }
+        this.ResidentFolderPresenter = new(residentFolderView);
+        this.TodayEntryListPresenter = new(todayEntryListView, InGameManager.I.TodayEntryList);
+        this.CheckListPresenter = new(checkListView, groupKey);
 
-    void OnEnable()
-    {
-        textBox.OnCompletePrintText += OnCompletePrintText;
-        textBox_noise.OnCompletePrintText += OnCompletePrintText;
-    }
-
-    void OnDisable()
-    {
-        textBox.OnCompletePrintText -= OnCompletePrintText;
-        textBox_noise.OnCompletePrintText -= OnCompletePrintText;
-    }
-
-    public void InitControllers(ResidentFolderController residentFileController, TodayEntryListController todayEntryListController)
-    {
-        this.residentFileController = residentFileController;
-        this.todayEntryListController = todayEntryListController;
         TryGetComponent(out clips);
     }
 
@@ -101,15 +89,6 @@ public class InGameUIController : BehaviourSingleton<InGameUIController>
         textBox_noise.SetTextQueue(resident, dialog, resident.profile.doppelData.talkClip);
     }
 
-    void OnCompletePrintText(string code)
-    {
-        if (code.Equals("Greeting") || code.Equals("CleanProtocol"))
-        {
-            // 튜토리얼 종료 로직 수행하기
-            InGameManager.I.EndDDDBehaviour();
-        }
-    }
-
     [SerializeField] GameObject shutdownDoor;
     InGameSoundClipContainer clips;
 
@@ -121,8 +100,13 @@ public class InGameUIController : BehaviourSingleton<InGameUIController>
         shutdownDoor.GetComponent<RectTransform>().DOAnchorPos(targetPoint, 0.8f);
     }
 
-    public void RegisterTextBoxAction(Action action)
+    public void RegisterTextBoxAction(UnityAction action)
     {
-        // textBox.OnCompletePrintText += action;
+        textBox.OnCompletePrintText += action;
+    }
+
+    public void UnregisterTextBoxAction(UnityAction action)
+    {
+        textBox.OnCompletePrintText -= action;
     }
 }

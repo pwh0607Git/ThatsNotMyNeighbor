@@ -18,10 +18,10 @@ public class Resident
     }
 }
 
-public class CharacterSpawner : MonoBehaviour
+public class CharacterSpawner
 {
     private Queue<ResidentController> residentQueue;
-    [SerializeField] Transform characterLayer;
+    Transform characterLayer;
 
     // count수만큼 캐릭터 프리팹을 생성한다.
     List<ResidentController> characterList;
@@ -29,8 +29,14 @@ public class CharacterSpawner : MonoBehaviour
     public UnityAction<List<ResidentController>> OnCompleteSpawn;
     public UnityAction OnEmptyCharacterQueue;
 
+    public CharacterSpawner(Transform characterLayer) {
+        this.characterLayer = characterLayer;        
+    }
+
     public void SetCharacters(List<Profile> todayEntryList, int count)
     {
+        ResetCharacterList();
+     
         characterList = new();
         residentQueue = new();
 
@@ -43,6 +49,18 @@ public class CharacterSpawner : MonoBehaviour
         OnCompleteSpawn?.Invoke(characterList);
 
         SetQueue();
+    }
+
+    void ResetCharacterList()
+    {
+        if (characterList == null || characterList.Count <= 0) return;
+
+        foreach (var character in characterList)
+        {
+            GameObject.Destroy(character);
+        }
+
+        characterList.Clear();
     }
 
     void CreateTodayEntryListCharacters(List<Profile> characters)
@@ -76,7 +94,7 @@ public class CharacterSpawner : MonoBehaviour
                     profile = characters[index];
                 } while (characterList.Find(p => p.profile.Equals(profile)));
 
-                character = Instantiate(profile.model, characterLayer).GetComponent<ResidentController>();
+                character = GameObject.Instantiate(profile.model, characterLayer).GetComponent<ResidentController>();
                 character.SetProperty(profile, CharacterType.Resident, BehaviourFactory.CreateResidentBehaviour());
             }
             else if (type.Equals(CharacterType.Doppel))
@@ -97,7 +115,7 @@ public class CharacterSpawner : MonoBehaviour
 
     void CreateResident(Profile profile)
     {
-        ResidentController character = Instantiate(profile.model, characterLayer).GetComponent<ResidentController>();
+        ResidentController character = GameObject.Instantiate(profile.model, characterLayer).GetComponent<ResidentController>();
         ICharacterBehaviour behaviour = BehaviourFactory.CreateResidentBehaviour();
 
         characterList.Add(character);
@@ -126,7 +144,7 @@ public class CharacterSpawner : MonoBehaviour
             int rndI = UnityEngine.Random.Range(0, filtered.Count);
 
             doppelInfo = filtered[rndI];                                                          //DoppelInfo
-            doppel = Instantiate(doppelInfo.model, characterLayer).GetComponent<DoppelController>();
+            doppel = GameObject.Instantiate(doppelInfo.model, characterLayer).GetComponent<DoppelController>();
             appearanceType = doppelInfo.type;
         }
         else
@@ -141,7 +159,7 @@ public class CharacterSpawner : MonoBehaviour
             }
 
             // doppelType
-            doppel = Instantiate(doppelInfo.model, characterLayer).GetComponent<DoppelController>();
+            doppel = GameObject.Instantiate(doppelInfo.model, characterLayer).GetComponent<DoppelController>();
             appearanceType = DoppelApearanceType.None;
         }
 

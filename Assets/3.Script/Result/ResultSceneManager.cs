@@ -68,11 +68,13 @@ public class ResultSceneManager : MonoBehaviour
 
     public void OnClickReloadButton()
     {
-        SceneManager.LoadScene("Scn1.InGame");
+        SceneLoader.nextSceneName = "Scn1.InGame";
+        SceneLoader.LoadLoadingScene();
     }  
     
     public void OnClickLobbyButton()
     {
-        SceneManager.LoadScene("Scn0.Lobby");
+        SceneLoader.nextSceneName = "Scn0.Lobby";
+        SceneLoader.LoadLoadingScene();
     }
 }

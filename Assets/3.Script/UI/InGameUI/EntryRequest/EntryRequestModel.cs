@@ -1,3 +1,5 @@
+using UnityEngine;
+
 public class EntryRequestModel
 {
     public ForgedType forgedType { get; private set; } = ForgedType.None;
@@ -12,7 +14,9 @@ public class EntryRequestModel
         // 이유 reason은 profile에 있는 것 사용하기 => profile에 추가하기.
         this.profile = profile;
         this.address = address;
-        this.reason = "잠시 일이 있어 다녀왔습니다.";
+
+        int rnd = Random.Range(0, profile.entryRequestReasons.Count);
+        this.reason = profile.entryRequestReasons[rnd];
 
         this.isForged = isForged;
 

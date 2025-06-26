@@ -7,11 +7,11 @@ public class CheckListPresenter
     private readonly CheckListView view;
     private readonly CheckListModel model;
 
-    public CheckListPresenter(CheckListView view)
+    public CheckListPresenter(CheckListView view, QuestionType[] groupKey)
     {
         this.view = view;
-
         model = new();
+        InitCheckList(groupKey);
     }
 
     public void InitCheckList(QuestionType[] groupKey)

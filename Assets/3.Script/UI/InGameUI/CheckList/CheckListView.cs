@@ -52,11 +52,6 @@ public class CheckListView : MonoBehaviour
         }
     }
 
-    public void OnClickExitButton()
-    {
-        this.gameObject.SetActive(false);
-    }
-
     public void OnClickQuestionButton()
     {
         InteractionManager.I.StartQuestion(currentChecking);

@@ -47,10 +47,10 @@ public class WarningCallController : MonoBehaviour
 
                         InGameUIController.I.MoveShutDownDoor(800f);
                     })
-                    .AppendInterval(2f)
+                    .AppendInterval(3f)
                     .AppendCallback(() =>
                     {
-                        ddd.TalkByCode("Call");
+                        ddd.TalkByCode("CleanProtocol");
                     });
     }
     [SerializeField] AudioClip sirenClip;

@@ -1,6 +1,14 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+public static class SceneLoader
+{
+    public static string nextSceneName;
+    public static void LoadLoadingScene()
+    {
+        SceneManager.LoadScene("Scn0.Loading");
+    }
+}
 public class LobbyManager : MonoBehaviour
 {
     [SerializeField] AudioClip lobbyBgmClip;
@@ -28,8 +36,15 @@ public class LobbyManager : MonoBehaviour
         optionPanelController.SetActivePanel(true);
     }
 
-    public void OnClickGameButton()
+    public void OnClickArcadeModeButton()
     {
-        SceneManager.LoadScene("Scn1.InGame");
+        SceneLoader.nextSceneName = "Scn1.InGame";
+        SceneLoader.LoadLoadingScene();
+    }
+
+    public void OnClickEndlessModeButton()
+    {
+        SceneLoader.nextSceneName = "Scn1.InGame_Endless";
+        SceneLoader.LoadLoadingScene();
     }
 }

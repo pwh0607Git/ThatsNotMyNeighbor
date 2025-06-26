@@ -19,9 +19,11 @@ MonoBehaviour:
   profileImage: {fileID: 21300000, guid: 7a24e5211d6c9e34c9ed7d1116ac3478, type: 3}
   talkClip: {fileID: 8300000, guid: 0be429ac236c6e74db60bec3522a10fd, type: 3}
   walkClip: {fileID: 8300000, guid: 9fe180251ffba5c4aaf0c718a0c4907b, type: 3}
-  job: "\uBE44\uD589\uAE30 \uC870\uC885\uC0AC[\uC740\uD1F4]"
+  job: "\uBE44\uD589\uAE30 \uC870\uC885\uC0AC"
   expiration: 02/1966
   model: {fileID: 3644204003804644940, guid: 09ff33d334490784dbe47e2d10dd3807, type: 3}
+  entryRequestReasons:
+  - "\uBE44\uD589\uAE30\uC5D0 \uBB38\uC81C\uAC00 \uC0DD\uACA8 \uB2E4\uB140\uC654\uC2B5\uB2C8\uB2E4."
   dialogs:
   - code: Greeting
     msgs:
@@ -59,7 +61,6 @@ MonoBehaviour:
   - code: NoneMouth
     msgs:
     - ... ... ...
-  entryRequestReasons: []
   startPoint: {x: -1000, y: 0}
   targetPoint: {x: 0, y: 0}
   endPoint: {x: 1000, y: 0}

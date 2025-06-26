@@ -22,6 +22,9 @@ MonoBehaviour:
   job: "\uD68C\uACC4\uC0AC"
   expiration: 05/1968
   model: {fileID: 4918190570779647745, guid: ce16ec832629ed349a19f86a664f7b2d, type: 3}
+  entryRequestReasons:
+  - "\uC5C5\uBB34 \uCC98\uB9AC\uC911 \uBB38\uC81C\uAC00 \uC0DD\uACA8 \uC7A0\uC2DC
+    \uC0AC\uBB34\uC2E4\uC5D0 \uB2E4\uB140\uC654\uC2B5\uB2C8\uB2E4."
   dialogs:
   - code: Greeting
     msgs:
@@ -59,7 +62,6 @@ MonoBehaviour:
   - code: NoneMouth
     msgs:
     - ... ... ...
-  entryRequestReasons: []
   startPoint: {x: -1000, y: 0}
   targetPoint: {x: 0, y: 0}
   endPoint: {x: 1000, y: 0}

@@ -60,7 +60,7 @@ public class ResidentController : MonoBehaviour
                     if (InteractionManager.I.isOpen)
                     {
                         enterSeq.Kill();
-                        Exit();
+                        // Exit();
                     }
                     animator.SetFloat("Movement", 0f);
                 })
@@ -73,12 +73,16 @@ public class ResidentController : MonoBehaviour
 
     public void Exit()
     {
+        Debug.Log($"Resident Exit : {gameObject.name}");
         SoundManager.I.SetEffectAudio(profile.walkClip);
         animator.SetFloat("Movement", 1);
         
         LogManager.I.WriteLog(type, DespawnType.Enter);
         InteractionManager.I.ExitResident();
-        rectTransform.DOAnchorPos(profile.endPoint, 3f).OnComplete(() => this.gameObject.SetActive(false));
+
+        rectTransform.DOAnchorPos(profile.endPoint, 3f).OnComplete(() => {
+            this.gameObject.SetActive(false);
+            });
     }
 
     public virtual void TalkByCode(string code)

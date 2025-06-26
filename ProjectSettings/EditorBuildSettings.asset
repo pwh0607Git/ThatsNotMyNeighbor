@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/1.Scene/Scn0.Loading.unity
+    guid: 085b45ef0b96dd94fb0c250ca20a12d6
+  - enabled: 1
     path: Assets/1.Scene/Scn0.Lobby.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
@@ -14,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/1.Scene/Scn2.Result.unity
     guid: 4f587a9bdc7d95140adcf98098238a56
+  - enabled: 1
+    path: Assets/1.Scene/Scn1.InGame_Endless.unity
+    guid: 1c3ff4daf0c585241990331f4096850b
   m_configObjects: {}

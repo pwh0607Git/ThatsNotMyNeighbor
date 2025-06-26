@@ -5,6 +5,11 @@ using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+public enum GameMode
+{
+    Arcade, Endless,
+}
+
 [Serializable]
 public class Apartment
 {
@@ -52,12 +57,16 @@ public class Apartment
     }
 }
 
+
+
 public class InGameManager : BehaviourSingleton<InGameManager>
 {
     protected override bool IsDontDestroy() => false;
 
+    [Header("GameMode")]
+    [SerializeField] GameMode mode;
+
     [Header("Controller")]
-    CharacterSpawner characterSpawner;
     [SerializeField] WarningCallController warningCall;
 
     [Header("Level Data")]
@@ -68,35 +77,31 @@ public class InGameManager : BehaviourSingleton<InGameManager>
     [Header("CharacterDatas")]
     [SerializeField] List<Profile> characters;          // Inspector
     public List<Profile> Characters => characters;
-    public List<Profile> npcs;
+    public Profile profile_DDD;
     public List<string> telephoneNumbers;
     [SerializeField] FamilyData familyDatas;
 
+    public List<Profile> TodayEntryList { get; private set; }
     public Dictionary<string, Apartment> addressDic { get; private set; }
 
     [Header("Spawner")]
-    CharacterSpawner spawner;
+    private CharacterSpawner spawner;
 
     [Header("InGameSource")]
     [SerializeField] AudioClip inGameBgm;
     [SerializeField] GameObject gameOverPan;
     [SerializeField] AudioClip gameOverMasterSource;
     [SerializeField] AudioClip gameOverEffectSource;
-
+    
     void ResetGame()
     {
         InitInGameSource();
-
-        TryGetComponent(out spawner);
-        TryGetComponent(out characterSpawner);
-
-        InitControllers();
 
         InitAddress();
 
         InitSpawner();
 
-        DOVirtual.DelayedCall(2f, () => StartTutorial());
+        DOVirtual.DelayedCall(1.5f, () => StartGame());
     }
 
     void InitInGameSource()
@@ -104,17 +109,25 @@ public class InGameManager : BehaviourSingleton<InGameManager>
         addressDic = new();
         SoundManager.I.SetMasterAudio(inGameBgm);
         gameOverPan?.SetActive(false);
+
+        //TodayEntrList 생성.
+        if (TodayEntryList != null) TodayEntryList.Clear();
+
+        TodayEntryList = GetRandomList(Characters, 4);
+
+        InGameUIController.I.InitControllers();
     }
 
     [Header("SpawnCount")]
     [SerializeField] int fullCount;
-
+ 
     void InitSpawner()
     {
-        if (todayEntryListController == null) return;
+        spawner = new(characterLayer);
+
         spawner.OnCompleteSpawn += InitAtHome;
 
-        spawner.SetCharacters(todayEntryListController.TodayEntryList, fullCount);
+        spawner.SetCharacters(TodayEntryList, fullCount);
 
         InteractionManager.I.OnExitResident += ResidentExitHandler;
         spawner.OnEmptyCharacterQueue += EndGame;
@@ -210,7 +223,6 @@ public class InGameManager : BehaviourSingleton<InGameManager>
 
     public string SearchAddress(Profile profile)
     {
-        Debug.Log($"Dic Count : {addressDic.Count}");
         //해당 주민에 대한 주소 찾기
         foreach (var add in addressDic)
         {
@@ -230,18 +242,24 @@ public class InGameManager : BehaviourSingleton<InGameManager>
         return "";
     }
 
-    #region tutorial
     private ResidentController npc_DDD;
     [SerializeField] Transform characterLayer;
 
-    public void StartTutorial()
+    public void StartGame()
+    {
+        if (mode.Equals(GameMode.Arcade)) PerformAracade();
+        else if (mode.Equals(GameMode.Endless)) PerformEndless();
+    }
+
+    void PerformAracade()
     {
         Sequence startSeq = DOTween.Sequence();
 
-        Profile profile = npcs.Find(p => p.id.Equals("000000000"));               // DDD 직원 id
+        npc_DDD = Instantiate(profile_DDD.model, characterLayer).GetComponent<ResidentController>();
+        npc_DDD.SetProperty(profile_DDD, CharacterType.NPC, BehaviourFactory.CreateResidentBehaviour());
 
-        npc_DDD = Instantiate(profile.model, characterLayer).GetComponent<ResidentController>();
-        npc_DDD.SetProperty(profile, CharacterType.NPC, BehaviourFactory.CreateResidentBehaviour());
+        (npc_DDD as DDDController).OnCompleteBehaviour += SpawnResident;
+
         warningCall.Init(npc_DDD);
 
         startSeq.AppendInterval(1f)
@@ -250,38 +268,34 @@ public class InGameManager : BehaviourSingleton<InGameManager>
             .AppendCallback(() =>
             {
                 // 대사 출력
-                npc_DDD.GetComponent<ResidentController>().TalkByCode("Greeting");
+                npc_DDD.TalkByCode("Greeting");
             });
     }
 
-    public void EndDDDBehaviour()
+    void PerformEndless()
     {
-        Sequence endSeq = DOTween.Sequence();
+        Sequence startSeq = DOTween.Sequence();
 
-        endSeq.AppendInterval(0.5f)
-            .AppendCallback(() => npc_DDD.Exit())
-            .AppendInterval(4f)
-            .OnComplete(() =>
+        npc_DDD = Instantiate(profile_DDD.model, characterLayer).GetComponent<ResidentController>();
+        npc_DDD.SetProperty(profile_DDD, CharacterType.NPC, BehaviourFactory.CreateResidentBehaviour());
+
+        (npc_DDD as DDDController).OnCompleteBehaviour += SpawnResident;
+
+        warningCall.Init(npc_DDD);
+
+        startSeq.AppendInterval(1f)
+            .AppendCallback(() => InGameUIController.I.MoveShutDownDoor(800f))
+            .AppendInterval(1f)
+            .AppendCallback(() =>
             {
-                Debug.Log("캐릭터 스폰 로직 수행!!");
-                characterSpawner.SpawnCharacter();
+                npc_DDD.TalkByCode("Greeting_Endless");
             });
     }
-    #endregion
 
-
-    [Header("Controller")]
-    ResidentFolderController residentFileController;
-    TodayEntryListController todayEntryListController;
-
-    void InitControllers()
+    void SpawnResident()
     {
-        TryGetComponent(out todayEntryListController);
-        TryGetComponent(out residentFileController);
-
-        InGameUIController.I.InitControllers(residentFileController, todayEntryListController);
+        spawner.SpawnCharacter();
     }
-
     void EndGame()
     {
         Sequence endSeq = DOTween.Sequence();
@@ -296,22 +310,35 @@ public class InGameManager : BehaviourSingleton<InGameManager>
     {
         Sequence overSeq = DOTween.Sequence();
 
-        SoundManager.I.SetEffectAudio(gameOverMasterSource);
-
-        overSeq.AppendInterval(5f)
+        overSeq.AppendInterval(2f)
+                .AppendCallback(()=>SoundManager.I.SetEffectAudio(gameOverMasterSource))
+                .AppendInterval(5f)
                 .AppendCallback(() => gameOverPan.SetActive(true))
                 .AppendInterval(4f)
-                .AppendCallback(()=> SoundManager.I.SetEffectAudio(gameOverEffectSource))
-                .AppendInterval(1.5f)
+                .AppendCallback(() => SoundManager.I.SetEffectAudio(gameOverEffectSource))
+                .AppendInterval(1f)
                 .AppendCallback(() => LoadToResultScene());
+    }
+
+
+    public List<Profile> GetRandomList(List<Profile> chararcters, int count)
+    {        
+        List<Profile> selected = new();
+        while (selected.Count < count)
+        {
+            var c = chararcters[UnityEngine.Random.Range(0, chararcters.Count)];
+            if (!selected.Contains(c)) selected.Add(c);
+        }
+
+        return selected;
     }
 
 
     private void LoadToResultScene()
     {
-        SceneManager.LoadScene("Scn2.Result");
+        SceneLoader.nextSceneName = "Scn2.Result";
+        SceneLoader.LoadLoadingScene();
     }
-
 
     void OnEnable()
     {
