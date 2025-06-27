@@ -132,7 +132,7 @@ public class InGameManager : BehaviourSingleton<InGameManager>
 
         spawner.OnCompleteSpawn += InitAtHome;
 
-        int spawnCount = 4 + (LevelData.level / 2);
+        int spawnCount = 8 + (LevelData.level / 2);
         spawner.SetCharacters(TodayEntryList, spawnCount);
 
         InteractionManager.I.OnExitResident += ResidentExitHandler;
