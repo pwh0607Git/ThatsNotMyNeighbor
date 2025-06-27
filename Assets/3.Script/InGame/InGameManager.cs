@@ -9,6 +9,14 @@ public enum GameMode
 {
     Arcade, Endless,
 }
+public static class LevelData
+{
+    public static int level = 0;
+
+    public static void ResetLevel(){
+        level = 0;
+    }
+}
 
 [Serializable]
 public class Apartment
@@ -70,7 +78,6 @@ public class InGameManager : BehaviourSingleton<InGameManager>
     [SerializeField] WarningCallController warningCall;
 
     [Header("Level Data")]
-    [SerializeField] int level;
     [SerializeField] int maxFloor;              // F01, F02...
     [SerializeField] int maxHouse;              // 01, 02...
 
@@ -113,13 +120,11 @@ public class InGameManager : BehaviourSingleton<InGameManager>
         //TodayEntrList 생성.
         if (TodayEntryList != null) TodayEntryList.Clear();
 
-        TodayEntryList = GetRandomList(Characters, 4);
+        int todayEntryListcount = 4 + (LevelData.level / 3);
+        TodayEntryList = GetRandomList(Characters, todayEntryListcount);
 
         InGameUIController.I.InitControllers();
     }
-
-    [Header("SpawnCount")]
-    [SerializeField] int fullCount;
  
     void InitSpawner()
     {
@@ -127,7 +132,8 @@ public class InGameManager : BehaviourSingleton<InGameManager>
 
         spawner.OnCompleteSpawn += InitAtHome;
 
-        spawner.SetCharacters(TodayEntryList, fullCount);
+        int spawnCount = 4 + (LevelData.level / 2);
+        spawner.SetCharacters(TodayEntryList, spawnCount);
 
         InteractionManager.I.OnExitResident += ResidentExitHandler;
         spawner.OnEmptyCharacterQueue += EndGame;
@@ -296,14 +302,24 @@ public class InGameManager : BehaviourSingleton<InGameManager>
     {
         spawner.SpawnCharacter();
     }
+    
     void EndGame()
     {
         Sequence endSeq = DOTween.Sequence();
 
-        endSeq.AppendInterval(1.0f)
-            .AppendCallback(() => InGameUIController.I.MoveShutDownDoor(0f))
-            .AppendInterval(1f)
-            .AppendCallback(() => LoadToResultScene());
+        if (mode.Equals(GameMode.Arcade))
+        {
+            endSeq.AppendInterval(1.0f)
+                .AppendCallback(() => InGameUIController.I.MoveShutDownDoor(0f))
+                .AppendInterval(1f)
+                .AppendCallback(() => LoadToResultScene());
+        } else if (mode.Equals(GameMode.Endless)) {
+            endSeq.AppendInterval(1.0f)
+                .AppendCallback(() => InGameUIController.I.MoveShutDownDoor(0f))
+                .AppendInterval(1f)
+                .AppendCallback(() => LoadingController.LoadScene("Scn1.InGame_Endless"));
+        }
+
     }
 
     public void GameOver()
@@ -318,6 +334,8 @@ public class InGameManager : BehaviourSingleton<InGameManager>
                 .AppendCallback(() => SoundManager.I.SetEffectAudio(gameOverEffectSource))
                 .AppendInterval(1f)
                 .AppendCallback(() => LoadToResultScene());
+
+        LevelData.ResetLevel();
     }
 
 
@@ -336,8 +354,7 @@ public class InGameManager : BehaviourSingleton<InGameManager>
 
     private void LoadToResultScene()
     {
-        SceneLoader.nextSceneName = "Scn2.Result";
-        SceneLoader.LoadLoadingScene();
+        LoadingController.LoadScene("Scn2.Result");
     }
 
     void OnEnable()
@@ -353,6 +370,10 @@ public class InGameManager : BehaviourSingleton<InGameManager>
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         Debug.Log("[InGameManager] : Scene Loaded => Game Reset");
+        if (this.mode.Equals(GameMode.Endless))
+        {
+            LevelData.level++;
+        }
         ResetGame();
     }
 }

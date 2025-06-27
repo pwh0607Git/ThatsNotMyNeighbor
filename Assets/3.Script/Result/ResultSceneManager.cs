@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class ResultSceneManager : MonoBehaviour
@@ -19,11 +16,16 @@ public class ResultSceneManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI deadResidentCount;
 
     [SerializeField] TextMeshProUGUI rank;
+    [SerializeField] Image mark;
+
+    [SerializeField] AudioClip potClip;
+    [SerializeField] AudioClip stampClip;
 
     void OnEnable()
     {
         SetTMP();
         ShowResult();
+        mark.gameObject.SetActive(false);
     }
 
     void SetTMP()
@@ -46,15 +48,40 @@ public class ResultSceneManager : MonoBehaviour
     {
         Sequence showSeq = DOTween.Sequence();
 
-        showSeq.AppendCallback(() => capturedDoppelCountPan.SetActive(true))
+        showSeq.AppendInterval(1.5f)
+                .AppendCallback(() =>
+                {
+                    capturedDoppelCountPan.SetActive(true);
+                    SoundManager.I.SetEffectAudio(potClip);
+                })
                 .AppendInterval(0.5f)
-                .AppendCallback(() => enterDoppelCountPan.SetActive(true))
+                .AppendCallback(() =>
+                {
+                    enterDoppelCountPan.SetActive(true);
+                    SoundManager.I.SetEffectAudio(potClip);
+                })
                 .AppendInterval(0.5f)
-                .AppendCallback(() => deadResidentCountPan.SetActive(true))
+                .AppendCallback(() =>
+                {
+                    deadResidentCountPan.SetActive(true);
+                    SoundManager.I.SetEffectAudio(potClip);
+                })
                 .AppendInterval(1f)
-                .AppendCallback(() => rankPan.SetActive(true))
-                .AppendInterval(0.3f)
+                .AppendCallback(() =>
+                {
+                    rankPan.SetActive(true);
+                    SoundManager.I.SetEffectAudio(potClip);
+                })
+                .AppendInterval(1f)
+                .AppendCallback(() => StartMarkAnim())
                 .AppendCallback(() => SetActiveButton(true));
+    }
+
+    void StartMarkAnim()
+    {
+        mark.gameObject.SetActive(true);
+        mark.GetComponent<RectTransform>().localScale = Vector3.one * 2f;
+        mark.transform.DOScale(Vector3.one, 1f).SetEase(Ease.InSine).OnComplete(() => SoundManager.I.SetEffectAudio(stampClip));
     }
 
     [SerializeField] Button btn_Reload;
@@ -68,13 +95,13 @@ public class ResultSceneManager : MonoBehaviour
 
     public void OnClickReloadButton()
     {
-        SceneLoader.nextSceneName = "Scn1.InGame";
-        SceneLoader.LoadLoadingScene();
-    }  
-    
+        LogManager.I.ResetLog();
+        LoadingController.LoadScene("Scn1.InGame");
+    }
+
     public void OnClickLobbyButton()
     {
-        SceneLoader.nextSceneName = "Scn0.Lobby";
-        SceneLoader.LoadLoadingScene();
+        LogManager.I.ResetLog();
+        LoadingController.LoadScene("Scn0.Lobby");
     }
 }

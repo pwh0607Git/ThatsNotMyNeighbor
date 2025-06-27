@@ -72,8 +72,7 @@ public class LogManager : BehaviourSingleton<LogManager>
         ShowCount();
     }
 
-    void OnEnable()
-    {
+    public void ResetLog(){
         Log.Reset();
     }
 

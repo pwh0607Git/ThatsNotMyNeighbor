@@ -4,40 +4,34 @@ using UnityEngine.SceneManagement;
 
 public class LoadingController : MonoBehaviour
 {
-    float elapsedTime;
+    private static string nextScene;
+    [SerializeField] float loadingTime;
 
-    void OnEnable()
+    float elapsed = 0f; 
+    void Start()
     {
-        elapsedTime = 0f;
-        Debug.Log("Loading...");
         StartCoroutine(LoadSceneAsync());
     }
 
-    void Update()
+    public static void LoadScene(string sceneName)
     {
-        elapsedTime += Time.deltaTime;
+        Debug.Log("로딩씬으로 이동...");
+        nextScene = sceneName;
+        SceneManager.LoadScene("Scn0.Loading");
     }
-
-    public float minimumLoadingTime = 1f;
 
     IEnumerator LoadSceneAsync()
     {
-        string nextSceneName = SceneLoader.nextSceneName;
+        yield return null;
 
-        AsyncOperation operation = SceneManager.LoadSceneAsync(nextSceneName);
+        Debug.Log("Loading Scene...");
+        AsyncOperation operation = SceneManager.LoadSceneAsync(nextScene);
         operation.allowSceneActivation = false;
 
-        while (operation.progress < 0.9f)
-        {
-            yield return null;
-        }
-
-        // 최소 로딩 시간 대기
-        while (elapsedTime <= minimumLoadingTime)
-        {
-            yield return null;
-        }
+        yield return new WaitForSeconds(2f);
 
         operation.allowSceneActivation = true;
+
+        elapsed = 0f; 
     }
 }

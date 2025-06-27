@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -19,14 +17,13 @@ public class GameModePanelController : MonoBehaviour
 
     public void OnClickArcadeModeButton()
     {
-        LoadScene("Scn1.InGame");
+        LoadingController.LoadScene("Scn1.InGame");
     }
 
     public void OnClickEndlessModeButton()
     {
-        LoadScene("Scn1.InGame_EndlessMode");
+        LoadingController.LoadScene("Scn1.InGame_Endless");
     }
-
     private void LoadScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);

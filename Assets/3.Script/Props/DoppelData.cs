@@ -33,6 +33,5 @@ public class DoppelInform
 {
     public DoppelApearanceType type;
     public GameObject model;
-    public Sprite wanted;
     public string reason;
 }

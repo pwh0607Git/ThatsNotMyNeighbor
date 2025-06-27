@@ -630,8 +630,7 @@ MonoBehaviour:
   gameOverPan: {fileID: 827840076}
   gameOverMasterSource: {fileID: 8300000, guid: bf56c03a469fafe4eb0b9be3cea47cb0, type: 3}
   gameOverEffectSource: {fileID: 8300000, guid: c85ef0f02de227d469f1a903cb6b67f2, type: 3}
-  fullCount: 10
-  life: 1
+  life: 3
   characterLayer: {fileID: 1816565019}
 --- !u!1 &52500368
 GameObject:
