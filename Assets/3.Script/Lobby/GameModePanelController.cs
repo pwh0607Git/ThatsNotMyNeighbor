@@ -22,6 +22,7 @@ public class GameModePanelController : MonoBehaviour
 
     public void OnClickEndlessModeButton()
     {
+        LevelData.mode = GameMode.Endless;
         LoadingController.LoadScene("Scn1.InGame_Endless");
     }
     private void LoadScene(string sceneName)

@@ -12,7 +12,7 @@ public enum GameMode
 public static class LevelData
 {
     public static int level = 0;
-
+    public static GameMode mode = GameMode.Arcade;
     public static void ResetLevel(){
         level = 0;
     }

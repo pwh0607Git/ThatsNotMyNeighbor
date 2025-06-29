@@ -28,8 +28,11 @@ public class ResultSceneManager : MonoBehaviour
         mark.gameObject.SetActive(false);
 
         //레코드 저장하기
-        RecordManager.SaveRecord(LevelData.level);
-        LevelData.ResetLevel();
+        if (LevelData.mode.Equals(GameMode.Endless))
+        {
+            RecordManager.SaveRecord(LevelData.level);
+            LevelData.ResetLevel();    
+        }
     }
 
     void SetTMP()
