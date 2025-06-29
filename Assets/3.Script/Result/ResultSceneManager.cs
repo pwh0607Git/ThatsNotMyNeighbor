@@ -26,15 +26,19 @@ public class ResultSceneManager : MonoBehaviour
         SetTMP();
         ShowResult();
         mark.gameObject.SetActive(false);
+
+        //레코드 저장하기
+        RecordManager.SaveRecord(LevelData.level);
+        LevelData.ResetLevel();
     }
 
     void SetTMP()
     {
-        capturedDoppelCount.text = Log.capturedDoppelCount.ToString();
-        enterDoppelCount.text = Log.enterDoppelCount.ToString();
-        deadResidentCount.text = Log.deadResidentCount.ToString();
+        capturedDoppelCount.text = Record.capturedDoppelCount.ToString();
+        enterDoppelCount.text = Record.enterDoppelCount.ToString();
+        deadResidentCount.text = Record.deadResidentCount.ToString();
 
-        rank.text = Log.GetRank();
+        rank.text = Record.GetRank();
 
         capturedDoppelCountPan.SetActive(false);
         enterDoppelCountPan.SetActive(false);
@@ -95,13 +99,13 @@ public class ResultSceneManager : MonoBehaviour
 
     public void OnClickReloadButton()
     {
-        LogManager.I.ResetLog();
+        Record.Reset();
         LoadingController.LoadScene("Scn1.InGame");
     }
 
     public void OnClickLobbyButton()
     {
-        LogManager.I.ResetLog();
+        Record.Reset();
         LoadingController.LoadScene("Scn0.Lobby");
     }
 }

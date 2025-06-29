@@ -77,7 +77,7 @@ public class ResidentController : MonoBehaviour
         SoundManager.I.SetEffectAudio(profile.walkClip);
         animator.SetFloat("Movement", 1);
         
-        LogManager.I.WriteLog(type, DespawnType.Enter);
+        LevelManager.I.WriteLog(type, DespawnType.Enter);
         InteractionManager.I.ExitResident();
 
         rectTransform.DOAnchorPos(profile.endPoint, 3f).OnComplete(() => {

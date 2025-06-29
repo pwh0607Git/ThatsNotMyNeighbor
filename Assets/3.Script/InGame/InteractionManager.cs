@@ -131,7 +131,7 @@ public class InteractionManager : BehaviourSingleton<InteractionManager>
 
     public void CleanDoppel()
     {
-        LogManager.I.WriteLog(currentResident.type, DespawnType.Death);
+        LevelManager.I.WriteLog(currentResident.type, DespawnType.Death);
 
         currentResident.gameObject.SetActive(false);
         currentResident = null;

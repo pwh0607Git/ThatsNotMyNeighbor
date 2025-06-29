@@ -146,7 +146,7 @@ public class InGameManager : BehaviourSingleton<InGameManager>
         string ad = SearchAddress(profile);
         addressDic[ad].UpdateCheckAtHome(profile, true);
 
-        if (Log.enterDoppelCount >= life)
+        if (LevelManager.I.data.enterDoppelCount >= life)
         {
             Debug.Log("도플갱어가 들어간 수가 3개를 넘어 갔습니다.");
             GameOver();
@@ -373,6 +373,8 @@ public class InGameManager : BehaviourSingleton<InGameManager>
         if (this.mode.Equals(GameMode.Endless))
         {
             LevelData.level++;
+            LevelManager.I.AccumulateData();
+            LevelManager.I.data.ResetData();
         }
         ResetGame();
     }
