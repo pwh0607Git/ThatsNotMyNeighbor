@@ -4,10 +4,10 @@ using UnityEngine;
 
 public static class Record
 {
-    public static int capturedDoppelCount = 0;
-    public static int enterResidentCount = 0;
-    public static int enterDoppelCount = 0;
-    public static int deadResidentCount = 0;
+    public static int capturedDoppelCount = 3;
+    public static int enterResidentCount = 5;
+    public static int enterDoppelCount = 1;
+    public static int deadResidentCount = 1;
     public static int totalPoint = 0;
 
     public static void Reset()
@@ -22,6 +22,7 @@ public static class Record
     public static void CalculateRank()
     {
         totalPoint = (enterResidentCount * 100) + (capturedDoppelCount * 500) + (enterDoppelCount * -100) + (deadResidentCount * -200);
+        Debug.Log($"Total Point : {totalPoint}");
     }
 
     public static string GetRank()
@@ -31,7 +32,6 @@ public static class Record
         if (totalPoint >= 1000) res = "S";
         else if (totalPoint >= 700 && totalPoint < 1000) res = "A";
         else if (totalPoint >= 400 && totalPoint < 700) res = "B";
-        else if (totalPoint >= 400 && totalPoint < 400) res = "C";
         else res = "F";
 
         return res;

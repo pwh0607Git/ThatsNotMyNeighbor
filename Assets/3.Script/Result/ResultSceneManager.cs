@@ -23,8 +23,10 @@ public class ResultSceneManager : MonoBehaviour
 
     void OnEnable()
     {
+        Record.CalculateRank();
         SetTMP();
         ShowResult();
+
         mark.gameObject.SetActive(false);
 
         //레코드 저장하기
