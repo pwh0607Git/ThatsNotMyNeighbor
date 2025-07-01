@@ -130,16 +130,7 @@ public class TelephoneDialView : MonoBehaviour, IBeginDragHandler, IEndDragHandl
 
     void StartCallSquence()
     {
-        Debug.Log("전화 중...");
         Apartment apt = InGameManager.I.SearchApartment(currentNumber);
-
-        //아파트에 지금 주민이 있는지 확인하기
-        /*
-            경우의수 체크.
-            1. 집에 아무도 없는 경우 Dic Value가 모두 false
-            2. 집에 한명만 있는 경우 Dic Value 중 하나만 False
-            3. 집에 모두 있는 경우.
-        */
 
         if (apt == null || apt.checkAtHome == null) return;
 
@@ -154,7 +145,7 @@ public class TelephoneDialView : MonoBehaviour, IBeginDragHandler, IEndDragHandl
 
         if (atHomeProfiles.Count == 0)
         {
-            Debug.Log("아무도 집에 없습니다.");
+            Debug.Log("집에 아무도 없습니다.");
             SoundManager.I.SetEffectAudio(noneCallClip);
             DOVirtual.DelayedCall(3f, () => ResetDial());
             return;

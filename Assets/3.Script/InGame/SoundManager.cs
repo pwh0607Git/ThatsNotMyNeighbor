@@ -8,6 +8,7 @@ public class SoundManager : BehaviourSingleton<SoundManager>
 
     [SerializeField] AudioSource masterSource;
     [SerializeField] AudioSource effectSource;
+    [SerializeField] AudioSource characterSource;
 
     public float volume_Master;
     public float volume_Effect;
@@ -32,10 +33,16 @@ public class SoundManager : BehaviourSingleton<SoundManager>
         masterSource.clip = clip;
         masterSource.Play();
     }
-    
+
     public void SetEffectAudio(AudioClip clip)
     {
         effectSource.clip = clip;
         effectSource.Play();
     }
+    
+    public void SetCharacterAudio(AudioClip clip)
+    {
+        characterSource.clip = clip;
+        characterSource.Play();
+    }      
 }

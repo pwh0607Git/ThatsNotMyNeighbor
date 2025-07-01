@@ -458,7 +458,6 @@ MonoBehaviour:
   information:
     type: 0
     model: {fileID: 0}
-    wanted: {fileID: 0}
     reason: 
 --- !u!1 &7001700120796566782
 GameObject:
@@ -650,7 +649,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 4}
+  m_AnchoredPosition: {x: 0, y: 59.5}
   m_SizeDelta: {x: 533.5, y: 573.75}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &7727113640281198158

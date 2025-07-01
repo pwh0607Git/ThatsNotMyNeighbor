@@ -16,6 +16,8 @@ public class ResidentController : MonoBehaviour
     public DespawnType despawnType = DespawnType.Enter;
     protected ICharacterBehaviour behavior;
 
+    private AudioSource audioSource;
+
     RectTransform rectTransform;
 
     public Animator animator;
@@ -48,7 +50,7 @@ public class ResidentController : MonoBehaviour
     #region Move
     public void Enter()
     {
-        SoundManager.I.SetEffectAudio(profile.walkClip);
+        SoundManager.I.SetCharacterAudio(profile.walkClip);
         animator.SetFloat("Movement", 1f);
 
         Sequence enterSeq = DOTween.Sequence();
@@ -74,7 +76,7 @@ public class ResidentController : MonoBehaviour
     public void Exit()
     {
         Debug.Log($"Resident Exit : {gameObject.name}");
-        SoundManager.I.SetEffectAudio(profile.walkClip);
+        SoundManager.I.SetCharacterAudio(profile.walkClip);
         animator.SetFloat("Movement", 1);
         
         LevelManager.I.WriteLog(type, DespawnType.Enter);
