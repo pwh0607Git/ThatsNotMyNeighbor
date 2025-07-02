@@ -40,8 +40,9 @@ public class SoundManager : BehaviourSingleton<SoundManager>
         effectSource.Play();
     }
     
-    public void SetCharacterAudio(AudioClip clip)
+    public void SetCharacterAudio(AudioClip clip, bool isLoop = false)
     {
+        characterSource.loop = isLoop;
         characterSource.clip = clip;
         characterSource.Play();
     }      

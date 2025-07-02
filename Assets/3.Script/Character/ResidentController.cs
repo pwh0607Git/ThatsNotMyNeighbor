@@ -50,19 +50,20 @@ public class ResidentController : MonoBehaviour
     #region Move
     public void Enter()
     {
-        SoundManager.I.SetCharacterAudio(profile.walkClip);
         animator.SetFloat("Movement", 1f);
+
+        DOVirtual.DelayedCall(0.7f, () => SoundManager.I.SetCharacterAudio(profile.walkClip));
 
         Sequence enterSeq = DOTween.Sequence();
 
-        enterSeq.Append(rectTransform.DOAnchorPos(profile.targetPoint, 4f)).SetEase(Ease.Linear)
+        enterSeq.Append(rectTransform.DOAnchorPos(profile.targetPoint, 3f)).SetEase(Ease.Linear)
                 .AppendCallback(() =>
                 {
                     InteractionManager.I.SetCurrentResident(this);
                     if (InteractionManager.I.isOpen)
                     {
                         enterSeq.Kill();
-                        // Exit();
+                        Exit();
                     }
                     animator.SetFloat("Movement", 0f);
                 })

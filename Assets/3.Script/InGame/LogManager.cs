@@ -1,13 +1,12 @@
-using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
 public static class Record
 {
-    public static int capturedDoppelCount = 3;
-    public static int enterResidentCount = 5;
-    public static int enterDoppelCount = 1;
-    public static int deadResidentCount = 1;
+    public static int capturedDoppelCount = 0;
+    public static int enterResidentCount = 0;
+    public static int enterDoppelCount = 0;
+    public static int deadResidentCount = 0;
     public static int totalPoint = 0;
 
     public static void Reset()
@@ -15,6 +14,7 @@ public static class Record
         capturedDoppelCount = 0;
         enterDoppelCount = 0;
         deadResidentCount = 0;
+        enterDoppelCount = 0;
 
         RecordManager.DeleteRecord();
     }
@@ -38,7 +38,6 @@ public static class Record
     }
 }
 
-//로그 매니저는 InGame에만 존재.
 public class LevelManager : BehaviourSingleton<LevelManager>
 {
     public class LevelData
@@ -92,8 +91,6 @@ public class LevelManager : BehaviourSingleton<LevelManager>
         Record.enterResidentCount += data.enterResidentCount;
 
         data.ResetData();
-
-        //레벨 종료시에 호출
     }
 
 
@@ -112,11 +109,12 @@ public class GameRecordData
 
 public static class RecordManager
 {
-    private static string logFolderPath => Path.Combine(Application.persistentDataPath, "Record");
+    private static string logFolderPath => Path.Combine(Application.dataPath, "Record");
     private static string logFilePath => Path.Combine(logFolderPath, "EndlessRecord.json");
 
     public static void SaveRecord(int level)
     {
+        Debug.Log($"Save Data Path : {logFolderPath}");
         GameRecordData data = new GameRecordData
         {
             level = level,
@@ -128,8 +126,11 @@ public static class RecordManager
 
         string json = JsonUtility.ToJson(data, true);
 
-        if (!Directory.Exists(logFolderPath))
+        if (!File.Exists(logFolderPath))
+        {
+            Debug.Log("File 생성!");
             Directory.CreateDirectory(logFolderPath);
+        }
 
         File.WriteAllText(logFilePath, json);
         Debug.Log($"Log saved to: {logFilePath}");

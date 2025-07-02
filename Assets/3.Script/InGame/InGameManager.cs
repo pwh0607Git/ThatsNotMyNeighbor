@@ -327,9 +327,11 @@ public class InGameManager : BehaviourSingleton<InGameManager>
         Sequence overSeq = DOTween.Sequence();
 
         overSeq.AppendInterval(2f)
-                .AppendCallback(()=>SoundManager.I.SetEffectAudio(gameOverMasterSource))
                 .AppendInterval(5f)
-                .AppendCallback(() => gameOverPan.SetActive(true))
+                .AppendCallback(() => {
+                    gameOverPan.SetActive(true);
+                    SoundManager.I.SetEffectAudio(gameOverMasterSource);
+                })
                 .AppendInterval(4f)
                 .AppendCallback(() => SoundManager.I.SetEffectAudio(gameOverEffectSource))
                 .AppendInterval(1f)

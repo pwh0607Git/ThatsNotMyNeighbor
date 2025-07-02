@@ -31,12 +31,6 @@ public class TelephoneDialView : MonoBehaviour, IBeginDragHandler, IEndDragHandl
         InitAction();
     }
 
-    void LateUpdate()
-    {
-        if (!isDragging || !canRotate || selectedNumber == 0) return;
-        LotateRoulette();
-    }
-
     void InitAction()
     {
         foreach (var btn in buttons)
@@ -52,47 +46,32 @@ public class TelephoneDialView : MonoBehaviour, IBeginDragHandler, IEndDragHandl
         selectedNumber = num;
     }
 
+    void LotateRoulette()
+    {
+        if (!isDragging || !canRotate || selectedNumber == 0) return;
+
+        rotateSpeed = 0.8f - (selectedNumber / 50);
+        roulette.transform.DORotate(new Vector3(0, 0, maxRotateAngles[selectedNumber]), rotateSpeed, RotateMode.FastBeyond360);
+    }
+
     //룰렛을 원위치.
     private void ResetRoulette()
     {
         canRotate = false;
         roulette.transform.DORotate(Vector3.forward, 0.5f).OnComplete(() => canRotate = true);
+
         SoundManager.I.SetEffectAudio(resetDialClip);
-        if (!hasReachedMaxAngle) return;
+
+        if (selectedNumber == 0) return;
 
         currentNumber += selectedNumber.ToString();
         numberView.text = currentNumber;
-
-        hasReachedMaxAngle = false;
 
         //앵글 리셋후에 전화 시퀀스 시작하기.
         if (numberView.text.Length >= 4)
         {
             StartCallSquence();
         }
-    }
-
-    private bool hasReachedMaxAngle = false;
-
-    void LotateRoulette()
-    {
-        if (roulette == null) return;
-
-        float currentZ = roulette.transform.localEulerAngles.z;
-        float normalizedCurrentZ = currentZ > 180 ? currentZ - 360f : currentZ;
-        float targetZ = normalizedCurrentZ - rotateSpeed * Time.deltaTime;
-        float maxZ = maxRotateAngles[selectedNumber] < -180f ? maxRotateAngles[selectedNumber] + 360 : maxRotateAngles[selectedNumber];
-
-        SoundManager.I.SetEffectAudio(rotateDialClip);
-
-        if (targetZ < maxZ)
-        {
-            targetZ = maxZ;
-            hasReachedMaxAngle = true;
-        }
-
-        roulette.transform.DOLocalRotate(new Vector3(0, 0, targetZ), 0.4f, RotateMode.Fast)
-            .SetEase(Ease.Linear);
     }
 
     public void OnClickDialExit()
@@ -110,11 +89,14 @@ public class TelephoneDialView : MonoBehaviour, IBeginDragHandler, IEndDragHandl
     {
         isDragging = true;
         clickPoint = eventData.position;
+
+        //시작시.. 두트윈으롤 로테이션 수행
+        LotateRoulette();
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        rotateSpeed = Mathf.Abs(Vector2.Distance(clickPoint, eventData.position)) * 30f;
+        rotateSpeed = Mathf.Abs(Vector2.Distance(clickPoint, eventData.position)) * 2f;
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -145,20 +127,17 @@ public class TelephoneDialView : MonoBehaviour, IBeginDragHandler, IEndDragHandl
 
         if (atHomeProfiles.Count == 0)
         {
-            Debug.Log("집에 아무도 없습니다.");
             SoundManager.I.SetEffectAudio(noneCallClip);
             DOVirtual.DelayedCall(3f, () => ResetDial());
             return;
         }
         else if (atHomeProfiles.Count >= apt.checkAtHome.Count)
         {
-            Debug.Log("모두 집에 있습니다.");
             target = atHomeProfiles[Random.Range(0, atHomeProfiles.Count)];
             dialog = target.dialogs.Find(d => d.code.Equals("Call_With_Mate"));
         }
         else
         {
-            Debug.Log("부분 인원만 집에 있습니다.");
             target = atHomeProfiles[Random.Range(0, atHomeProfiles.Count)];
             dialog = target.dialogs.Find(d => d.code.Equals("Call_With_None"));
         }

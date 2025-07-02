@@ -1,14 +1,15 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class LobbyManager : MonoBehaviour
 {
     [SerializeField] AudioClip lobbyBgmClip;
     OptionPanelController optionPanelController;
+    RecordPanelController recordPanelController;
 
     void Start()
     {
         TryGetComponent(out optionPanelController);
+        TryGetComponent(out recordPanelController);
 
         InitPanel();
     }
@@ -20,11 +21,22 @@ public class LobbyManager : MonoBehaviour
 
     void InitPanel()
     {
-        optionPanelController.SetActivePanel(false);
+        optionPanelController.SetActiveView(false);
+        recordPanelController.SetActiveView(false);
     }
 
     public void OnClickOptionButton()
     {
-        optionPanelController.SetActivePanel(true);
+        optionPanelController.SetActiveView(true);
+    }
+
+    public void OnClickRecrodButton()
+    {
+        recordPanelController.SetActiveView(true);
+    }
+
+    public void OnClickExitButton()
+    {
+
     }
 }

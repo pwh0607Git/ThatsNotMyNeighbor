@@ -2,20 +2,20 @@ using UnityEngine;
 
 public class OptionPanelController : MonoBehaviour
 {
-    [SerializeField] OptionPanel panel;
+    [SerializeField] OptionPanel view;
 
     private float prevVolumeMaster = 0.5f;
     private float prevVolumeEffect = 0.5f;
 
-    public void SetActivePanel(bool on)
+    public void SetActiveView(bool on)
     {
-        panel.gameObject.SetActive(on);
+        view.gameObject.SetActive(on);
     }
 
     void OnEnable()
     {
-        panel.OnChangedMasterVolume += MasterVolumeChangedHandler;
-        panel.OnChangedEffectVolume += EffectVolumeChangedHandler;
+        view.OnChangedMasterVolume += MasterVolumeChangedHandler;
+        view.OnChangedEffectVolume += EffectVolumeChangedHandler;
     }
 
     void MasterVolumeChangedHandler(float value)
@@ -31,15 +31,15 @@ public class OptionPanelController : MonoBehaviour
     public void OnClickExitButton()
     {
         ResetVolume();
-        SetActivePanel(false);
+        SetActiveView(false);
     }
 
     public void OnClickCompleteButton()
     {
         // 새로운 값을 SoundManager에게 전달하기
-        SoundManager.I.SetVolume(panel.amountMaster, panel.amountEffect);
-        SetPrevVolume(panel.amountMaster, panel.amountEffect);
-        SetActivePanel(false);
+        SoundManager.I.SetVolume(view.amountMaster, view.amountEffect);
+        SetPrevVolume(view.amountMaster, view.amountEffect);
+        SetActiveView(false);
     }
 
     private void SetPrevVolume(float prevVolumeMaster, float prevVolumeEffect)
@@ -51,6 +51,6 @@ public class OptionPanelController : MonoBehaviour
     private void ResetVolume()
     {
         SoundManager.I.SetVolume(prevVolumeMaster, prevVolumeEffect);       
-        panel.SetSlideBar(prevVolumeMaster, prevVolumeEffect);
+        view.SetSlideBar(prevVolumeMaster, prevVolumeEffect);
     }
 }
